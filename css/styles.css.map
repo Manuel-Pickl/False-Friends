@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,KAAK,CAAC;EACF,QAAQ,EAAE,QAAQ;EAElB,aAAa,EAAE,GAAG;EAClB,gBAAgB,EAAE,4EAA4E;EAC9F,eAAe,EAAE,OAAO;EAExB,SAAS,EAAE,qBAAqB;CACnC",
+    "sources": [
+        "styles.scss",
+        "components/_game.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

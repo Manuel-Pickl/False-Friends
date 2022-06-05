@@ -1,3 +1,13 @@
+/*
+  sources:
+  - https://www.geeksforgeeks.org
+  - stackoverflow
+  - mdn docs
+
+    more specific:
+    - https://www.geeksforgeeks.org/javascript-math-sin-method/
+*/
+
 // window.addEventListener('click', e => {
 //     window.addEventListener('devicemotion', event => {
 //         console.log("accelerationIncludingGravity.x: " + event.accelerationIncludingGravity.x);
@@ -11,56 +21,63 @@
 
 const gravitation = 0.1;
 const speedLimit = 10;
-var x = 0, y = 0;
+var sensorX = 0, sensorY = 0;
 
 const fps = 60;
 
 var ball = new Ball();
+var lastTimestamp = 0;
 
 
-window.addEventListener('deviceorientation', event => {
-      y = event.beta;
-      x = event.gamma;
-});
 
+
+function startSimulation() {
+  window.addEventListener('deviceorientation', onSensorChanged);
+}
+
+function stopSimulation() {
+  window.removeEventListener('deviceorientation');
+}
+
+function onSensorChanged(event) {
+  sensorX = event.gamma;
+  sensorY = event.beta;
+}
+
+
+startSimulation();
 setInterval(function() {
-    ball.update();
+  simulate();
 }, 1000 / fps);
 
 
 
 
+function simulate() {
+  /*
+    * Compute the new position of our object, based on accelerometer
+    * data and present time.
+    */
+   
+   // update the system's positions
+  calculatePosition(sensorX, sensorY);
 
+  // handle collisions
+  ball.resolveCollisionWithBounds();
 
-// Initialize deferredPrompt for use later to show browser install prompt.
-let deferredPrompt;
+  ball.draw();
+}
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
+/*
+  * Update the position of each particle in the system using the
+  * Verlet integrator.
+  */
+function calculatePosition() {
+  let currentTimestamp = Date.now();
   
-  // Optionally, send analytics event that PWA install promo was shown.
-  console.log(`'beforeinstallprompt' event was fired.`);
-});
-
-
-const pwaInstall = document.querySelector(".pwa-install");
-pwaInstall.addEventListener('click', async () => {
-    // Hide the app provided install promotion
-    // hideInstallPromotion();
-
-    // Show the install prompt
-    deferredPrompt.prompt();
-
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-
-    // Optionally, send analytics event with outcome of user choice
-    console.log(`User response to the install prompt: ${outcome}`);
-
-    // We've used the prompt, and can't use it again, throw it away
-    deferredPrompt = null;
-  });
+  if (lastTimestamp != 0) {
+    timeDifference = (currentTimestamp - lastTimestamp) / 1000;
+    ball.computePhysics(sensorX, sensorY, timeDifference);
+  }
+  lastTimestamp = currentTimestamp;
+}
