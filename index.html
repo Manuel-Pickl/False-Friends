@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+    <!-- <meta property="og:site_name" content="Twitter"/> -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000"/>
+    <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
+    <title>Pickl Manuel | Balls Game | PWA</title>
+    <link rel="stylesheet" href="scss/styles.css"/>
+    <script src="https://kit.fontawesome.com/e4698e5b64.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header>
+      <button class="pwa-install">install pwa</button>
+    </header>
+
+    <main>
+      <div class="ball"></div>
+    </main>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <script src="js/ball.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

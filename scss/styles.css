@@ -1,0 +1,12 @@
+.ball {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: salmon;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=styles.css.map */
