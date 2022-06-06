@@ -1,9 +1,11 @@
 /*
   sources:
-  - https://www.geeksforgeeks.org
+  - geeksforgeeks.org
   - stackoverflow
-  - mdn docs
+  - developer.mozilla.org
+  - w3schools
 
+  
     more specific:
     - https://www.geeksforgeeks.org/javascript-math-sin-method/
 */
@@ -23,11 +25,14 @@ const gravitation = 0.1;
 const speedLimit = 10;
 var sensorX = 0, sensorY = 0;
 
-const fps = 60;
+const fps = 120;
 
-var ball = new Ball();
+var crater = new Crater().draw();
+
+let startPositionX = window.innerWidth / 2;
+let startPositionY = window.innerHeight / 2;
+var ball = new Ball({x: startPositionX, y: startPositionY}, [crater]);
 var lastTimestamp = 0;
-
 
 
 
@@ -60,7 +65,7 @@ function simulate() {
     */
    
    // update the system's positions
-  calculatePosition(sensorX, sensorY);
+  calculatePosition();
 
   // handle collisions
   ball.resolveCollisionWithBounds();
@@ -72,12 +77,20 @@ function simulate() {
   * Update the position of each particle in the system using the
   * Verlet integrator.
   */
+var craterEntered = false;
 function calculatePosition() {
   let currentTimestamp = Date.now();
   
   if (lastTimestamp != 0) {
     timeDifference = (currentTimestamp - lastTimestamp) / 1000;
-    ball.computePhysics(sensorX, sensorY, timeDifference);
+
+    // calculate crater physics
+    let gamma = sensorX;
+    let beta = sensorY;
+
+    
+    // console.log({beta});
+    ball.computePhysics(gamma, beta, timeDifference);
   }
   lastTimestamp = currentTimestamp;
 }

@@ -6,4 +6,12 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background-color: grey;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 /*# sourceMappingURL=styles.css.map */

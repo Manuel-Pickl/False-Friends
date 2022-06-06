@@ -7,3 +7,14 @@
 
     transform: translate(-50%, -50%);
 }
+
+.crater {
+    position: absolute;
+
+    border-radius: 50%;
+    // background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
+    // background-size: contain;
+    background-color: grey;
+
+    transform: translate(-50%, -50%);
+}

@@ -5,12 +5,17 @@ class Ball {
     positionX; positionY;
     velocityX; velocityY;
 
-    constructor() {
+    craters;
+
+    constructor(startPosition, craters) {
+        this.positionX = startPosition.x;
+        this.positionY = startPosition.y;
+        this.craters = craters;
+        
         this.domElement = document.querySelector(".ball");
-        this.positionX = window.innerWidth / 2;
-        this.positionY = window.innerHeight / 2;
         this.velocityX = 0;
         this.velocityY = 0;
+
 
         // size
         this.radius = 20;
@@ -19,8 +24,11 @@ class Ball {
     }
 
     computePhysics(sensorX, sensorY, timeDifference) {
+        // get angles of current board position
+        let ballAngles = this.calculateBallAngles(sensorX, sensorY);
+        
         // acceleration
-        let acceleration = this.calculateAcceleration(sensorX, sensorY);
+        let acceleration = this.calculateAcceleration(ballAngles);
         
         // velocity
         let deltaVelocity = this.calculateDeltaVelocity(acceleration);
@@ -31,12 +39,32 @@ class Ball {
         this.setPos(deltaDistance)
     }
 
-    calculateAcceleration() {
+    calculateBallAngles(sensorX, sensorY) {
+        this.craters.forEach(crater => {
+            if (this.inCrater(crater)) {
+                // Physics.resistance = 0.05;
+                crater.domElement.style.backgroundColor = "orange";
+        
+                // add or subtract crater angle to board angle
+                sensorX += this.positionX > crater.positionX ? -crater.depth : crater.depth;
+                sensorY += this.positionY > crater.positionY ? -crater.depth : crater.depth;
+                // case == 0 can be ignored
+            }
+            else {
+                // Physics.resistance = 0.005;
+                crater.domElement.style.backgroundColor = "grey";
+            }
+        });
+
+        return {x: sensorX, y: sensorY};
+    }
+
+    calculateAcceleration(ballAngles) {
         /*
             source: https://www.rapidtables.com/convert/number/degrees-to-radians.html
         */
-        let radianX = sensorX * Math.PI/180;
-        let radianY = sensorY * Math.PI/180;
+        let radianX = ballAngles.x * Math.PI/180;
+        let radianY = ballAngles.y * Math.PI/180;
 
 
         /*
@@ -79,22 +107,21 @@ class Ball {
         this.velocityY += deltaVelocity.y;
         
         // simulate resistances like friction, drag, etc.
-        const resistance = 0.005;
-        if (this.velocityY >= resistance) {
-            this.velocityY -= resistance;
+        if (this.velocityY >= Physics.resistance) {
+            this.velocityY -= Physics.resistance;
         }
-        else if (this.velocityY <= -resistance) {
-            this.velocityY += resistance;
+        else if (this.velocityY <= -Physics.resistance) {
+            this.velocityY += Physics.resistance;
         }
         else {
             this.velocityY = 0;
         }
         
-        if (this.velocityX >= resistance) {
-            this.velocityX -= resistance;
+        if (this.velocityX >= Physics.resistance) {
+            this.velocityX -= Physics.resistance;
         }
-        else if (this.velocityX <= -resistance) {
-            this.velocityX += resistance;
+        else if (this.velocityX <= -Physics.resistance) {
+            this.velocityX += Physics.resistance;
         }
         else {
             this.velocityX = 0;
@@ -171,9 +198,27 @@ class Ball {
         }
     }
 
+    inCrater(crater) {
+        /*
+            source: https://lakschool.com/de/mathe/kreise-kugeln/lage-kreis-punkt
+
+            (x0​ − xM​)^2 + (y0​ − yM​)^2 > r^2 -> außerhalb des Kreises
+
+            P(x0​∣y0​) zum Mittelpunkt M(xM∣yM)
+        */
+        let inCrater = 
+            (Math.pow(this.positionX - crater.positionX, 2) 
+            + Math.pow(this.positionY - crater.positionY, 2)) 
+            <= Math.pow(crater.radius, 2);
+
+        return inCrater;
+    }
+
 
     draw() {
         this.domElement.style.left = `${this.positionX}px`;
         this.domElement.style.top = `${this.positionY}px`;
+
+        return this;
     }
 }
