@@ -21,11 +21,11 @@ class Hole extends Particle {
         // console.log({isPointInside});
         if (isPointInside) {
             // Physics.resistance = 0.01;
-            this.domElement.style.backgroundColor = "orange";
+            // this.domElement.style.backgroundColor = "orange";
         }
         else {
             // Physics.resistance = 0.005;
-            this.domElement.style.backgroundColor = "grey";
+            // this.domElement.style.backgroundColor = "grey";
         }
 
         return isPointInside;

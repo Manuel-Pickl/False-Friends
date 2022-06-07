@@ -17,7 +17,7 @@ class Ball extends Particle {
         let acceleration = this.calculateAcceleration(boardAngle);
         
         // velocity
-        let deltaVelocity = this.calculateDeltaVelocity(acceleration);
+        let deltaVelocity = this.calculateDeltaVelocity(acceleration, timeDifference);
         this.setVelocity(deltaVelocity);
         
         // distance
@@ -69,7 +69,7 @@ class Ball extends Particle {
         return acceleration;
     }
 
-    calculateDeltaVelocity(acceleration) {
+    calculateDeltaVelocity(acceleration, timeDifference) {
         /*
             source: https://www.frustfrei-lernen.de/mechanik/gleichmaessig-beschleunigte-bewegung-physik.html
 
