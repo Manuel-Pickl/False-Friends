@@ -1,26 +1,15 @@
-class Ball {
-    domElement;
-    radius;
-
-    positionX; positionY;
+class Ball extends Particle {
     velocityX; velocityY;
 
     craters;
 
     constructor(startPosition, craters) {
-        this.positionX = startPosition.x;
-        this.positionY = startPosition.y;
-        this.craters = craters;
+        super(startPosition, 20);
         
-        this.domElement = document.querySelector(".ball");
+        this.domElement.classList.add("ball");
+        this.craters = craters;
         this.velocityX = 0;
         this.velocityY = 0;
-
-
-        // size
-        this.radius = 20;
-        this.domElement.style.width = `${this.radius * 2}px`;
-        this.domElement.style.height = `${this.radius * 2}px`;
     }
 
     computePhysics(sensorX, sensorY, timeDifference) {
@@ -40,6 +29,7 @@ class Ball {
     }
 
     calculateBallAngles(sensorX, sensorY) {
+        // include crater angles
         this.craters.forEach(crater => {
             if (this.inCrater(crater)) {
                 // Physics.resistance = 0.05;
@@ -212,13 +202,5 @@ class Ball {
             <= Math.pow(crater.radius, 2);
 
         return inCrater;
-    }
-
-
-    draw() {
-        this.domElement.style.left = `${this.positionX}px`;
-        this.domElement.style.top = `${this.positionY}px`;
-
-        return this;
     }
 }
