@@ -16,18 +16,87 @@ var simulationRunning = false;
 const fps = 120;
 const maxAngle = 90;
 const maxAngleUsed = 35;
-var sensorX = 0, sensorY = 0;
 
-// crater
-let craterPosX = window.innerWidth / 2 + 100;
-let craterPosY = window.innerHeight / 2 + 150;
-var crater = new Crater({x: craterPosX, y: craterPosY}).draw();
+var boardAngle = new Point();
 
-// ball
-let startPositionX = window.innerWidth / 2;
-let startPositionY = window.innerHeight / 2;
-var ball = new Ball({x: startPositionX, y: startPositionY}, [crater]);
+var craters = [];
+
+const ballRadius = 20;
+let startPosition = new Point(ballRadius, ballRadius)
+var ball = new Ball(startPosition, ballRadius, craters);
+
 var lastTimestamp = 0;
+
+startLevel(1);
+startSimulation();
+
+/*
+  source: https://www.w3schools.com/js/js_random.asp
+*/
+function getRandomIntegerInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function startLevel(difficulty) {
+  // set level-dependend quanitity of craters in random positions
+  let craterCount = 10; // get value out of dict
+
+  // clear previous craters
+  craters.length = 0;
+
+  // generate random non intersecting craters
+  for (let i = 0; i < craterCount; i++) {
+    // get random crater radius
+    let craterRadius = getRandomIntegerInRange(ballRadius * 2, ballRadius * 4);
+    
+    let craterPosition;
+    let craterIntersects;
+    do {
+      craterIntersects = false;
+
+      // get random crater position
+      let craterPositionX = getRandomIntegerInRange(0, window.innerWidth);
+      let craterPositionY = getRandomIntegerInRange(0, window.innerHeight);
+      craterPosition = new Point(craterPositionX, craterPositionY);
+
+      // check intersection with other craters
+      craters.forEach(crater => {
+        let craterDistance = Math.sqrt(Math.pow(craterPosition.x - crater.position.x, 2) + Math.pow(craterPosition.y - crater.position.y, 2));
+        if (craterDistance <= craterRadius + crater.radius) {
+          craterIntersects = true;
+        }
+      });
+    } while (craterIntersects);
+    
+    // intialize crater with generated data and draw
+    let crater = new Crater(craterPosition, craterRadius).draw();
+    
+    // add crater to list
+    craters.push(crater);
+  }
+
+  // place ball in random position not intersecting with craters
+  let ballPosition;
+  let craterIntersects;
+  do {
+    craterIntersects = false;
+
+    // get random ball position
+    ballPosition = new Point(
+      getRandomIntegerInRange(ballRadius, window.innerWidth - ballRadius),
+      getRandomIntegerInRange(ballRadius, window.innerHeight - ballRadius)
+    );
+
+    // check intersection with craters
+    craters.forEach(crater => {
+      if (crater.isPointInside(ballPosition)) {
+        craterIntersects = true;
+      }
+    });
+  } while (craterIntersects);
+  
+  ball.position = ballPosition;
+}
 
 
 
@@ -42,22 +111,21 @@ function stopSimulation() {
 }
 
 function onSensorChanged(event) {
-  sensorX = event.gamma;
-  sensorY = event.beta;
+  boardAngle.x = event.gamma;
+  boardAngle.y = event.beta;
 
   // just use sensors till specific angle,
   // because nobody wants to tilt their phone till 90°
   let multiplicator = maxAngle / maxAngleUsed;
 
-  sensorX *= multiplicator;
-  sensorX = sensorX > maxAngle ? maxAngle : sensorX;
+  boardAngle.x *= multiplicator;
+  boardAngle.x = boardAngle.x > maxAngle ? maxAngle : boardAngle.x;
 
-  sensorY *= multiplicator;
-  sensorY = sensorY > maxAngle ? maxAngle : sensorY;
+  boardAngle.y *= multiplicator;
+  boardAngle.y = boardAngle.y > maxAngle ? maxAngle : boardAngle.y;
 }
 
 
-startSimulation();
 
 setInterval(function() {
   if (simulationRunning) {
@@ -91,7 +159,7 @@ function calculatePosition() {
   if (lastTimestamp != 0) {
     timeDifference = (currentTimestamp - lastTimestamp) / 1000;
 
-    ball.computePhysics(sensorX, sensorY, timeDifference);
+    ball.computePhysics(boardAngle, timeDifference);
   }
 
   lastTimestamp = currentTimestamp;

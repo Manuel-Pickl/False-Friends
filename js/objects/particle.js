@@ -1,13 +1,11 @@
 class Particle {
     domElement;
     radius;
-    positionX;
-    positionY;
+    position;
 
     constructor(startPosition, radius) {
         // set starting coordinates
-        this.positionX = startPosition.x;
-        this.positionY = startPosition.y;
+        this.position = startPosition;
         
         // create dom element
         this.domElement = document.createElement("div");
@@ -23,8 +21,8 @@ class Particle {
     }
 
     draw() {
-        this.domElement.style.left = `${this.positionX}px`;
-        this.domElement.style.top = `${this.positionY}px`;
+        this.domElement.style.left = `${this.position.x}px`;
+        this.domElement.style.top = `${this.position.y}px`;
 
         return this;
     }

@@ -1,23 +1,20 @@
 class Ball extends Particle {
-    velocityX; velocityY;
-
+    velocity;
     craters;
 
-    constructor(startPosition, craters) {
-        super(startPosition, 20);
+    constructor(startPosition, radius, craters) {
+        super(startPosition, radius);
         
         this.domElement.classList.add("ball");
         this.craters = craters;
-        this.velocityX = 0;
-        this.velocityY = 0;
+        this.velocity = new Point();
     }
 
-    computePhysics(sensorX, sensorY, timeDifference) {
-        // get angles of current board position
-        let ballAngles = this.calculateBallAngles(sensorX, sensorY);
-        
+    computePhysics(boardAngle, timeDifference) {
+        // include crater angle at current position
+        boardAngle = this.includeCraterAngles(boardAngle);
         // acceleration
-        let acceleration = this.calculateAcceleration(ballAngles);
+        let acceleration = this.calculateAcceleration(boardAngle);
         
         // velocity
         let deltaVelocity = this.calculateDeltaVelocity(acceleration);
@@ -28,33 +25,29 @@ class Ball extends Particle {
         this.setPos(deltaDistance)
     }
 
-    calculateBallAngles(sensorX, sensorY) {
-        // include crater angles
+    includeCraterAngles(boardAngle) {
+        // check for each crater, if ball is inside
         this.craters.forEach(crater => {
-            if (this.inCrater(crater)) {
-                // Physics.resistance = 0.05;
-                crater.domElement.style.backgroundColor = "orange";
-        
-                // add or subtract crater angle to board angle
-                sensorX += this.positionX > crater.positionX ? -crater.depth : crater.depth;
-                sensorY += this.positionY > crater.positionY ? -crater.depth : crater.depth;
-                // case == 0 can be ignored
+            if (!crater.isPointInside(this.position)) {
+                return;
             }
-            else {
-                // Physics.resistance = 0.005;
-                crater.domElement.style.backgroundColor = "grey";
-            }
-        });
+            
+            let craterAngle = crater.getAngleAtPoint(this.position);
 
-        return {x: sensorX, y: sensorY};
+            // add crater angle to board angle
+            boardAngle.x += craterAngle.x;
+            boardAngle.y += craterAngle.y;
+        });
+        
+        return boardAngle;
     }
 
-    calculateAcceleration(ballAngles) {
+    calculateAcceleration(boardAngle) {
         /*
             source: https://www.rapidtables.com/convert/number/degrees-to-radians.html
         */
-        let radianX = ballAngles.x * Math.PI/180;
-        let radianY = ballAngles.y * Math.PI/180;
+        let radianX = boardAngle.x * Math.PI/180;
+        let radianY = boardAngle.y * Math.PI/180;
 
 
         /*
@@ -71,8 +64,9 @@ class Ball extends Particle {
         */
         let accelerationX = g * Math.sin(radianX);
         let accelerationY = g * Math.sin(radianY);
+        let acceleration = new Point(accelerationX, accelerationY);
 
-        return {x: accelerationX, y: accelerationY};
+        return acceleration;
     }
 
     calculateDeltaVelocity(acceleration) {
@@ -88,42 +82,43 @@ class Ball extends Particle {
         */
         let deltaVelocityX = acceleration.x * timeDifference;
         let deltaVelocityY = acceleration.y * timeDifference;
+        let deltaVelocity = new Point(deltaVelocityX, deltaVelocityY);
 
-        return {x: deltaVelocityX, y: deltaVelocityY};
+        return deltaVelocity;
     }
 
     setVelocity(deltaVelocity) {
-        this.velocityX += deltaVelocity.x;
-        this.velocityY += deltaVelocity.y;
+        this.velocity.x += deltaVelocity.x;
+        this.velocity.y += deltaVelocity.y;
         
         // simulate resistances like friction, drag, etc.
-        if (this.velocityY >= Physics.resistance) {
-            this.velocityY -= Physics.resistance;
+        if (this.velocity.y >= Physics.resistance) {
+            this.velocity.y -= Physics.resistance;
         }
-        else if (this.velocityY <= -Physics.resistance) {
-            this.velocityY += Physics.resistance;
+        else if (this.velocity.y <= -Physics.resistance) {
+            this.velocity.y += Physics.resistance;
         }
         else {
-            this.velocityY = 0;
+            this.velocity.y = 0;
         }
         
-        if (this.velocityX >= Physics.resistance) {
-            this.velocityX -= Physics.resistance;
+        if (this.velocity.x >= Physics.resistance) {
+            this.velocity.x -= Physics.resistance;
         }
-        else if (this.velocityX <= -Physics.resistance) {
-            this.velocityX += Physics.resistance;
+        else if (this.velocity.x <= -Physics.resistance) {
+            this.velocity.x += Physics.resistance;
         }
         else {
-            this.velocityX = 0;
+            this.velocity.x = 0;
         }
 
         // cap velocity
         const maxVelocity = 30;
-        if (this.velocityY > maxVelocity) {
-            this.velocityY = maxVelocity;
+        if (this.velocity.y > maxVelocity) {
+            this.velocity.y = maxVelocity;
         }
-        if (this.velocityX > maxVelocity) {
-            this.velocityX = maxVelocity;
+        if (this.velocity.x > maxVelocity) {
+            this.velocity.x = maxVelocity;
         }
     }
 
@@ -138,10 +133,11 @@ class Ball extends Particle {
             "t" ist die Zeit in Sekunden [s]
             "s0" ist der Anfangsweg [m]
         */
-        let deltaDistanceX = 0.5 * acceleration.x * timeDifference * timeDifference + this.velocityX * timeDifference;
-        let deltaDistanceY = 0.5 * acceleration.y * timeDifference * timeDifference + this.velocityY * timeDifference;
+        let deltaDistanceX = 0.5 * acceleration.x * timeDifference * timeDifference + this.velocity.x * timeDifference;
+        let deltaDistanceY = 0.5 * acceleration.y * timeDifference * timeDifference + this.velocity.y * timeDifference;
+        let deltaDistance = new Point(deltaDistanceX, deltaDistanceY);
         
-        return {x: deltaDistanceX, y: deltaDistanceY};
+        return deltaDistance;
     }
 
 
@@ -153,12 +149,11 @@ class Ball extends Particle {
 
         let ratioX = deltaDistance.x / fieldWidth;
         let deltaX = ratioX * window.innerWidth;
+        this.position.x += deltaX;
 
         let ratioY = deltaDistance.y / fieldHeight;
         let deltaY = ratioY * window.innerHeight;
-
-        this.positionY += deltaY;
-        this.positionX += deltaX;
+        this.position.y += deltaY;
     }
 
 
@@ -171,36 +166,20 @@ class Ball extends Particle {
         let xMax = window.innerWidth - this.radius;
         let xMin = this.radius
         
-        if (this.positionY > yMax) {
-            this.positionY = yMax;
-            this.velocityY = 0;
-        } else if (this.positionY < yMin) {
-            this.positionY = yMin;
-            this.velocityY = 0;
+        if (this.position.y > yMax) {
+            this.position.y = yMax;
+            this.velocity.y = 0;
+        } else if (this.position.y < yMin) {
+            this.position.y = yMin;
+            this.velocity.y = 0;
         }
 
-        if (this.positionX > xMax) {
-            this.positionX = xMax;
-            this.velocityX = 0;
-        } else if (this.positionX < xMin) {
-            this.positionX = xMin;
-            this.velocityX = 0;
+        if (this.position.x > xMax) {
+            this.position.x = xMax;
+            this.velocity.x = 0;
+        } else if (this.position.x < xMin) {
+            this.position.x = xMin;
+            this.velocity.x = 0;
         }
-    }
-
-    inCrater(crater) {
-        /*
-            source: https://lakschool.com/de/mathe/kreise-kugeln/lage-kreis-punkt
-
-            (x0​ − xM​)^2 + (y0​ − yM​)^2 > r^2 -> außerhalb des Kreises
-
-            P(x0​∣y0​) zum Mittelpunkt M(xM∣yM)
-        */
-        let inCrater = 
-            (Math.pow(this.positionX - crater.positionX, 2) 
-            + Math.pow(this.positionY - crater.positionY, 2)) 
-            <= Math.pow(crater.radius, 2);
-
-        return inCrater;
     }
 }

@@ -3,6 +3,13 @@ body {
   padding: 0;
 }
 
+main {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #F2D2A9;
+}
+
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -11,11 +18,13 @@ body {
 }
 
 .ball {
+  z-index: 20;
   background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
   background-size: contain;
 }
 
 .crater {
-  background-color: grey;
+  z-index: 10;
+  background-color: #E1BF92;
 }
 /*# sourceMappingURL=styles.css.map */

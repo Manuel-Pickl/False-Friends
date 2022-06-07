@@ -4,6 +4,13 @@ body {
 }
 
 
+main {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+    background-color: #F2D2A9;
+}
 .particle {
     position: absolute;
 
@@ -12,12 +19,12 @@ body {
     transform: translate(-50%, -50%);
 }
 .ball {
+    z-index: 20;
     background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
     background-size: contain;
 }
 
 .crater {
-    // background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
-    // background-size: contain;
-    background-color: grey;
+    z-index: 10;
+    background-color: #E1BF92;
 }
