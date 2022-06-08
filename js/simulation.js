@@ -118,7 +118,6 @@ class Simulation {
         // } while (craterIntersects);
     
         this.finish.position = finishPosition;
-        this.finish.position = new Point(20, 20);
         this.finish.draw();
     }
     

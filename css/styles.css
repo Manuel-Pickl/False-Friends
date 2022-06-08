@@ -7,7 +7,8 @@ main {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background-color: #F2D2A9;
+  background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
+  background-size: 500px;
 }
 
 .particle {
@@ -25,11 +26,15 @@ main {
 
 .crater {
   z-index: 10;
-  background-color: #E1BF92;
+  -webkit-box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
+          box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
 }
 
 .finish {
   z-index: 15;
-  background-color: black;
+  background-image: url("https://static.vecteezy.com/ti/gratis-vektor/p1/639981-karomuster-schwarz-weiss-kostenlos-vektor.jpg");
+  background-size: contain;
+  -webkit-box-shadow: inset 2px 2px 4px, inset -2px -2px 4px black;
+          box-shadow: inset 2px 2px 4px, inset -2px -2px 4px black;
 }
 /*# sourceMappingURL=styles.css.map */
