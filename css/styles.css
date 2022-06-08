@@ -27,4 +27,9 @@ main {
   z-index: 10;
   background-color: #E1BF92;
 }
+
+.finish {
+  z-index: 15;
+  background-color: black;
+}
 /*# sourceMappingURL=styles.css.map */

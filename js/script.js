@@ -13,18 +13,28 @@
 
 const fps = 120;
 const maxAngle = 90;
+var level = 1;
+var craterCountDict = {
+  1: 0,
+  2: 2,
+  3: 5,
+  4: 10,
+  5: 15
+}
 
 var simulation = new Simulation(fps);
-startLevel(1);
+startLevel(level);
 startSimulation();
 
 
 
-function startLevel(difficulty) {
+function startLevel(level) {
   // set level-dependend quanitity of craters in random positions
-  let craterCount = 10; // get value out of dict
+  let craterCount = craterCountDict[level]; // get value out of dict
   simulation.placeCraters(craterCount);
 
+  simulation.placeFinish();
+  
   simulation.placeBall();
 }
 
@@ -37,15 +47,41 @@ function startSimulation() {
 
 function stopSimulation() {
   simulation.running = false;
-  window.removeEventListener('deviceorientation');
+  window.removeEventListener('deviceorientation', onSensorChanged);
 }
 
 
 setInterval(function() {
   if (simulation.running) {
     simulation.simulate();
+
+    if (isLevelFinished()) {
+      finishLevel();
+    }
   }
 }, 1000 / simulation.fps);
+
+function isLevelFinished() {
+  return simulation.finish.isCircleInside(simulation.ball.position, simulation.ball.radius);
+}
+
+function finishLevel() {
+  stopSimulation();
+
+  
+  // increase level
+  if (level < 5) {
+    // reset ball velocity
+    simulation.ball.velocity.x = 0;
+    simulation.ball.velocity.y = 0;
+
+    startLevel(++level);
+    startSimulation();
+  }
+  else {
+    alert("finito");
+  }
+}
 
 
 function onSensorChanged(event) {
