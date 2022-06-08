@@ -18,8 +18,7 @@ var craterCountDict = {
   1: 0,
   2: 2,
   3: 5,
-  4: 10,
-  5: 15
+  4: 10
 }
 
 var simulation = new Simulation(fps);
@@ -70,7 +69,7 @@ function finishLevel() {
 
   
   // increase level
-  if (level < 5) {
+  if (level < Object.keys(craterCountDict).length) {
     // reset ball velocity
     simulation.ball.velocity.x = 0;
     simulation.ball.velocity.y = 0;
@@ -85,16 +84,31 @@ function finishLevel() {
 
 
 function onSensorChanged(event) {
-  simulation.boardAngle.x = event.gamma;
-  simulation.boardAngle.y = event.beta;
+  let boardAngleX = event.gamma;
+  let boardAngleY = event.beta;
 
   // just use sensors till specific angle,
   // because nobody wants to tilt their phone till 90°
   let multiplicator = maxAngle / simulation.maxAngleUsed;
 
-  simulation.boardAngle.x *= multiplicator;
-  simulation.boardAngle.x = simulation.boardAngle.x > maxAngle ? maxAngle : simulation.boardAngle.x;
+  boardAngleX *= multiplicator;
+  boardAngleY *= multiplicator;
 
-  simulation.boardAngle.y *= multiplicator;
-  simulation.boardAngle.y = simulation.boardAngle.y > maxAngle ? maxAngle : simulation.boardAngle.y;
+  // cap angle at 90°
+  if (boardAngleX > maxAngle) {
+    boardAngleX = maxAngle;
+  }
+  else if (boardAngleX < -maxAngle) {
+    boardAngleX = -maxAngle;
+  }
+
+  if (boardAngleY > maxAngle) {
+    boardAngleY = maxAngle;
+  }
+  else if (boardAngleY < -maxAngle) {
+    boardAngleY = -maxAngle;
+  }
+
+  simulation.boardAngle.x = boardAngleX;
+  simulation.boardAngle.y = boardAngleY;
 }

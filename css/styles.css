@@ -32,9 +32,8 @@ main {
 
 .finish {
   z-index: 15;
-  background-image: url("https://static.vecteezy.com/ti/gratis-vektor/p1/639981-karomuster-schwarz-weiss-kostenlos-vektor.jpg");
-  background-size: contain;
-  -webkit-box-shadow: inset 2px 2px 4px, inset -2px -2px 4px black;
-          box-shadow: inset 2px 2px 4px, inset -2px -2px 4px black;
+  background-color: black;
+  -webkit-box-shadow: inset -5px -5px 10px grey;
+          box-shadow: inset -5px -5px 10px grey;
 }
 /*# sourceMappingURL=styles.css.map */

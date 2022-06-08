@@ -12,9 +12,10 @@ class Ball extends Particle {
 
     computePhysics(boardAngle, timeDifference) {
         // include crater angle at current position
-        boardAngle = this.includeCraterAngles(boardAngle);
+        let boardAngleModified = this.includeCraterAngles(boardAngle);
+
         // acceleration
-        let acceleration = this.calculateAcceleration(boardAngle);
+        let acceleration = this.calculateAcceleration(boardAngleModified);
         
         // velocity
         let deltaVelocity = this.calculateDeltaVelocity(acceleration, timeDifference);
@@ -22,10 +23,12 @@ class Ball extends Particle {
         
         // distance
         let deltaDistance = this.calculateDistance(acceleration, timeDifference);
-        this.setPos(deltaDistance)
+        this.setPos(deltaDistance);
     }
 
     includeCraterAngles(boardAngle) {
+        let boardAngleModified = new Point(boardAngle.x, boardAngle.y);
+
         // check for each crater, if ball is inside
         this.craters.forEach(crater => {
             if (!crater.isPointInside(this.position)) {
@@ -35,11 +38,26 @@ class Ball extends Particle {
             let craterAngle = crater.getAngleAtPoint(this.position);
 
             // add crater angle to board angle
-            boardAngle.x += craterAngle.x;
-            boardAngle.y += craterAngle.y;
+            boardAngleModified.x += craterAngle.x;
+            boardAngleModified.y += craterAngle.y;
+
+            // cap angle at 90°
+            if (boardAngleModified.x > maxAngle) {
+                boardAngleModified.x = maxAngle;
+            }
+            else if (boardAngleModified.x < -maxAngle) {
+                boardAngleModified.x = -maxAngle;
+            }
+
+            if (boardAngleModified.y > maxAngle) {
+                boardAngleModified.y = maxAngle;
+            }
+            else if (boardAngleModified.y < -maxAngle) {
+                boardAngleModified.y = -maxAngle;
+            }
         });
         
-        return boardAngle;
+        return boardAngleModified;
     }
 
     calculateAcceleration(boardAngle) {
