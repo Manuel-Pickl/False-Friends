@@ -45,10 +45,6 @@ class Simulation {
     }
 
     placeCraters(count) {
-        // clear previous craters
-        // this.craters.splice(0, this.craters.length)
-        // this.craters.length = 0;
-    
         // generate random non intersecting craters
         for (let i = 0; i < count; i++) {
             // get random crater radius
@@ -90,11 +86,12 @@ class Simulation {
     }
 
     placeFinish() {
-        // place finish in random position not intersecting with craters and ball
+        // place finishing hole in random position not intersecting 
+        // with craters and a minimum distance away from ball
         let finishPosition;
-        // let craterIntersects;
-        // do {
-        //     craterIntersects = false;
+        let craterIntersects;
+        do {
+            craterIntersects = false;
         
             // get random finish position
             finishPosition = new Point(
@@ -102,29 +99,24 @@ class Simulation {
                 Utility.getRandomIntegerInRange(this.finish.radius, window.innerHeight - this.finish.radius)
             );
         
-        //     // check intersection with craters
-        //     this.craters.forEach(crater => {
-        //         let craterDistance = Math.sqrt(Math.pow(finishPosition.x - crater.position.x, 2) + Math.pow(finishPosition.y - crater.position.y, 2));
-        //         if (craterDistance <= this.finish.radius + crater.radius) {
-        //             craterIntersects = true;
-        //         }
-        //     });
-
-        //     // check intersection with ball
-        //     let ballDistance = Math.sqrt(Math.pow(finishPosition.x - this.ball.position.x, 2) + Math.pow(finishPosition.y - this.ball.position.y, 2));
-        //     if (ballDistance <= this.finish.radius + this.ball.radius) {
-        //         craterIntersects = true;
-        //     }
-        // } while (craterIntersects);
+            // check intersection with craters
+            this.craters.forEach(crater => {
+                let craterDistance = Math.sqrt(Math.pow(finishPosition.x - crater.position.x, 2) + Math.pow(finishPosition.y - crater.position.y, 2));
+                if (craterDistance <= this.finish.radius + crater.radius) {
+                    craterIntersects = true;
+                }
+            });
+        } while (craterIntersects);
     
+        // set determined position and draw hole
         this.finish.position = finishPosition;
         this.finish.draw();
     }
     
     placeBall() {
-        // place ball in random position not intersecting with craters
+        // place ball in random position far away from finishing hole
         let ballPosition;
-        // let craterIntersects;
+        let isFinishBallDistanceBigEnough;
         let finishDistance;
         do {
         //     craterIntersects = false;
@@ -135,18 +127,10 @@ class Simulation {
                 Utility.getRandomIntegerInRange(this.ball.radius, window.innerHeight - this.ball.radius)
             );
 
-            // check distance to finish line
+            // check if distance to finish line is a minimum value
             finishDistance = Math.sqrt(Math.pow(this.finish.position.x - ballPosition.x, 2) + Math.pow(this.finish.position.y - ballPosition.y, 2));
-            
-
-        //     // check intersection with craters
-        //     this.craters.forEach(crater => {
-        //         if (crater.isPointInside(ballPosition)) {
-        //         craterIntersects = true;
-        //         }
-        //     });
-        } while (finishDistance <= window.innerHeight / 2);
-        // } while (craterIntersects);
+            isFinishBallDistanceBigEnough = finishDistance <= window.innerHeight / 2
+        } while (isFinishBallDistanceBigEnough);
     
         this.ball.position = ballPosition;
     }

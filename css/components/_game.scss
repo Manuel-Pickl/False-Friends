@@ -12,33 +12,3 @@ main {
     background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
     background-size: 500px;
 }
-.particle {
-    position: absolute;
-
-    border-radius: 50%;
-
-    transform: translate(-50%, -50%);
-}
-.ball {
-    z-index: 20;
-    background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
-    background-size: contain;
-}
-
-
-.crater {
-    z-index: 10;
-    box-shadow:
-        inset 10px 10px 20px hsla(34, 57%, 30%, 0.75),
-        inset -10px -10px 20px hsla(34, 57%, 70%, 0.75);
-}
-
-.finish {
-    z-index: 15;
-    // background-image: url("https://static.vecteezy.com/ti/gratis-vektor/p1/639981-karomuster-schwarz-weiss-kostenlos-vektor.jpg");
-    // background-size: contain;
-    background-color: black;
-
-    box-shadow:
-        inset -5px -5px 10px grey;
-}

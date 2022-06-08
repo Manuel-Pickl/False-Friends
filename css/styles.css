@@ -20,7 +20,7 @@ main {
 
 .ball {
   z-index: 20;
-  background-image: url("https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png");
+  background-image: url("../../assets/ball.png");
   background-size: contain;
 }
 

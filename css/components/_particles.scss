@@ -1,0 +1,33 @@
+.particle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.ball {
+    z-index: 20;
+    
+    background-image: url("../../assets/ball.png");
+    background-size: contain;
+}
+
+
+.crater {
+    z-index: 10;
+
+    box-shadow:
+        inset 10px 10px 20px hsla(34, 57%, 30%, 0.75),
+        inset -10px -10px 20px hsla(34, 57%, 70%, 0.75);
+}
+
+
+.finish {
+    z-index: 15;
+
+    background-color: black;
+    box-shadow:
+        inset -5px -5px 10px grey;
+}
