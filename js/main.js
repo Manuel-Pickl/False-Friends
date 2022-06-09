@@ -11,14 +11,12 @@
 */
 
 
-// initialization
-const debug = true;
+const debug = false;
 const fps = 120;
-var simulation = new Simulation();
 
-// starting game
-simulation.startLevel();
-simulation.startSimulation();
+
+// initialization & starting of game
+var simulation = new Simulation().startGame();
 
 
 // looping function

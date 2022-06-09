@@ -68,8 +68,12 @@ class Board {
         
             // get random finish position
             finishPosition = new Point(
-                Utility.getRandomIntegerInRange(this.finish.radius, window.innerWidth - this.finish.radius),
-                Utility.getRandomIntegerInRange(this.finish.radius, window.innerHeight - this.finish.radius)
+                Utility.getRandomIntegerInRange(
+                    Utility.headerHeight + this.finish.radius,
+                    window.innerWidth - this.finish.radius),
+                Utility.getRandomIntegerInRange(
+                    Utility.headerHeight + this.finish.radius,
+                    window.innerHeight - this.finish.radius)
             );
         
             // check intersection with craters
@@ -91,19 +95,25 @@ class Board {
         let ballPosition;
         let isFinishBallDistanceBigEnough;
         let finishDistance;
+        const maxAttempts = 20;
+        let attempts = 0;
         do {
-        //     craterIntersects = false;
+            attempts++;
         
             // get random ball position
             ballPosition = new Point(
-                Utility.getRandomIntegerInRange(this.ball.radius, window.innerWidth - this.ball.radius),
-                Utility.getRandomIntegerInRange(this.ball.radius, window.innerHeight - this.ball.radius)
+                Utility.getRandomIntegerInRange(
+                    Utility.headerHeight + this.ball.radius, 
+                    window.innerWidth - this.ball.radius),
+                Utility.getRandomIntegerInRange(
+                    Utility.headerHeight + this.ball.radius, 
+                    window.innerHeight - this.ball.radius)
             );
 
             // check if distance to finish line is a minimum value
             finishDistance = Math.sqrt(Math.pow(this.finish.position.x - ballPosition.x, 2) + Math.pow(this.finish.position.y - ballPosition.y, 2));
-            isFinishBallDistanceBigEnough = finishDistance <= window.innerHeight / 2
-        } while (isFinishBallDistanceBigEnough);
+            isFinishBallDistanceBigEnough = finishDistance <= window.innerHeight * 0.4
+        } while (isFinishBallDistanceBigEnough && attempts < maxAttempts);
     
         this.ball.position = ballPosition;
     }

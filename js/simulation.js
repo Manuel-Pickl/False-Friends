@@ -1,13 +1,18 @@
 class Simulation {
     running;
     lastTimestamp;
+    stopwatch;
+    stopwatchElement
+
     craterCount;
     board;
     level;
     maxLevel;
     
     constructor() {
-        this.lastTimestamp = 0;
+        this.lastTimestamp = Date.now();
+        this.stopwatchElement = document.querySelector(".stopwatch");
+
         this.craterCountDict = {
             1: 0,
             2: 2,
@@ -17,6 +22,14 @@ class Simulation {
         this.board = new Board();
         this.level = 1;
         this.maxLevel = 4;
+    }
+
+    startGame() {
+        this.startLevel();
+        this.stopwatch = 0;
+        this.startSimulation();
+
+        return this;
     }
 
     startSimulation() {
@@ -32,14 +45,14 @@ class Simulation {
     simulate() {
         // update the system's positions
         let currentTimestamp = Date.now();
+        let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
         
-        if (this.lastTimestamp != 0) {
-            let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
+        this.board.ball.computePhysics(this.board.boardAngle, timeDifference);
         
-            this.board.ball.computePhysics(this.board.boardAngle, timeDifference);
-        }
-    
         this.lastTimestamp = currentTimestamp;
+    
+        // update timer
+        this.updateStopwatch(timeDifference);
     
         // handle collisions
         this.board.resolveCollisionWithBounds();
@@ -77,5 +90,13 @@ class Simulation {
 
     isLevelFinished() {
         return this.board.finish.isPointInside(this.board.ball.position, this.board.ball.radius);
+    }
+
+    updateStopwatch(timeDifference) {
+        // update value
+        this.stopwatch += timeDifference;
+
+        // update ui
+        this.stopwatchElement.innerHTML = this.stopwatch.toFixed(2);
     }
 }
