@@ -42,18 +42,18 @@ class Ball extends Particle {
             boardAngleModified.y += craterAngle.y;
 
             // cap angle at 90°
-            if (boardAngleModified.x > maxAngle) {
-                boardAngleModified.x = maxAngle;
+            if (boardAngleModified.x > Physics.maxAngle) {
+                boardAngleModified.x = Physics.maxAngle;
             }
-            else if (boardAngleModified.x < -maxAngle) {
-                boardAngleModified.x = -maxAngle;
+            else if (boardAngleModified.x < -Physics.maxAngle) {
+                boardAngleModified.x = -Physics.maxAngle;
             }
 
-            if (boardAngleModified.y > maxAngle) {
-                boardAngleModified.y = maxAngle;
+            if (boardAngleModified.y > Physics.maxAngle) {
+                boardAngleModified.y = Physics.maxAngle;
             }
-            else if (boardAngleModified.y < -maxAngle) {
-                boardAngleModified.y = -maxAngle;
+            else if (boardAngleModified.y < -Physics.maxAngle) {
+                boardAngleModified.y = -Physics.maxAngle;
             }
         });
         
@@ -174,9 +174,6 @@ class Ball extends Particle {
         this.position.y += deltaY;
     }
 
-
-
-    
     resolveCollisionWithBounds() {
         // add & subtract radius to prevent clipping
         let yMax = window.innerHeight - this.radius;
