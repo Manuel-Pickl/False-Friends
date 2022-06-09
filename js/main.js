@@ -4,6 +4,7 @@
   - stackoverflow: small programming specific things
   - developer.mozilla.org: sensor data
   - w3schools: inheritance
+  - tutorialspoint
 
   
     more specific:

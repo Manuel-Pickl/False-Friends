@@ -96,7 +96,16 @@ class Simulation {
         // update value
         this.stopwatch += timeDifference;
 
+        // get correct format of minutes
+        let minutes = Math.floor(this.stopwatch / 60);
+        let minutesString = minutes > 0 ? `${minutes}:` : "";
+        // get correct format of seconds
+        let seconds = this.stopwatch % 60;
+        let secondsString = minutes > 0 && seconds < 10 
+        ? `0${seconds.toFixed(2)}` 
+        : seconds.toFixed(2)
+        
         // update ui
-        this.stopwatchElement.innerHTML = this.stopwatch.toFixed(2);
+        this.stopwatchElement.innerHTML =`${minutesString}${secondsString}`;
     }
 }
