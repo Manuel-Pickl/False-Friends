@@ -9,6 +9,7 @@ class Simulation {
     maxLevel;
     
     constructor() {
+        this.finished = false;
         this.stopwatchElement = document.querySelector(".stopwatch");
 
         this.craterCountDict = {
@@ -20,6 +21,7 @@ class Simulation {
         this.board = new Board();
         this.level = 1;
         this.maxLevel = Object.keys(this.craterCountDict).length;
+        // this.maxLevel = 1;
     }
 
     startGame() {
@@ -92,7 +94,7 @@ class Simulation {
             this.level++;
 
             // check if last level
-            if (this.level >= this.maxLevel) {
+            if (this.isGameFinished()) {
                 // alert("finito");
                 console.log("finito");
                 return;
@@ -112,6 +114,10 @@ class Simulation {
         return this.board.finish.isCircleInside(this.board.ball.position, this.board.ball.radius, 0.5);
     }
 
+    isGameFinished() {
+        return this.level > this.maxLevel;
+    }
+
     updateStopwatch(timeDifference) {
         // update value
         this.stopwatch += timeDifference;
@@ -123,7 +129,7 @@ class Simulation {
         let seconds = this.stopwatch % 60;
         let secondsString = minutes > 0 && seconds < 10 
         ? `0${seconds.toFixed(2)}` 
-        : seconds.toFixed(2)
+        : seconds.toFixed(2);
         
         // update ui
         this.stopwatchElement.innerHTML =`${minutesString}${secondsString}`;

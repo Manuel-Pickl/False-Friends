@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
     <title>Pickl Manuel | Balls Game | PWA</title>
     <link rel="stylesheet" href="css/styles.css"/>
-    <script src="https://kit.fontawesome.com/e4698e5b64.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -29,6 +29,59 @@
       <div class="stopwatch">0:00</div>
       <div class="pause">
         <i class="fa-solid fa-pause"></i>
+      </div>
+
+      <div class="end-screen">
+        <div class="menu">
+          <div class="finished">
+            <div class="header">Finished!</div>
+            <div class="time">
+              <div class="description">Your time was</div>
+              <div class="value"><span>10.78</span><!-- seconds--></div>
+            </div>
+            <div class="rank">
+              <div class="description">Rank:</div>
+              <div class="value">3</div>
+            </div>
+            <div class="name">
+              <div class="description">Enter your name:</div>
+              <div class="value">
+                <input id="name" type="text" maxlength="20">
+                <button onclick="saveEntry()">
+                  <i class="fa fa-share" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="highscores">
+            <div class="header">Highscores</div>
+            <table>
+              <tr>
+                <td>1.</td>
+                <td>Juli</td>
+                <td>6.26</td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>Michelle</td>
+                <td>15.78</td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>Annita</td>
+                <td>48.59</td>
+              </tr>
+            </table>
+            <div class="buttons">
+              <button>
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </button>
+              <button onclick="alert()">
+                <i class="fa fa-repeat" aria-hidden="true"></i>
+              </button>
+              </div>
+          </div>
+        </div>
       </div>
     </main>
 
