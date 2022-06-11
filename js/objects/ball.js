@@ -1,6 +1,7 @@
 class Ball extends Particle {
     velocity;
     craters;
+    originalRadius;
 
     constructor(startPosition, radius, craters) {
         super(startPosition, radius);
@@ -8,6 +9,7 @@ class Ball extends Particle {
         this.domElement.classList.add("ball");
         this.craters = craters;
         this.velocity = new Point();
+        this.originalRadius = radius;
     }
 
     computePhysics(boardAngle, timeDifference) {

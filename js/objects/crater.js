@@ -1,7 +1,5 @@
 class Crater extends Hole {
     slope;
-    // x^6 * e^-17   <=>   \_/   -> P(-25|10) P(25|10)
-
 
     constructor(startPosition, radius) {
         super(startPosition, radius);

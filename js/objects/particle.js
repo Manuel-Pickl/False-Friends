@@ -14,7 +14,12 @@ class Particle {
         document.getElementsByTagName("main")[0].appendChild(this.domElement);
         
         // set radius
+        this.setRadius(radius);
+    }
+
+    setRadius(radius) {
         this.radius = radius;
+
         // apply radius to dom element
         this.domElement.style.width = `${this.radius * 2}px`;
         this.domElement.style.height = `${this.radius * 2}px`;

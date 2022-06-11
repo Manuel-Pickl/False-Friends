@@ -14,6 +14,8 @@
 
 const debug = false;
 const fps = 120;
+var currentTimestamp;
+var lastTimestamp = Date.now();
 
 
 // initialization & starting of game
@@ -22,13 +24,18 @@ var simulation = new Simulation().startGame();
 
 // looping function
 setInterval(function() {
+  currentTimestamp = Date.now();
+  let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
+
   if (simulation.running) {
-    simulation.simulate();
+    simulation.simulate(timeDifference);
 
     if (simulation.isLevelFinished()) {
       simulation.finishLevel();
     }
   }
+
+  lastTimestamp = currentTimestamp;
 }, 1000 / fps);
 
 

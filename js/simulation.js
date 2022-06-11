@@ -1,6 +1,5 @@
 class Simulation {
     running;
-    lastTimestamp;
     stopwatch;
     stopwatchElement
 
@@ -10,7 +9,6 @@ class Simulation {
     maxLevel;
     
     constructor() {
-        this.lastTimestamp = Date.now();
         this.stopwatchElement = document.querySelector(".stopwatch");
 
         this.craterCountDict = {
@@ -21,7 +19,7 @@ class Simulation {
         }
         this.board = new Board();
         this.level = 1;
-        this.maxLevel = 4;
+        this.maxLevel = Object.keys(this.craterCountDict).length;
     }
 
     startGame() {
@@ -42,15 +40,10 @@ class Simulation {
         window.removeEventListener('deviceorientation', onSensorChanged);
     }
 
-    simulate() {
+    simulate(timeDifference) {
         // update the system's positions
-        let currentTimestamp = Date.now();
-        let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
-        
         this.board.ball.computePhysics(this.board.boardAngle, timeDifference);
         
-        this.lastTimestamp = currentTimestamp;
-    
         // update timer
         this.updateStopwatch(timeDifference);
     
@@ -73,23 +66,50 @@ class Simulation {
 
     finishLevel() {
         this.stopSimulation();
-
-        if (this.level < this.maxLevel) {
-            // reset ball velocity
-            this.board.ball.velocity.x = 0;
-            this.board.ball.velocity.y = 0;
+        
+        // reset ball velocity
+        this.board.ball.velocity.x = 0;
+        this.board.ball.velocity.y = 0;
+        
+        // end animation
+        let finishHoleAnimationDuration = 1500;
+        let lastTimestamp = Date.now();
+        let interval = setInterval(function() {
+            let currentTimestamp = Date.now();
+            let deltaTime = (currentTimestamp - lastTimestamp) / 1000;
+          
+            this.animateLevelFinish(deltaTime);
+          
+            lastTimestamp = currentTimestamp;
+        }.bind(this), 1000 / fps);
+        // finishHoleAnimationDuration * 0.5 / this.board.ball.radius);
+        
+        // start new level
+        setTimeout(function () {
+            clearInterval(interval);
             
-            // increase and start level    
-            this.startLevel(++this.level);
+            // increase level
+            this.level++;
+
+            // check if last level
+            if (this.level >= this.maxLevel) {
+                // alert("finito");
+                console.log("finito");
+                return;
+            }
+            
+            // start new level
+            this.startLevel(this.level);
             this.startSimulation();
-        }
-        else {
-            alert("finito");
-        }
+        }.bind(this), finishHoleAnimationDuration);
     }
 
+    animateLevelFinish(deltaTime) {
+        this.board.animateBallFalling(deltaTime);
+      }
+
     isLevelFinished() {
-        return this.board.finish.isPointInside(this.board.ball.position, this.board.ball.radius);
+        return this.board.finish.isCircleInside(this.board.ball.position, this.board.ball.radius, 0.5);
     }
 
     updateStopwatch(timeDifference) {

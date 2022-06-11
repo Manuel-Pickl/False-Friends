@@ -18,7 +18,6 @@ class Hole extends Particle {
             + Math.pow(point.y - this.position.y, 2)) 
             <= Math.pow(this.radius, 2);
 
-        // console.log({isPointInside});
         if (isPointInside) {
             // Physics.resistance = 0.01;
             // this.domElement.style.backgroundColor = "orange";

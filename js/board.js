@@ -19,7 +19,7 @@ class Board {
         // generate random non intersecting craters
         for (let i = 0; i < count; i++) {
             // get random crater radius
-            let craterRadius = Utility.getRandomIntegerInRange(this.ball.radius * 2, this.ball.radius * 4);
+            let craterRadius = Utility.getRandomIntegerInRange(this.ball.originalRadius * 2, this.ball.originalRadius * 4);
             
             let craterPosition;
             let craterIntersects;
@@ -53,8 +53,6 @@ class Board {
                 // add crater to list
                 this.craters.push(new Crater(craterPosition, craterRadius).draw());
             }
-
-            
         }
     }
 
@@ -115,7 +113,12 @@ class Board {
             isFinishBallDistanceBigEnough = finishDistance <= window.innerHeight * 0.4
         } while (isFinishBallDistanceBigEnough && attempts < maxAttempts);
     
+        // set generated position
         this.ball.position = ballPosition;
+
+        // reset ball size on spawn (size may be 0 from finish animation) & redraw
+        this.ball.setRadius(this.ball.originalRadius);
+        this.ball.draw();
     }
 
     setAngle(boardAngle) {
@@ -147,5 +150,20 @@ class Board {
 
     resolveCollisionWithBounds() {
         this.ball.resolveCollisionWithBounds();
+    }
+
+    animateBallFalling(deltaTime) {
+        // decrease radius
+        if (this.ball.radius > 0) {
+            // calculate radius decrease
+            let radiusDecrease = deltaTime * 30;
+            let newRadius = this.ball.radius - radiusDecrease;
+
+            // set new radius
+            this.ball.setRadius(newRadius);
+        }
+
+        // pull to center
+
     }
 }
