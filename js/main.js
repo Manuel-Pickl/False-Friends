@@ -90,7 +90,7 @@ function saveEntry() {
 
   // build table from list variable
   const table = document.querySelector("table");
-  table.innerHTML = "";
+  table.textContent = "";
   
   for (let i = 0; i < highscores.length; i++) {
     let rank = i + 1;

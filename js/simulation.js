@@ -18,14 +18,14 @@ class Simulation {
             3: 5,
             4: 10
         }
-        this.board = new Board();
+        this.board = new Board().reset().initialize();
         this.level = 1;
         this.maxLevel = Object.keys(this.craterCountDict).length;
-        // this.maxLevel = 1;
+        // this.maxLevel = 3;
     }
 
     initialize() {
-        this.startLevel();
+        this.startLevel(this.level);
         this.stopwatch = 0;
         this.start();
 
@@ -88,7 +88,6 @@ class Simulation {
           
             lastTimestamp = currentTimestamp;
         }.bind(this), 1000 / fps);
-        // finishHoleAnimationDuration * 0.5 / this.board.ball.radius);
         
         // start new level
         setTimeout(function () {
@@ -99,8 +98,6 @@ class Simulation {
 
             // check if last level
             if (this.isGameFinished()) {
-                // alert("finito");
-                console.log("finito");
                 return;
             }
             
@@ -128,7 +125,7 @@ class Simulation {
         this.stopwatch += timeDifference;
 
         // update ui
-        this.stopwatchElement.innerHTML = this.stopwatchToString();
+        this.stopwatchElement.textContent = this.stopwatchToString();
     }
 
     stopwatchToString() {

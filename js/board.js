@@ -6,32 +6,43 @@ class Board {
     ball;
     finish;
 
-    constructor() {
+    reset() {
+        document.querySelector(".canvas").textContent = "";
+
+        return this;
+    }
+
+    initialize() {
         this.maxAngleUsed = 35;
         this.boardAngle = new Point();
-
         this.craters = [];
         this.ball = new Ball(new Point(), 20, this.craters);
         this.finish = new Finish(new Point(), this.ball.radius * 1.5);
+
+        return this;
     }
-    
+
     placeCraters(count) {
+        // clear current craters
+        this.craters.forEach(crater => crater.remove());
+        this.craters.length = 0;
+
         // generate random non intersecting craters
         for (let i = 0; i < count; i++) {
             // get random crater radius
             let craterRadius = Utility.getRandomIntegerInRange(this.ball.originalRadius * 2, this.ball.originalRadius * 4);
-            
+
             let craterPosition;
             let craterIntersects;
             do {
                 craterIntersects = false;
-        
+
                 // get random crater position
                 craterPosition = new Point(
                     Utility.getRandomIntegerInRange(0, window.innerWidth),
                     Utility.getRandomIntegerInRange(0, window.innerHeight)
                 );
-        
+
                 // check intersection with other craters
                 this.craters.forEach(crater => {
                     let craterDistance = Math.sqrt(Math.pow(craterPosition.x - crater.position.x, 2) + Math.pow(craterPosition.y - crater.position.y, 2));
@@ -41,29 +52,20 @@ class Board {
                 });
             // only allow crater position, if no intersection
             } while (craterIntersects);
-            
+
             // intialize crater with generated data and draw
-            //
-            if (i < this.craters.length) {
-                this.craters[i].position = craterPosition;
-                this.craters[i].radius = craterRadius;
-                this.craters[i].draw();
-            }
-            else {
-                // add crater to list
-                this.craters.push(new Crater(craterPosition, craterRadius).draw());
-            }
+            this.craters.push(new Crater(craterPosition, craterRadius).draw());
         }
     }
 
     placeFinish() {
-        // place finishing hole in random position not intersecting with craters 
+        // place finishing hole in random position not intersecting with craters
         // and a minimum distance away from ball
         let finishPosition;
         let craterIntersects;
         do {
             craterIntersects = false;
-        
+
             // get random finish position
             finishPosition = new Point(
                 Utility.getRandomIntegerInRange(
@@ -73,7 +75,7 @@ class Board {
                     Utility.headerHeight + this.finish.radius,
                     window.innerHeight - this.finish.radius)
             );
-        
+
             // check intersection with craters
             this.craters.forEach(crater => {
                 let craterDistance = Math.sqrt(Math.pow(finishPosition.x - crater.position.x, 2) + Math.pow(finishPosition.y - crater.position.y, 2));
@@ -82,12 +84,12 @@ class Board {
                 }
             });
         } while (craterIntersects);
-    
+
         // set determined position and draw hole
         this.finish.position = debug ? new Point(this.finish.radius, this.finish.radius) :finishPosition;
         this.finish.draw();
     }
-    
+
     placeBall() {
         // place ball in random position far away from finishing hole
         let ballPosition;
@@ -97,14 +99,14 @@ class Board {
         let attempts = 0;
         do {
             attempts++;
-        
+
             // get random ball position
             ballPosition = new Point(
                 Utility.getRandomIntegerInRange(
-                    Utility.headerHeight + this.ball.radius, 
+                    Utility.headerHeight + this.ball.radius,
                     window.innerWidth - this.ball.radius),
                 Utility.getRandomIntegerInRange(
-                    Utility.headerHeight + this.ball.radius, 
+                    Utility.headerHeight + this.ball.radius,
                     window.innerHeight - this.ball.radius)
             );
 
@@ -112,7 +114,7 @@ class Board {
             finishDistance = Math.sqrt(Math.pow(this.finish.position.x - ballPosition.x, 2) + Math.pow(this.finish.position.y - ballPosition.y, 2));
             isFinishBallDistanceBigEnough = finishDistance <= window.innerHeight * 0.4
         } while (isFinishBallDistanceBigEnough && attempts < maxAttempts);
-    
+
         // set generated position
         this.ball.position = ballPosition;
 

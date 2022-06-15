@@ -15,10 +15,12 @@ class WindowManager {
         this.currentWindow = "results";
 
         // write time in form
-        document.querySelector(".end-screen .time .value span").innerHTML = time;
-        
+        this.results.querySelector(".time .value span").textContent = time;
         // write rank in form
-        document.querySelector(".end-screen .rank .value").innerHTML = rank;
+        this.results.querySelector(".rank .value").textContent = rank;
+
+        // empty name input field
+        this.results.querySelector(".name input").value = "";
       
         this.endScreen.style.visibility = "visible";
         this.results.style.visibility = "visible";

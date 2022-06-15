@@ -25,6 +25,13 @@ body {
         background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
         background-size: 500px;
     
+
+        .canvas {
+            z-index: 10;
+            position: absolute;
+            inset: 0;
+        }
+
         
         .stopwatch {
             z-index: 100;
