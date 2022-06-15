@@ -26,14 +26,14 @@
     </header> -->
       
     <main>
-      <div class="stopwatch">0:00</div>
+      <div class="stopwatch"></div>
       <div class="pause">
         <i class="fa-solid fa-pause"></i>
       </div>
 
       <div class="end-screen">
         <div class="menu">
-          <div class="finished">
+          <div class="results">
             <div class="header">Finished!</div>
             <div class="time">
               <div class="description">Your time was</div>
@@ -76,7 +76,7 @@
               <button>
                 <i class="fa fa-home" aria-hidden="true"></i>
               </button>
-              <button onclick="alert()">
+              <button onclick="restartGame()">
                 <i class="fa fa-repeat" aria-hidden="true"></i>
               </button>
               </div>
@@ -101,6 +101,7 @@
     <script src="js/objects/crater.js"></script>
     <script src="js/objects/finish.js"></script>
 
+    <script src="js/windowManager.js"></script>
     <script src="js/board.js"></script>
     <script src="js/simulation.js"></script>
     <script src="js/main.js"></script>

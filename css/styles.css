@@ -78,48 +78,48 @@ body main .end-screen .menu {
   font-size: x-large;
 }
 
-body main .end-screen .menu .finished {
+body main .end-screen .menu .results {
   padding: 10px;
 }
 
-body main .end-screen .menu .finished .header {
+body main .end-screen .menu .results .header {
   margin: 20px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 50px;
 }
 
-body main .end-screen .menu .finished .time {
+body main .end-screen .menu .results .time {
   margin: 20px;
 }
 
-body main .end-screen .menu .finished .time .value {
+body main .end-screen .menu .results .time .value {
   font-weight: bold;
   font-size: xx-large;
   text-shadow: -2px 2px 3px #785221, 2px 2px 3px #785221, 2px -2px 0 #785221, -2px -2px 0 #785221;
 }
 
-body main .end-screen .menu .finished .rank {
+body main .end-screen .menu .results .rank {
   margin: 20px;
 }
 
-body main .end-screen .menu .finished .rank .value {
+body main .end-screen .menu .results .rank .value {
   margin: 0;
   font-weight: bold;
   font-size: xx-large;
   color: #503716;
 }
 
-body main .end-screen .menu .finished .name {
+body main .end-screen .menu .results .name {
   margin: 20px;
 }
 
-body main .end-screen .menu .finished .name .value {
+body main .end-screen .menu .results .name .value {
   margin-top: 10px;
   height: 40px;
 }
 
-body main .end-screen .menu .finished .name .value input {
+body main .end-screen .menu .results .name .value input {
   max-width: 160px;
   height: 100%;
   padding-inline: 8px;
@@ -130,7 +130,7 @@ body main .end-screen .menu .finished .name .value input {
   color: #503716;
 }
 
-body main .end-screen .menu .finished .name .value button {
+body main .end-screen .menu .results .name .value button {
   height: 100%;
   aspect-ratio: 1;
   vertical-align: top;

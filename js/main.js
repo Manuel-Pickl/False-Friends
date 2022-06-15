@@ -16,12 +16,30 @@ const debug = false;
 const fps = 120;
 var currentTimestamp;
 var lastTimestamp = Date.now();
-var entries = new Map();
+
+var simulation;
+var windowManager = new WindowManager();
+var rank;
+
+// localStorage.clear();
+var highscores = JSON.parse(localStorage.getItem("highscores"));
+if (!highscores) {
+  highscores = [];
+}
+
+startGame();
 
 
+function startGame() {
+  simulation = new Simulation()
+    .initialize()
+    .start();
+}
 
-// initialization & starting of game
-var simulation = new Simulation().startGame();
+function restartGame() {
+  windowManager.hideHighscores();
+  startGame();
+}
 
 
 // looping function
@@ -36,32 +54,48 @@ setInterval(function() {
       simulation.finishLevel();
     }
   }
-  else if (simulation.isGameFinished()) {
-    console.log("F");
-    document.querySelector(".end-screen").style.visibility = "visible";
+  else if (
+    simulation.isGameFinished()
+    && windowManager.currentWindow == null) {
+    // get time
+    let time = simulation.stopwatchToString();
+        
+    // calculate rank
+    rank = 1;
+    let rankDetermined = false;
+    while (!rankDetermined && rank <= highscores.length) {
+        // if current time is better than highscore on rank x
+      if (simulation.stopwatch < highscores[rank - 1].time) {
+          rankDetermined = true;
+        }
+        else {
+            rank++;
+        }
+    }
+
+    windowManager.showResults(time, rank);
   }
 
   lastTimestamp = currentTimestamp;
 }, 1000 / fps);
 
+
+
 function saveEntry() {
   let name = document.querySelector("#name").value;
-  let time = simulation.stopwatch % 60;
+  let time = simulation.stopwatch;
 
-  // get position
-  // do something...
-
-  // update list
-  entries.set(1, {name, time});
+  // add highscore data at correct rank position
+  highscores.splice(rank - 1, 0, {name, time});
 
   // build table from list variable
   const table = document.querySelector("table");
   table.innerHTML = "";
   
-  for (const [key, value] of entries.entries()) {
-    let rank = key;
-    let name = value.name;
-    let time = value.time;
+  for (let i = 0; i < highscores.length; i++) {
+    let rank = i + 1;
+    let name = highscores[i].name;
+    let time = highscores[i].time;
     
     let rankCell = document.createElement("td");
     rankCell.appendChild(document.createTextNode(`${rank}.`));
@@ -78,14 +112,12 @@ function saveEntry() {
     table.appendChild(row);
   }
 
-  
-  // document.createElement("tr");
-  // document.createElement("td");
-
+  // persistent save of players data
+  localStorage.setItem("highscores", JSON.stringify(highscores));;
 
   // change panel
-  document.querySelector(".finished").style.visibility = "hidden";
-  document.querySelector(".highscores").style.visibility = "visible";
+  windowManager.hideResults();
+  windowManager.showHighscores();
 }
 
 function onSensorChanged(event) {
