@@ -24,22 +24,26 @@ class Simulation {
         // this.maxLevel = 1;
     }
 
-    startGame() {
+    initialize() {
         this.startLevel();
         this.stopwatch = 0;
-        this.startSimulation();
+        this.start();
 
         return this;
     }
 
-    startSimulation() {
+    start() {
         this.running = true;
         window.addEventListener('deviceorientation', onSensorChanged);
+
+        return this;
     }
       
-    stopSimulation() {
+    stop() {
         this.running = false;
         window.removeEventListener('deviceorientation', onSensorChanged);
+
+        return this;
     }
 
     simulate(timeDifference) {
@@ -67,7 +71,7 @@ class Simulation {
     }
 
     finishLevel() {
-        this.stopSimulation();
+        this.stop();
         
         // reset ball velocity
         this.board.ball.velocity.x = 0;
@@ -118,20 +122,26 @@ class Simulation {
         return this.level > this.maxLevel;
     }
 
+    // put stopwatch logic in own class
     updateStopwatch(timeDifference) {
         // update value
         this.stopwatch += timeDifference;
 
+        // update ui
+        this.stopwatchElement.innerHTML = this.stopwatchToString();
+    }
+
+    stopwatchToString() {
         // get correct format of minutes
         let minutes = Math.floor(this.stopwatch / 60);
         let minutesString = minutes > 0 ? `${minutes}:` : "";
+        
         // get correct format of seconds
         let seconds = this.stopwatch % 60;
         let secondsString = minutes > 0 && seconds < 10 
         ? `0${seconds.toFixed(2)}` 
         : seconds.toFixed(2);
-        
-        // update ui
-        this.stopwatchElement.innerHTML =`${minutesString}${secondsString}`;
+
+        return `${minutesString}${secondsString}`;
     }
 }
