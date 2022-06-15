@@ -106,7 +106,7 @@ class Simulation {
             
             // start new level
             this.startLevel(this.level);
-            this.startSimulation();
+            this.start();
         }.bind(this), finishHoleAnimationDuration);
     }
 
