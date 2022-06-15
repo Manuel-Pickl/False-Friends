@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Product Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Product Sans;
+
+    & * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    main {
+        z-index: 5;
+        position: absolute;
+        inset: 0 0 0 0;
+    
+        overflow: hidden;
+        background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
+        background-size: 500px;
+    
+
+        .canvas {
+            z-index: 10;
+            position: absolute;
+            inset: 0;
+        }
+
+        
+        .stopwatch {
+            z-index: 100;
+            position: absolute;
+            inset: 10px auto auto 10px;
+            height: 40px;
+        
+            font-size: 35px;
+            font-weight: bold;
+            color: white;
+            text-shadow:
+                -2px 2px 3px #6c360f,
+                2px 2px 3px #6c360f,
+                2px -2px 0 #6c360f,
+                -2px -2px 0 #6c360f;
+        }
+
+
+        .pause-button {
+            z-index: 100;
+            position: absolute;
+            inset: 10px 10px auto auto;
+            height: 45px;
+            aspect-ratio: 1;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            border-radius: 50%;
+            font-size: x-large;
+            background-color: #6c360f;
+            color: white;
+        }
+    }
+}

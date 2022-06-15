@@ -19,10 +19,10 @@ var currentTimestamp;
 var lastTimestamp = Date.now();
 
 var simulation;
-var windowManager = new WindowManager();
+var modalManager = new ModalManager();
 var rank;
 
-// localStorage.clear();
+localStorage.clear();
 var highscores = JSON.parse(localStorage.getItem("highscores"));
 if (!highscores) {
   highscores = [];
@@ -38,24 +38,22 @@ function startGame() {
 }
 
 function restartGame() {
-  // hide all windows
-  windowManager.hidePause();
-  windowManager.hideHighscores();
+  modalManager.hideModal();
 
   startGame();
 }
 
 function pauseGame() {
   simulation.stop();
-  windowManager.showPause();
+  modalManager.showPause();
 }
 
 function resumeGame() {
-  windowManager.hidePause();
+  modalManager.hideModal();
   simulation.start();
 }
 
-// looping function
+// main game looping function
 setInterval(function() {
   currentTimestamp = Date.now();
   let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
@@ -69,7 +67,7 @@ setInterval(function() {
   }
   else if (
     simulation.isGameFinished()
-    && windowManager.currentWindow == null) {
+    && modalManager.currentWindow == null) {
     // get time
     let time = simulation.stopwatchToString();
         
@@ -86,24 +84,26 @@ setInterval(function() {
         }
     }
 
-    windowManager.showResults(time, rank);
+    modalManager.showResults(time, rank);
   }
 
   lastTimestamp = currentTimestamp;
 }, 1000 / fps);
 
 
-
-function saveEntry() {
+function showResults() {
+  // save current highscore data
   let name = document.querySelector("#name").value;
   let time = simulation.stopwatch;
 
   // add highscore data at correct rank position
   highscores.splice(rank - 1, 0, {name, time});
 
-  // build table from list variable
-  const table = document.querySelector("table");
-  table.textContent = "";
+  // persistent save of players data
+  localStorage.setItem("highscores", JSON.stringify(highscores));
+
+  // built table rows from data
+  let rows = [];
   
   for (let i = 0; i < highscores.length; i++) {
     let rank = i + 1;
@@ -122,15 +122,11 @@ function saveEntry() {
     row.appendChild(nameCell);
     row.appendChild(timeCell);
 
-    table.appendChild(row);
+    rows.push(row);
   }
-
-  // persistent save of players data
-  localStorage.setItem("highscores", JSON.stringify(highscores));;
-
-  // change panel
-  windowManager.hideResults();
-  windowManager.showHighscores();
+  
+  // open modal with data
+  modalManager.showHighscores(rows);
 }
 
 function onSensorChanged(event) {

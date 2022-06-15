@@ -3,13 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
-    <!-- <meta property="og:site_name" content="Twitter"/> -->
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000"/>
+    <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
     <title>Pickl Manuel | Balls Game | PWA</title>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/root/styles.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
@@ -22,77 +20,13 @@
       <div class="stopwatch"></div>
 
       <!-- pause button -->
-      <div class="pause" onclick="pauseGame()">
+      <div class="pause-button" onclick="pauseGame()">
         <i class="fa fa-pause" aria-hidden="true"></i>
       </div>
 
-      <!-- pause window -->
-      <div id="pause-menu" class="modal">
-        <div class="menu">
-          <div class="header">Paused</div>
-          <button onclick="resumeGame()">
-            Resume
-          </button>
-          <button onclick="restartGame()">
-            Restart
-          </button>
-          <button>
-            Quit
-          </button>
-        </div>
-      </div>
-
-      <!-- finish window -->
-      <div id="end-screen" class="modal">
-        <div class="menu">
-          <div class="results">
-            <div class="header">Finished!</div>
-            <div class="time">
-              <div class="description">Your time was</div>
-              <div class="value"><span>10.78</span><!-- seconds--></div>
-            </div>
-            <div class="rank">
-              <div class="description">Rank:</div>
-              <div class="value">3</div>
-            </div>
-            <div class="name">
-              <div class="description">Enter your name:</div>
-              <div class="value">
-                <input id="name" type="text" maxlength="20">
-                <button onclick="saveEntry()">
-                  <i class="fa fa-share" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="highscores">
-            <div class="header">Highscores</div>
-            <table>
-              <tr>
-                <td>1.</td>
-                <td>Juli</td>
-                <td>6.26</td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>Michelle</td>
-                <td>15.78</td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>Annita</td>
-                <td>48.59</td>
-              </tr>
-            </table>
-            <div class="buttons">
-              <button>
-                <i class="fa fa-home" aria-hidden="true"></i>
-              </button>
-              <button onclick="restartGame()">
-                <i class="fa fa-repeat" aria-hidden="true"></i>
-              </button>
-              </div>
-          </div>
+      <!-- customizable modal -->
+      <div class="modal">
+        <div class="content">
         </div>
       </div>
     </main>
@@ -113,7 +47,12 @@
     <script src="js/objects/crater.js"></script>
     <script src="js/objects/finish.js"></script>
 
-    <script src="js/windowManager.js"></script>
+    <script src="js/modals/modal.js"></script>
+    <script src="js/modals/pauseModal.js"></script>
+    <script src="js/modals/resultModal.js"></script>
+    <script src="js/modals/highscoresModal.js"></script>
+    <script src="js/modals/modalManager.js"></script>
+
     <script src="js/board.js"></script>
     <script src="js/simulation.js"></script>
     <script src="js/main.js"></script>

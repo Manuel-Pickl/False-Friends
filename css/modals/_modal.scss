@@ -1,0 +1,26 @@
+.modal {
+    z-index: 200;
+    visibility: hidden;
+    position: absolute;
+    inset: 0;
+    
+    display: inline-grid;
+    place-items: center;
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    
+
+    .content {
+        position: absolute;
+        width: 280px;
+        height: 380px;
+        padding: 10px;
+
+        border: solid 5px hsl(34, 57%, 30%);
+        border-radius: 10px;
+        background-color: hsl(34, 57%, 60%);
+        color: white;
+        text-align: center;
+        font-size: x-large;
+    }
+}

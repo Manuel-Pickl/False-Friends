@@ -42,7 +42,7 @@ body main .stopwatch {
   text-shadow: -2px 2px 3px #6c360f, 2px 2px 3px #6c360f, 2px -2px 0 #6c360f, -2px -2px 0 #6c360f;
 }
 
-body main .pause {
+body main .pause-button {
   z-index: 100;
   position: absolute;
   inset: 10px 10px auto auto;
@@ -61,132 +61,6 @@ body main .pause {
   font-size: x-large;
   background-color: #6c360f;
   color: white;
-}
-
-body main .modal {
-  visibility: hidden;
-  z-index: 200;
-  position: absolute;
-  inset: 0;
-  display: -ms-inline-grid;
-  display: inline-grid;
-  place-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-body main .modal .menu {
-  position: relative;
-  border: solid 5px #785221;
-  border-radius: 10px;
-  background-color: #d3a15f;
-  color: white;
-  text-align: center;
-  font-size: x-large;
-}
-
-body main .modal .menu .results {
-  padding: 10px;
-}
-
-body main .modal .menu .results .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 50px;
-}
-
-body main .modal .menu .results .time {
-  margin: 20px;
-}
-
-body main .modal .menu .results .time .value {
-  font-weight: bold;
-  font-size: xx-large;
-  text-shadow: -2px 2px 3px #785221, 2px 2px 3px #785221, 2px -2px 0 #785221, -2px -2px 0 #785221;
-}
-
-body main .modal .menu .results .rank {
-  margin: 20px;
-}
-
-body main .modal .menu .results .rank .value {
-  margin: 0;
-  font-weight: bold;
-  font-size: xx-large;
-  color: #503716;
-}
-
-body main .modal .menu .results .name {
-  margin: 20px;
-}
-
-body main .modal .menu .results .name .value {
-  margin-top: 10px;
-  height: 40px;
-}
-
-body main .modal .menu .results .name .value input {
-  max-width: 160px;
-  height: 100%;
-  padding-inline: 8px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  font-size: larger;
-  color: #503716;
-}
-
-body main .modal .menu .results .name .value button {
-  height: 100%;
-  aspect-ratio: 1;
-  vertical-align: top;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: large;
-}
-
-body main .modal .menu .highscores {
-  visibility: hidden;
-  position: absolute;
-  inset: 0;
-  padding: 10px;
-}
-
-body main .modal .menu .highscores .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 35px;
-}
-
-body main .modal .menu .highscores table {
-  margin: 20px auto;
-}
-
-body main .modal .menu .highscores table tr:nth-child(odd) {
-  background: #785221;
-}
-
-body main .modal .menu .highscores table td {
-  padding: 10px;
-  margin: 0;
-}
-
-body main .modal .menu .highscores .buttons {
-  position: absolute;
-  inset: auto 0 0;
-  margin: 20px;
-  height: 50px;
-}
-
-body main .modal .menu .highscores .buttons button {
-  height: 100%;
-  aspect-ratio: 1;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: larger;
 }
 
 .particle {
@@ -213,5 +87,123 @@ body main .modal .menu .highscores .buttons button {
   background-color: black;
   -webkit-box-shadow: inset -5px -5px 10px grey;
           box-shadow: inset -5px -5px 10px grey;
+}
+
+.modal {
+  z-index: 200;
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal .content {
+  position: absolute;
+  width: 280px;
+  height: 380px;
+  padding: 10px;
+  border: solid 5px #785221;
+  border-radius: 10px;
+  background-color: #d3a15f;
+  color: white;
+  text-align: center;
+  font-size: x-large;
+}
+
+.modal .result .header {
+  margin: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.modal .result .time {
+  margin: 20px;
+}
+
+.modal .result .time .value {
+  font-weight: bold;
+  font-size: xx-large;
+  text-shadow: -2px 2px 3px #785221, 2px 2px 3px #785221, 2px -2px 0 #785221, -2px -2px 0 #785221;
+}
+
+.modal .result .rank {
+  margin: 20px;
+}
+
+.modal .result .rank .value {
+  margin: 0;
+  font-weight: bold;
+  font-size: xx-large;
+  color: #503716;
+}
+
+.modal .result .name {
+  margin: 20px;
+}
+
+.modal .result .name .value {
+  margin-top: 10px;
+  height: 40px;
+}
+
+.modal .result .name .value input {
+  max-width: 160px;
+  height: 100%;
+  padding-inline: 8px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: larger;
+  color: #503716;
+}
+
+.modal .result .name .value button {
+  height: 100%;
+  aspect-ratio: 1;
+  vertical-align: top;
+  border: solid 3px #503716;
+  border-radius: 10px;
+  color: #503716;
+  font-size: large;
+}
+
+.modal .highscores .header {
+  margin: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.modal .highscores table {
+  margin: 20px auto;
+}
+
+.modal .highscores table tr:nth-child(odd) {
+  background: #785221;
+}
+
+.modal .highscores table td {
+  padding: 10px;
+  margin: 0;
+}
+
+.modal .highscores .buttons {
+  position: absolute;
+  inset: auto 0 0;
+  margin: 20px;
+  height: 50px;
+}
+
+.modal .highscores .buttons button {
+  height: 100%;
+  aspect-ratio: 1;
+  border: solid 3px #503716;
+  border-radius: 10px;
+  color: #503716;
+  font-size: larger;
 }
 /*# sourceMappingURL=styles.css.map */

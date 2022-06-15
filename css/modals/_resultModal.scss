@@ -1,0 +1,76 @@
+.modal {
+    .result {
+        .header {
+            margin: 20px;
+
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        
+        .time {
+            margin: 20px;
+
+
+            .value {
+                font-weight: bold;
+                font-size: xx-large;
+                text-shadow:
+                    -2px 2px 3px hsl(34, 57%, 30%),
+                    2px 2px 3px hsl(34, 57%, 30%),
+                    2px -2px 0 hsl(34, 57%, 30%),
+                    -2px -2px 0 hsl(34, 57%, 30%);
+            }
+        }
+
+
+        .rank {
+            margin: 20px;
+
+            
+            .value {
+                margin: 0;
+
+                font-weight: bold;
+                font-size: xx-large;
+                color: hsl(34, 57%, 20%);
+            }
+        }
+
+        .name {
+            margin: 20px;
+
+
+            .value {
+                margin-top: 10px;
+                height: 40px;
+
+
+                input {
+                    max-width: 160px;
+                    height: 100%;
+                    padding-inline: 8px;
+                    
+                    outline: none;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: larger;
+                    color: hsl(34, 57%, 20%);
+                }
+
+
+                button {
+                    height: 100%;
+                    aspect-ratio: 1;
+                    vertical-align: top;
+
+                    border: solid 3px hsl(34, 57%, 20%);
+                    border-radius: 10px;
+                    color: hsl(34, 57%, 20%);
+                    font-size: large;
+                }
+            }
+        }
+    }
+}
