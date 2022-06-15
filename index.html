@@ -14,27 +14,36 @@
   </head>
 
   <body>
-    <!-- <header>
-      <ul>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-      </ul>
-    </header> -->
-      
     <main>
+      <!-- drawing canvas -->
       <div class="canvas"></div>
 
+      <!-- stopwatch -->
       <div class="stopwatch"></div>
 
-      <div class="pause">
-        <i class="fa-solid fa-pause"></i>
+      <!-- pause button -->
+      <div class="pause" onclick="pauseGame()">
+        <i class="fa fa-pause" aria-hidden="true"></i>
       </div>
 
-      <div class="end-screen">
+      <!-- pause window -->
+      <div id="pause-menu" class="modal">
+        <div class="menu">
+          <div class="header">Paused</div>
+          <button onclick="resumeGame()">
+            Resume
+          </button>
+          <button onclick="restartGame()">
+            Restart
+          </button>
+          <button>
+            Quit
+          </button>
+        </div>
+      </div>
+
+      <!-- finish window -->
+      <div id="end-screen" class="modal">
         <div class="menu">
           <div class="results">
             <div class="header">Finished!</div>

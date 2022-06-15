@@ -5,6 +5,7 @@
   - developer.mozilla.org: sensor data
   - w3schools: inheritance
   - tutorialspoint
+  - fontawesome.com
 
   
     more specific:
@@ -37,10 +38,22 @@ function startGame() {
 }
 
 function restartGame() {
+  // hide all windows
+  windowManager.hidePause();
   windowManager.hideHighscores();
+
   startGame();
 }
 
+function pauseGame() {
+  simulation.stop();
+  windowManager.showPause();
+}
+
+function resumeGame() {
+  windowManager.hidePause();
+  simulation.start();
+}
 
 // looping function
 setInterval(function() {

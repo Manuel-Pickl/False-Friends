@@ -21,7 +21,7 @@ class Simulation {
         this.board = new Board().reset().initialize();
         this.level = 1;
         this.maxLevel = Object.keys(this.craterCountDict).length;
-        // this.maxLevel = 3;
+        // this.maxLevel = 1;
     }
 
     initialize() {

@@ -6,11 +6,24 @@ class WindowManager {
 
     constructor() {
         this.currentWindow = null;
-        this.endScreen = document.querySelector(".end-screen");
+        this.pause = document.querySelector("#pause-menu");
+        this.endScreen = document.querySelector("#end-screen");
         this.results = document.querySelector(".results");
         this.highscores = document.querySelector(".highscores");
     }
     
+
+    showPause() {
+        this.currentWindow = "pause";
+        this.pause.style.visibility = "visible";
+    }
+
+    hidePause() {
+        this.currentWindow = null;
+        this.pause.style.visibility = "hidden";
+    }
+
+
     showResults(time, rank) {
         this.currentWindow = "results";
 
@@ -31,6 +44,7 @@ class WindowManager {
         this.endScreen.style.visibility = "hidden";
         this.results.style.visibility = "hidden";
     }
+
 
     showHighscores() {
         this.currentWindow = "highscores";
