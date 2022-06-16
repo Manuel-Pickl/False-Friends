@@ -1,7 +1,24 @@
 .modal {
-    .content {
-        .pause {
+    .pause {
+        .header {
+            margin: 20px;
+            
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 35px;
+        }
 
+        
+        button {
+            display: block;
+            margin: 15px auto;
+            width: 150px;
+            padding: 10px;
+
+            border: solid 3px hsl(34, 57%, 20%);
+            border-radius: 10px;
+            color: hsl(34, 57%, 20%);
+            font-size: large;
         }
     }
 }

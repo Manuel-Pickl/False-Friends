@@ -53,6 +53,14 @@ function resumeGame() {
   simulation.start();
 }
 
+function showSettings() {
+  modalManager.showSettings();
+}
+
+function back() {
+  modalManager.back();
+}
+
 // main game looping function
 setInterval(function() {
   currentTimestamp = Date.now();
@@ -67,7 +75,7 @@ setInterval(function() {
   }
   else if (
     simulation.isGameFinished()
-    && modalManager.currentWindow == null) {
+    && modalManager.currentModal == null) {
     // get time
     let time = simulation.stopwatchToString();
         
