@@ -165,22 +165,23 @@ class Ball extends Particle {
     setPos(deltaDistance) {
         // ###
         const fieldHeight = 20;
-        const fieldWidth = window.innerWidth / window.innerHeight * fieldHeight;
+        const fieldWidth = Utility.canvas.clientWidth / Utility.canvas.clientHeight * fieldHeight;
 
         let ratioX = deltaDistance.x / fieldWidth;
-        let deltaX = ratioX * window.innerWidth;
+        let deltaX = ratioX * Utility.canvas.clientWidth;
         this.position.x += deltaX;
 
         let ratioY = deltaDistance.y / fieldHeight;
-        let deltaY = ratioY * window.innerHeight;
+        let deltaY = ratioY * Utility.canvas.clientHeight;
         this.position.y += deltaY;
     }
 
     resolveCollisionWithBounds() {
         // add & subtract radius to prevent clipping
-        let yMax = window.innerHeight - this.radius;
+        let yMax = Utility.canvas.clientHeight - this.radius;
         let yMin = this.radius;
-        let xMax = window.innerWidth - this.radius;
+
+        let xMax = Utility.canvas.clientWidth - this.radius;
         let xMin = this.radius
         
         if (this.position.y > yMax) {

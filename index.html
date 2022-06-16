@@ -12,34 +12,40 @@
   </head>
 
   <body>
-    <main>
-      <!-- drawing canvas -->
-      <div class="canvas"></div>
-
-      <!-- stopwatch -->
-      <div class="stopwatch"></div>
-
-      <!-- pause button -->
-      <div class="pause-button" onclick="pauseGame()">
-        <i class="fa fa-pause" aria-hidden="true"></i>
-      </div>
-
-      <!-- customizable modal -->
-      <div class="modal">
-        <div class="content">
+    <div class="game">
+      <main>
+        <!-- drawing canvas -->
+        <div class="canvas"></div>
+  
+        <!-- stopwatch -->
+        <div class="stopwatch"></div>
+  
+        <!-- pause button -->
+        <div class="pause-button" onclick="pauseGame()">
+          <i class="fa fa-pause" aria-hidden="true"></i>
         </div>
-      </div>
-    </main>
+  
+        <!-- customizable modal -->
+        <div class="modal">
+          <div class="content">
+          </div>
+        </div>
+      </main>
 
-    <!-- start menu -->
-    <footer>
-      <button class="leaderboard">
+      <!-- start menu -->
+      <header>
+        <button class="leaderboard">
+          <i class="fa fa-trophy" aria-hidden="true"></i>
+        </button>
+        <button>
+          play
+        </button>
+        <button>
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </button>
+      </header>
+    </div>
 
-      </button>
-      <button>
-        play
-      </button>
-    </footer>
     <!-- scripts -->
     <script>
         if ('serviceWorker' in navigator) {

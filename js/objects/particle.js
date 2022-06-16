@@ -11,7 +11,7 @@ class Particle {
         this.domElement = document.createElement("div");
         this.domElement.className = "particle";
         // append it to dom
-        document.querySelector(".canvas").appendChild(this.domElement);
+        Utility.canvas.appendChild(this.domElement);
         
         // set radius
         this.setRadius(radius);

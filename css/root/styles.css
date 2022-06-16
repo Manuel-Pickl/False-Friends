@@ -5,33 +5,37 @@
   src: local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format("woff2");
 }
 
-body {
-  margin: 0;
-  padding: 0;
+body .game {
+  position: absolute;
+  inset: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-align: end;
   font-family: Product Sans;
 }
 
-body * {
-  margin: 0;
-  padding: 0;
-}
-
-body main {
+body .game main {
   z-index: 5;
-  position: absolute;
-  inset: 0 0 0 0;
+  position: relative;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   overflow: hidden;
   background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
   background-size: 500px;
 }
 
-body main .canvas {
+body .game main .canvas {
   z-index: 10;
   position: absolute;
   inset: 0;
 }
 
-body main .stopwatch {
+body .game main .stopwatch {
   z-index: 100;
   position: absolute;
   inset: 10px auto auto 10px;
@@ -42,7 +46,7 @@ body main .stopwatch {
   text-shadow: -2px 2px 3px #6c360f, 2px 2px 3px #6c360f, 2px -2px 0 #6c360f, -2px -2px 0 #6c360f;
 }
 
-body main .pause-button {
+body .game main .pause-button {
   z-index: 100;
   position: absolute;
   inset: 10px 10px auto auto;
@@ -61,6 +65,14 @@ body main .pause-button {
   font-size: x-large;
   background-color: #6c360f;
   color: white;
+}
+
+body .game header {
+  z-index: 5;
+  -ms-flex-preferred-size: 80px;
+      flex-basis: 80px;
+  border-top: solid 3px #503716;
+  background: #d3a15f;
 }
 
 .particle {

@@ -7,4 +7,6 @@ class Utility {
     }
 
     static headerHeight = 60;
+
+    static canvas = document.querySelector(".canvas");
 }
