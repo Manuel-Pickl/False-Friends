@@ -1,24 +1,50 @@
 .modal {
     .menu {
-        .header {
-            margin: 20px;
+        // both buttons
+        button {
+            height: unset;
+
+            border-width: 5px;
             
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 35px;
+            font-size: 40px;
+
+            $stroke-width: 3px;
+            $stroke-blur: 2px;
+            $stroke-color: $primeColor;
+            text-shadow:
+                -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
+                $stroke-width $stroke-width $stroke-blur $stroke-color,
+                $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
+                -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
         }
 
-        
-        button {
-            display: block;
-            margin: 15px auto;
-            width: 150px;
-            padding: 10px;
 
-            border: solid 3px hsl(34, 57%, 20%);
-            border-radius: 10px;
-            color: hsl(34, 57%, 20%);
-            font-size: large;
+        // play game button
+        &>button {
+            aspect-ratio: unset;
+            margin-bottom: 10px;
+            padding: 25px;
+
+            border-radius: 20px;
+
+
+            // game title
+            span {
+                white-space: nowrap;
+            }
+        }
+
+
+        // second button row
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            
+            
+            button {
+                flex-basis: 100%;
+            }
         }
     }
 }

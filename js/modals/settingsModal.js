@@ -6,29 +6,30 @@ class SettingsModal extends Modal {
     getContent() {
         return `
             <div class="header">
+                <button onclick="back()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </button>
                 Settings
             </div>
             
-            <input type="checkbox" id="music" name="music" value="Music">
-            <label for="music">
-                Music
-            </label>
-
-            <div class="name">
-                <div class="description">
-                    Enter the raspberry ip:
-                </div>
-                <div class="value">
-                    <input id="name" type="text" maxlength="20">
-                    <button onclick="alert("connect")">
-                        <i class="fa fa-flask" aria-hidden="true"></i>
-                    </button>
-                </div>
+            <div>
+                <input type="checkbox" id="music" name="music" value="Music">
+                <label for="music">
+                    Music
+                </label>
             </div>
 
-            <div class="buttons">
-                <button onclick="back()">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <div>
+                <input type="checkbox" id="remote" name="remote" value="Remote">
+                <label for="remote">
+                    Remote Control
+                </label>
+            </div>
+
+            <div class="value">
+                <input id="name" type="text" maxlength="20">
+                <button onclick="alert("connect")">
+                    <i class="fa fa-flask" aria-hidden="true"></i>
                 </button>
             </div>
         `;

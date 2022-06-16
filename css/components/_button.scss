@@ -3,11 +3,23 @@
 
 
 button {
-    border-style: solid;
-    border-color: $primeColor;
-    border-radius: 20px;
+    height: 45px;
+    aspect-ratio: 1;
+
+    border: solid 3px $primeColor;
+    border-radius: 50%;
 
     background-color: transparent;
     color: white;
     font-weight: bold;
+    font-size: 25px;
+
+    $stroke-width: 1px;
+    $stroke-blur: 1px;
+    $stroke-color: $primeColor;
+    text-shadow:
+        -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
+        $stroke-width $stroke-width $stroke-blur $stroke-color,
+        $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
+        -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
 }

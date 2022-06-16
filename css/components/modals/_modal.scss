@@ -12,8 +12,40 @@
         left: 50%;
         transform: translate(-50%, -50%);
     
+        color: white;
+        font-size: 30px;
         text-align: center;
 
-        border: solid 3px blue;
+        $stroke-width: 2px;
+        $stroke-blur: 1px;
+        $stroke-color: $primeColor;
+        text-shadow:
+            -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
+            $stroke-width $stroke-width $stroke-blur $stroke-color,
+            $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
+            -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
+
+        
+        &>* {
+            white-space: nowrap;
+        }
+        
+
+        .header {
+            position: relative;
+            margin-bottom: 25px;
+
+            font-size: 40px;
+
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: auto 0 -15px;
+                height: 4px;
+
+                background-color: $primeColor;
+            }
+        }
     }
 }

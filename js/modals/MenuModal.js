@@ -16,13 +16,17 @@ class MenuModal extends Modal {
             
             <div class="buttons">
                 <button onclick="showLeaderboard()">
-                    <i class="fa fa-trophy" aria-hidden="true"></i><br>
-                    Leaderboard
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
                 </button>
-                    <button onclick="showSettings()">
-                    <i class="fa fa-cog" aria-hidden="true"></i><br>
-                Settings
-            </button>
+
+                <button onclick="showHelp()">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                </button>
+
+                <button onclick="showSettings()">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </button>
+            </div>
         `;
     }   
 }

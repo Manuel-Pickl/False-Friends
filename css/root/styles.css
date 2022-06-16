@@ -1,10 +1,13 @@
 button {
-  border-style: solid;
-  border-color: #6c360f;
-  border-radius: 20px;
+  height: 45px;
+  aspect-ratio: 1;
+  border: solid 3px #6c360f;
+  border-radius: 50%;
   background-color: transparent;
   color: white;
   font-weight: bold;
+  font-size: 25px;
+  text-shadow: -1px 1px 1px #6c360f, 1px 1px 1px #6c360f, 1px -1px 1px #6c360f, -1px -1px 1px #6c360f;
 }
 
 @font-face {
@@ -77,41 +80,6 @@ body .game main .pause-button {
   color: white;
 }
 
-body .game .start-menu {
-  z-index: 10;
-  position: absolute;
-  inset: 0;
-}
-
-body .game .start-menu .modal-content > button {
-  margin: 10px;
-  padding: 20px;
-  border-width: 6px;
-  font-size: 40px;
-  text-shadow: -3px 3px 3px #6c360f, 3px 3px 3px #6c360f, 3px -3px 3px #6c360f, -3px -3px 3px #6c360f;
-}
-
-body .game .start-menu .modal-content > button span {
-  white-space: nowrap;
-}
-
-body .game .start-menu .modal-content .buttons button {
-  width: 46%;
-  padding: 12px;
-  border: solid 3px #6c360f;
-  border-radius: 10px;
-  background-color: transparent;
-  color: white;
-  font-size: larger;
-  font-weight: bold;
-  text-shadow: -2px 2px 1px #6c360f, 2px 2px 1px #6c360f, 2px -2px 1px #6c360f, -2px -2px 1px #6c360f;
-}
-
-body .game .start-menu .modal-content .buttons button i {
-  font-size: xx-large;
-  margin-bottom: 5px;
-}
-
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -151,26 +119,62 @@ body .game .start-menu .modal-content .buttons button i {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30px;
   text-align: center;
-  border: solid 3px blue;
+  text-shadow: -2px 2px 1px #6c360f, 2px 2px 1px #6c360f, 2px -2px 1px #6c360f, -2px -2px 1px #6c360f;
 }
 
-.modal .menu .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 35px;
+.modal .modal-content > * {
+  white-space: nowrap;
+}
+
+.modal .modal-content .header {
+  position: relative;
+  margin-bottom: 25px;
+  font-size: 40px;
+}
+
+.modal .modal-content .header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -15px;
+  height: 4px;
+  background-color: #6c360f;
 }
 
 .modal .menu button {
-  display: block;
-  margin: 15px auto;
-  width: 150px;
-  padding: 10px;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: large;
+  height: unset;
+  border-width: 5px;
+  font-size: 40px;
+  text-shadow: -3px 3px 2px #6c360f, 3px 3px 2px #6c360f, 3px -3px 2px #6c360f, -3px -3px 2px #6c360f;
+}
+
+.modal .menu > button {
+  aspect-ratio: unset;
+  margin-bottom: 10px;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.modal .menu > button span {
+  white-space: nowrap;
+}
+
+.modal .menu .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 15px;
+}
+
+.modal .menu .buttons button {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
 .modal .pause .header {
@@ -286,55 +290,18 @@ body .game .start-menu .modal-content .buttons button i {
 }
 
 .modal .settings .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  gap: 10px;
 }
 
-.modal .settings .name {
-  margin: 20px;
-}
-
-.modal .settings .name .value {
-  margin-top: 10px;
-  height: 40px;
-}
-
-.modal .settings .name .value input {
-  max-width: 160px;
-  height: 100%;
-  padding-inline: 8px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  font-size: larger;
-  color: #503716;
-}
-
-.modal .settings .name .value button {
-  height: 100%;
-  aspect-ratio: 1;
-  vertical-align: top;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: large;
-}
-
-.modal .settings .buttons {
-  position: absolute;
-  inset: auto 0 0;
-  margin: 20px;
-  height: 50px;
-}
-
-.modal .settings .buttons button {
-  height: 100%;
-  aspect-ratio: 1;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: larger;
+.modal .settings .header button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  font-size: 40px;
 }
 /*# sourceMappingURL=styles.css.map */
