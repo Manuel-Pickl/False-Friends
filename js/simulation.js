@@ -9,37 +9,42 @@ class Simulation {
     maxLevel;
     
     constructor() {
-        this.finished = false;
         this.stopwatchElement = document.querySelector(".stopwatch");
-
         this.craterCountDict = {
             1: 0,
             2: 2,
             3: 5,
             4: 10
         }
-        this.board = new Board().reset().initialize();
-        this.level = 1;
         this.maxLevel = Object.keys(this.craterCountDict).length;
         // this.maxLevel = 1
     }
 
     initialize() {
-        this.startLevel(this.level);
-        this.stopwatch = 0;
-        this.start();
+        this.finished = false;
+        this.board = new Board().reset().initialize();
+        this.level = 1;
 
         return this;
     }
 
     start() {
+        this.startLevel(this.level);
+        this.stopwatch = 0;
+        this.resume();
+
+        return this;
+    }
+
+
+    resume() {
         this.running = true;
         window.addEventListener('deviceorientation', onSensorChanged);
 
         return this;
     }
       
-    stop() {
+    pause() {
         this.running = false;
         window.removeEventListener('deviceorientation', onSensorChanged);
 
@@ -71,7 +76,7 @@ class Simulation {
     }
 
     finishLevel() {
-        this.stop();
+        this.pause();
         
         // reset ball velocity
         this.board.ball.velocity.x = 0;
@@ -112,7 +117,7 @@ class Simulation {
       }
 
     isLevelFinished() {
-        return this.board.finish.isCircleInside(this.board.ball.position, this.board.ball.radius, 0.5);
+        return this.board.finish?.isCircleInside(this.board.ball.position, this.board.ball.radius, 0.5);
     }
 
     isGameFinished() {

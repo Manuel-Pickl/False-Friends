@@ -17,7 +17,7 @@ class PauseModal extends Modal {
                 Restart
             </button>
             
-            <button>
+            <button onclick="showStartMenu()">
                 Quit
             </button>
             

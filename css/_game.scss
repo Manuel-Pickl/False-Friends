@@ -20,6 +20,7 @@ body {
     
         main {
             z-index: 5;
+
             position: relative;
             flex-basis: 100%;
             
@@ -37,6 +38,8 @@ body {
             
             .stopwatch {
                 z-index: 100;
+                visibility: hidden;
+
                 position: absolute;
                 inset: 10px auto auto 10px;
                 height: 40px;
@@ -54,6 +57,8 @@ body {
     
             .pause-button {
                 z-index: 100;
+                visibility: hidden;
+                
                 position: absolute;
                 inset: 10px 10px auto auto;
                 height: 45px;
@@ -72,12 +77,35 @@ body {
 
 
         header {
-            // display: none;
             z-index: 5;
+            
             flex-basis: 80px;
+
+            display: grid;
+            place-items: center;
     
             border-top: solid 3px hsl(34, 57%, 20%);
             background: hsl(34, 57%, 60%);
+
+
+            .buttons {
+                button {
+                    height: 50px;
+                    
+                    border: solid 3px hsl(34, 57%, 20%);
+                    border-radius: 10px;
+                    color: hsl(34, 57%, 20%);
+                    font-size: larger;
+                }
+                
+                button:nth-child(odd) {
+                    aspect-ratio: 1;
+                }
+
+                button:nth-child(even) {
+                    aspect-ratio: 3;
+                }
+            }
         }
     }
 }

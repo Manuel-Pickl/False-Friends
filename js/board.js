@@ -3,8 +3,11 @@ class Board {
     boardAngle;
 
     craters;
+    craterRadiusInterval;
     ball;
+    ballRadius;
     finish;
+    finishRadius;
 
     reset() {
         Utility.canvas.textContent = "";
@@ -15,9 +18,11 @@ class Board {
     initialize() {
         this.maxAngleUsed = 35;
         this.boardAngle = new Point();
+
         this.craters = [];
-        this.ball = new Ball(new Point(), 20, this.craters);
-        this.finish = new Finish(new Point(), this.ball.radius * 1.5);
+        this.ballRadius = 20;
+        this.craterRadiusInterval = [this.ballRadius * 2, this.ballRadius * 5];
+        this.finishRadius = this.ballRadius * 1.5;
 
         return this;
     }
@@ -30,7 +35,7 @@ class Board {
         // generate random non intersecting craters
         for (let i = 0; i < count; i++) {
             // get random crater radius
-            let craterRadius = Utility.getRandomIntegerInRange(this.ball.originalRadius * 2, this.ball.originalRadius * 4);
+            let craterRadius = Utility.getRandomIntegerInRange(this.craterRadiusInterval[0], this.craterRadiusInterval[1]);
 
             let craterPosition;
             let craterIntersects;
@@ -69,60 +74,61 @@ class Board {
             // get random finish position
             finishPosition = new Point(
                 Utility.getRandomIntegerInRange(
-                    this.finish.radius,
-                    Utility.canvas.clientWidth - this.finish.radius),
+                    this.finishRadius,
+                    Utility.canvas.clientWidth - this.finishRadius),
                 Utility.getRandomIntegerInRange(
-                    Utility.headerHeight + this.finish.radius,
-                    Utility.canvas.clientHeight - this.finish.radius)
+                    Utility.headerHeight + this.finishRadius,
+                    Utility.canvas.clientHeight - this.finishRadius)
             );
 
             // check intersection with craters
             this.craters.forEach(crater => {
                 let craterDistance = Math.sqrt(Math.pow(finishPosition.x - crater.position.x, 2) + Math.pow(finishPosition.y - crater.position.y, 2));
-                if (craterDistance <= this.finish.radius + crater.radius) {
+                if (craterDistance <= this.finishRadius + crater.radius) {
                     craterIntersects = true;
                 }
             });
         } while (craterIntersects);
 
-        // set determined position and draw hole
-        this.finish.position = debug ? new Point(this.finish.radius, this.finish.radius) :finishPosition;
-        this.finish.draw();
+        this.finish?.remove();
+
+        // generate finish hole on generated position
+        finishPosition = !debug ? finishPosition : new Point(this.finishRadius, this.finishRadius);
+        this.finish = new Finish(finishPosition, this.finishRadius).draw();
     }
 
-    placeBall() {
-        // place ball in random position far away from finishing hole
-        let ballPosition;
-        let maxFinishDistance = 0;
-
-        // find farthest away position on 10 trys
-        for (let i = 0; i < 10; i++) {
-            // get random ball position
-            let tempBallPosition = new Point(
-                Utility.getRandomIntegerInRange(
-                    this.ball.radius,
-                    Utility.canvas.clientWidth - this.ball.radius),
-                Utility.getRandomIntegerInRange(
-                    Utility.headerHeight + this.ball.radius,
-                    Utility.canvas.clientHeight - this.ball.radius)
-            );
-
-            // calculate distance to finish hole
-            let finishDistance = Math.sqrt(Math.pow(this.finish.position.x - tempBallPosition.x, 2) + Math.pow(this.finish.position.y - tempBallPosition.y, 2));
-
-            // keep farthest away position
-            if (finishDistance > maxFinishDistance) {
-                maxFinishDistance = finishDistance;
-                ballPosition = tempBallPosition;
+    placeBall(ballPosition) {
+        if (ballPosition == null) {
+            // place ball in random position far away from finishing hole
+            let maxFinishDistance = 0;
+    
+            // find farthest away position on 10 trys
+            for (let i = 0; i < 10; i++) {
+                // get random ball position
+                let tempBallPosition = new Point(
+                    Utility.getRandomIntegerInRange(
+                        this.ballRadius,
+                        Utility.canvas.clientWidth - this.ballRadius),
+                    Utility.getRandomIntegerInRange(
+                        Utility.headerHeight + this.ballRadius,
+                        Utility.canvas.clientHeight - this.ballRadius)
+                );
+    
+                // calculate distance to finish hole
+                let finishDistance = Math.sqrt(Math.pow(this.finish.position.x - tempBallPosition.x, 2) + Math.pow(this.finish.position.y - tempBallPosition.y, 2));
+    
+                // keep farthest away position
+                if (finishDistance > maxFinishDistance) {
+                    maxFinishDistance = finishDistance;
+                    ballPosition = tempBallPosition;
+                }
             }
         }
 
-        // set generated position
-        this.ball.position = ballPosition;
+        this.ball?.remove();
 
-        // reset ball size on spawn (size may be 0 from finish animation) & redraw
-        this.ball.setRadius(this.ball.originalRadius);
-        this.ball.draw();
+        // generate ball on generated  position
+        this.ball = new Ball(ballPosition, 20, this.craters).draw();
     }
 
     setAngle(boardAngle) {

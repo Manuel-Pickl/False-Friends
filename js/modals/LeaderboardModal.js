@@ -8,7 +8,7 @@ class LeaderboardModal extends Modal {
             <div class="header">Leaderboard</div>
             <table></table>
             <div class="buttons">
-                <button>
+                <button onclick="showStartMenu()">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </button>
                 <button onclick="restartGame()">

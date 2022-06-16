@@ -1,4 +1,4 @@
-class ModalManager {
+class WindowManager {
     previousModal;
     currentModal;
 
@@ -13,6 +13,10 @@ class ModalManager {
 
         this.modal = document.querySelector(".modal");
         this.modalContent = document.querySelector(".modal .content");
+        
+        this.stopWatch = document.querySelector("main .stopwatch");
+        this.pauseButton = document.querySelector("main .pause-button");
+        this.header = document.querySelector("header");
 
         this.pauseModal = new PauseModal();
         this.resultModal = new ResultModal();
@@ -21,10 +25,30 @@ class ModalManager {
     }
     
 
+    showStartMenu() {
+        this.hideModal();
+
+        this.stopWatch.style.visibility = "hidden";
+        this.pauseButton.style.visibility = "hidden";
+        this.header.style.display = "block";
+
+        return this;
+    }
+
+    hideStartMenu() {
+        this.stopWatch.style.visibility = "visible";
+        this.pauseButton.style.visibility = "visible";
+        this.header.style.display = "none";
+
+        return this;
+    }
+
+
     showPause() {
         this.changeModal(this.pauseModal);
         this.showModal();
     }
+
 
     showResults(time, rank) {
         this.changeModal(this.resultModal);
@@ -41,19 +65,22 @@ class ModalManager {
         this.showModal();
     }
 
-    showLeaderboard(rows) {
+
+    showLeaderboard(rows = null) {
         this.changeModal(this.leaderboardModal);
 
         // append highscore rows on table
-        rows.forEach(row => this.modalContent.querySelector("table").appendChild(row));
+        rows?.forEach(row => this.modalContent.querySelector("table").appendChild(row));
 
         this.showModal();
     }
+
 
     showSettings() {
         this.changeModal(this.settingsModal);
         this.showModal();
     }
+
 
     changeModal(modal) {
         this.previousModal = this.currentModal;
@@ -75,7 +102,12 @@ class ModalManager {
     }
 
     back() {
-        this.changeModal(this.previousModal);
-        this.showModal();
+        if (this.previousModal == null) {
+            this.hideModal();
+        }
+        else {
+            this.changeModal(this.previousModal);
+            this.showModal();
+        }
     }
 }

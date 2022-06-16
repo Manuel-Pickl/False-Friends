@@ -37,6 +37,7 @@ body .game main .canvas {
 
 body .game main .stopwatch {
   z-index: 100;
+  visibility: hidden;
   position: absolute;
   inset: 10px auto auto 10px;
   height: 40px;
@@ -48,6 +49,7 @@ body .game main .stopwatch {
 
 body .game main .pause-button {
   z-index: 100;
+  visibility: hidden;
   position: absolute;
   inset: 10px 10px auto auto;
   height: 45px;
@@ -71,8 +73,27 @@ body .game header {
   z-index: 5;
   -ms-flex-preferred-size: 80px;
       flex-basis: 80px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
   border-top: solid 3px #503716;
   background: #d3a15f;
+}
+
+body .game header .buttons button {
+  height: 50px;
+  border: solid 3px #503716;
+  border-radius: 10px;
+  color: #503716;
+  font-size: larger;
+}
+
+body .game header .buttons button:nth-child(odd) {
+  aspect-ratio: 1;
+}
+
+body .game header .buttons button:nth-child(even) {
+  aspect-ratio: 3;
 }
 
 .particle {
@@ -102,8 +123,8 @@ body .game header {
 }
 
 .modal {
-  z-index: 200;
   visibility: hidden;
+  z-index: 200;
   position: absolute;
   inset: 0;
   display: -ms-inline-grid;

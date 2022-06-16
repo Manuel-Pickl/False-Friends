@@ -13,52 +13,70 @@
 */
 
 
-const debug = false;
+// const debug = false;
+const debug = true;
 const fps = 120;
 var currentTimestamp;
 var lastTimestamp = Date.now();
 
 var simulation;
-var modalManager = new ModalManager();
+var windowManager = new WindowManager();
 var rank;
 
-localStorage.clear();
+// localStorage.clear();
 var leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
 if (!leaderboard) {
   leaderboard = [];
 }
 
-startGame();
+
+simulation = new Simulation().initialize();
+showStartMenu();
+
+
+
+function showStartMenu() {
+  windowManager.showStartMenu();
+
+  simulation.initialize();
+  simulation.board.placeBall(new Point(Utility.canvas.clientWidth / 2, Utility.canvas.clientHeight / 2));
+  simulation.resume();
+}
+
 
 
 function startGame() {
-  simulation = new Simulation()
-    .initialize()
-    .start();
+  windowManager.hideStartMenu();
+
+  simulation.initialize().start();
 }
 
 function restartGame() {
-  modalManager.hideModal();
+  windowManager.hideModal();
 
   startGame();
 }
 
 function pauseGame() {
-  simulation.stop();
-  modalManager.showPause();
+  simulation.pause();
+  windowManager.showPause();
 }
 
 function resumeGame() {
-  modalManager.hideModal();
-  simulation.start();
+  windowManager.hideModal();
+  simulation.resume();
+}
+
+function showLeaderboard() {
+  windowManager.showLeaderboard();
 }
 
 function showSettings() {
-  modalManager.showSettings();
+  windowManager.showSettings();
 }
 
 function back() {
-  modalManager.back();
+  windowManager.back();
 }
 
 // main game looping function
@@ -75,7 +93,7 @@ setInterval(function() {
   }
   else if (
     simulation.isGameFinished()
-    && modalManager.currentModal == null) {
+    && windowManager.currentModal == null) {
     // get time
     let time = simulation.stopwatchToString();
         
@@ -92,7 +110,7 @@ setInterval(function() {
         }
     }
 
-    modalManager.showResults(time, rank);
+    windowManager.showResults(time, rank);
   }
 
   lastTimestamp = currentTimestamp;
@@ -134,7 +152,7 @@ function showResults() {
   }
   
   // open modal with data
-  modalManager.showLeaderboard(rows);
+  windowManager.showLeaderboard(rows);
 }
 
 function onSensorChanged(event) {
