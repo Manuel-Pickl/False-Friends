@@ -1,4 +1,4 @@
-class WindowManager {
+class ModalManager {
     previousModal;
     currentModal;
 
@@ -7,11 +7,11 @@ class WindowManager {
 
     stopWatch
     pauseButton
-    startMenu
 
+    leaderboardModal;
+    menuModal;
     pauseModal;
     resultModal;
-    leaderboardModal;
     settingsModal;
 
     constructor() {
@@ -19,33 +19,35 @@ class WindowManager {
         this.currentModal = null;        
 
         this.modal = document.querySelector(".modal");
-        this.modalContent = document.querySelector(".modal .content");
+        this.modalContent = document.querySelector(".modal .modal-content");
         
         this.stopWatch = document.querySelector("main .stopwatch");
         this.pauseButton = document.querySelector("main .pause-button");
-        this.startMenu = document.querySelector(".start-menu");
 
+        this.leaderboardModal = new LeaderboardModal();
+        this.menuModal = new MenuModal();
         this.pauseModal = new PauseModal();
         this.resultModal = new ResultModal();
-        this.leaderboardModal = new LeaderboardModal();
         this.settingsModal = new SettingsModal();
     }
     
 
     showStartMenu() {
-        this.hideModal();
-
+        this.changeModal(this.menuModal);
+        
         this.stopWatch.style.visibility = "hidden";
         this.pauseButton.style.visibility = "hidden";
-        this.startMenu.style.display = "block";
+
+        this.showModal();
 
         return this;
     }
 
     hideStartMenu() {
+        this.hideModal();
+
         this.stopWatch.style.visibility = "visible";
         this.pauseButton.style.visibility = "visible";
-        this.startMenu.style.display = "none";
 
         return this;
     }
@@ -93,7 +95,7 @@ class WindowManager {
         this.previousModal = this.currentModal;
         this.currentModal = modal;
         this.modalContent.innerHTML = modal.getContent();
-        this.modalContent.classList = `content ${modal.className}`;
+        this.modalContent.classList = `modal-content ${modal.className}`;
     }
 
     showModal() {

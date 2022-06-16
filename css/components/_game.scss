@@ -1,3 +1,7 @@
+@import "../components/variables";
+
+
+
 @font-face {
     font-family: 'Product Sans';
     font-style: normal;
@@ -25,8 +29,7 @@ body {
             flex-basis: 100%;
             
             overflow: hidden;
-            background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
-            background-size: 500px;
+            background-image: url("../../assets/lightwood.png");
         
     
             .canvas {
@@ -83,34 +86,24 @@ body {
             inset: 0;
 
 
-            .content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-
-                text-align: center;
-
-
+            .modal-content {
                 &>button {
                     margin: 10px;
                     padding: 20px;
     
-                    border: solid 6px hsl(25, 76%, 24%);
-                    border-radius: 20px;
-                    background-color: transparent;
+                    border-width: 6px;
                     font-size: 40px;
-                    font-weight: bold;
-                    color: white;
+                    
                     $stroke-width: 3px;
                     $stroke-blur: 3px;
-                    $stroke-color: #6c360f;
+                    $stroke-color: $primeColor;
                     text-shadow:
                         -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
                         $stroke-width $stroke-width $stroke-blur $stroke-color,
                         $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
                         -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
-    
+
+
                     span {
                         white-space: nowrap;
                     }

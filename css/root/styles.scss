@@ -1,8 +1,12 @@
-@import "../game";
-@import "../particles";
+@import "../components/variables";
 
-@import "../modals/modal";
-@import "../modals/pauseModal";
-@import "../modals/resultModal";
-@import "../modals/leaderboardModal";
-@import "../modals/settingsModal";
+@import "../components/button";
+@import "../components/game";
+@import "../components/particles";
+
+@import "../components/modals/modal";
+@import "../components/modals/menuModal";
+@import "../components/modals/pauseModal";
+@import "../components/modals/resultModal";
+@import "../components/modals/leaderboardModal";
+@import "../components/modals/settingsModal";

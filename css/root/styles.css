@@ -1,3 +1,12 @@
+button {
+  border-style: solid;
+  border-color: #6c360f;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+}
+
 @font-face {
   font-family: 'Product Sans';
   font-style: normal;
@@ -25,8 +34,7 @@ body .game main {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   overflow: hidden;
-  background-image: url("https://previews.123rf.com/images/scenery1/scenery11706/scenery1170600191/80858978-wood-surface-background-wood-board-white-sheet-plywood.jpg?fj=1");
-  background-size: 500px;
+  background-image: url("../../assets/lightwood.png");
 }
 
 body .game main .canvas {
@@ -75,32 +83,19 @@ body .game .start-menu {
   inset: 0;
 }
 
-body .game .start-menu .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-body .game .start-menu .content > button {
+body .game .start-menu .modal-content > button {
   margin: 10px;
   padding: 20px;
-  border: solid 6px #6c350f;
-  border-radius: 20px;
-  background-color: transparent;
+  border-width: 6px;
   font-size: 40px;
-  font-weight: bold;
-  color: white;
   text-shadow: -3px 3px 3px #6c360f, 3px 3px 3px #6c360f, 3px -3px 3px #6c360f, -3px -3px 3px #6c360f;
 }
 
-body .game .start-menu .content > button span {
+body .game .start-menu .modal-content > button span {
   white-space: nowrap;
 }
 
-body .game .start-menu .content .buttons button {
+body .game .start-menu .modal-content .buttons button {
   width: 46%;
   padding: 12px;
   border: solid 3px #6c360f;
@@ -112,7 +107,7 @@ body .game .start-menu .content .buttons button {
   text-shadow: -2px 2px 1px #6c360f, 2px 2px 1px #6c360f, 2px -2px 1px #6c360f, -2px -2px 1px #6c360f;
 }
 
-body .game .start-menu .content .buttons button i {
+body .game .start-menu .modal-content .buttons button i {
   font-size: xx-large;
   margin-bottom: 5px;
 }
@@ -148,23 +143,34 @@ body .game .start-menu .content .buttons button i {
   z-index: 200;
   position: absolute;
   inset: 0;
-  display: -ms-inline-grid;
-  display: inline-grid;
-  place-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.modal .content {
+.modal .modal-content {
   position: absolute;
-  width: 280px;
-  height: 380px;
-  padding: 10px;
-  border: solid 5px #785221;
-  border-radius: 10px;
-  background-color: #d3a15f;
-  color: white;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   text-align: center;
-  font-size: x-large;
+  border: solid 3px blue;
+}
+
+.modal .menu .header {
+  margin: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.modal .menu button {
+  display: block;
+  margin: 15px auto;
+  width: 150px;
+  padding: 10px;
+  border: solid 3px #503716;
+  border-radius: 10px;
+  color: #503716;
+  font-size: large;
 }
 
 .modal .pause .header {

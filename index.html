@@ -28,31 +28,7 @@
 
       <!-- customizable modal -->
       <div class="modal">
-        <div class="content">
-        </div>
-      </div>
-
-      <!-- start menu -->
-      <div class="start-menu">
-        <div class="content">
-          <button onclick="startGame()">
-            <span>
-              play
-            </span><br>
-            <span>
-              false friends
-            </span>
-          </button>
-          <div class="buttons">
-            <button onclick="showLeaderboard()">
-              <i class="fa fa-trophy" aria-hidden="true"></i><br>
-              Leaderboard
-            </button>
-            <button onclick="showSettings()">
-              <i class="fa fa-cog" aria-hidden="true"></i><br>
-              Settings
-            </button>
-          </div>
+        <div class="modal-content">
         </div>
       </div>
     </div>
@@ -74,11 +50,12 @@
     <script src="js/objects/Finish.js"></script>
 
     <script src="js/modals/Modal.js"></script>
+    <script src="js/modals/LeaderboardModal.js"></script>
+    <script src="js/modals/MenuModal.js"></script>
     <script src="js/modals/PauseModal.js"></script>
     <script src="js/modals/ResultModal.js"></script>
-    <script src="js/modals/LeaderboardModal.js"></script>
     <script src="js/modals/SettingsModal.js"></script>
-    <script src="js/modals/WindowManager.js"></script>
+    <script src="js/modals/ModalManager.js"></script>
 
     <script src="js/Board.js"></script>
     <script src="js/Simulation.js"></script>

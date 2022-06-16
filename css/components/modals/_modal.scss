@@ -1,0 +1,19 @@
+.modal {
+    visibility: hidden;
+    z-index: 200;
+    
+    position: absolute;
+    inset: 0;
+        
+
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        text-align: center;
+
+        border: solid 3px blue;
+    }
+}

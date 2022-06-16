@@ -1,5 +1,6 @@
 /*
   sources:
+  - youtube
   - geeksforgeeks.org: sensor data
   - stackoverflow: small programming specific things
   - developer.mozilla.org: sensor data
@@ -20,7 +21,7 @@ var currentTimestamp;
 var lastTimestamp = Date.now();
 
 var simulation;
-var windowManager = new WindowManager();
+var modalManager = new ModalManager();
 var rank;
 
 // localStorage.clear();
@@ -36,47 +37,47 @@ showStartMenu();
 
 
 function showStartMenu() {
-  windowManager.showStartMenu();
+  modalManager.showStartMenu();
 
   simulation.initialize();
-  simulation.board.placeBall(new Point(Utility.canvas.clientWidth / 2, Utility.canvas.clientHeight / 2));
+  simulation.board.placeBall(new Point(Utility.canvas.clientWidth * 0.5, Utility.canvas.clientHeight * 0.8));
   simulation.resume();
 }
 
 
 
 function startGame() {
-  windowManager.hideStartMenu();
+  modalManager.hideStartMenu();
 
   simulation.initialize().start();
 }
 
 function restartGame() {
-  windowManager.hideModal();
+  modalManager.hideModal();
 
   startGame();
 }
 
 function pauseGame() {
   simulation.pause();
-  windowManager.showPause();
+  modalManager.showPause();
 }
 
 function resumeGame() {
-  windowManager.hideModal();
+  modalManager.hideModal();
   simulation.resume();
 }
 
 function showLeaderboard() {
-  windowManager.showLeaderboard();
+  modalManager.showLeaderboard();
 }
 
 function showSettings() {
-  windowManager.showSettings();
+  modalManager.showSettings();
 }
 
 function back() {
-  windowManager.back();
+  modalManager.back();
 }
 
 // main game looping function
@@ -93,7 +94,7 @@ setInterval(function() {
   }
   else if (
     simulation.isGameFinished()
-    && windowManager.currentModal == null) {
+    && modalManager.currentModal == null) {
     // get time
     let time = simulation.stopwatchToString();
         
@@ -110,7 +111,7 @@ setInterval(function() {
         }
     }
 
-    windowManager.showResults(time, rank);
+    modalManager.showResults(time, rank);
   }
 
   lastTimestamp = currentTimestamp;
@@ -152,7 +153,7 @@ function showResults() {
   }
   
   // open modal with data
-  windowManager.showLeaderboard(rows);
+  modalManager.showLeaderboard(rows);
 }
 
 function onSensorChanged(event) {

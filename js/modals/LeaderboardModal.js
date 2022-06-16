@@ -5,8 +5,12 @@ class LeaderboardModal extends Modal {
 
     getContent() {
         return `
-            <div class="header">Leaderboard</div>
+            <div class="header">
+                Leaderboard
+            </div>
+
             <table></table>
+
             <div class="buttons">
                 <button onclick="showStartMenu()">
                     <i class="fa fa-home" aria-hidden="true"></i>
