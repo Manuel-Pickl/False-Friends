@@ -23,9 +23,9 @@ var modalManager = new ModalManager();
 var rank;
 
 localStorage.clear();
-var highscores = JSON.parse(localStorage.getItem("highscores"));
-if (!highscores) {
-  highscores = [];
+var leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+if (!leaderboard) {
+  leaderboard = [];
 }
 
 startGame();
@@ -82,9 +82,9 @@ setInterval(function() {
     // calculate rank
     rank = 1;
     let rankDetermined = false;
-    while (!rankDetermined && rank <= highscores.length) {
+    while (!rankDetermined && rank <= leaderboard.length) {
         // if current time is better than highscore on rank x
-      if (simulation.stopwatch < highscores[rank - 1].time) {
+      if (simulation.stopwatch < leaderboard[rank - 1].time) {
           rankDetermined = true;
         }
         else {
@@ -105,18 +105,18 @@ function showResults() {
   let time = simulation.stopwatch;
 
   // add highscore data at correct rank position
-  highscores.splice(rank - 1, 0, {name, time});
+  leaderboard.splice(rank - 1, 0, {name, time});
 
   // persistent save of players data
-  localStorage.setItem("highscores", JSON.stringify(highscores));
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
 
   // built table rows from data
   let rows = [];
   
-  for (let i = 0; i < highscores.length; i++) {
+  for (let i = 0; i < leaderboard.length; i++) {
     let rank = i + 1;
-    let name = highscores[i].name;
-    let time = highscores[i].time;
+    let name = leaderboard[i].name;
+    let time = leaderboard[i].time;
     
     let rankCell = document.createElement("td");
     rankCell.appendChild(document.createTextNode(`${rank}.`));
@@ -134,7 +134,7 @@ function showResults() {
   }
   
   // open modal with data
-  modalManager.showHighscores(rows);
+  modalManager.showLeaderboard(rows);
 }
 
 function onSensorChanged(event) {

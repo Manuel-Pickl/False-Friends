@@ -189,34 +189,34 @@ body main .pause-button {
   font-size: large;
 }
 
-.modal .highscores .header {
+.modal .leaderboard .header {
   margin: 20px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 35px;
 }
 
-.modal .highscores table {
+.modal .leaderboard table {
   margin: 20px auto;
 }
 
-.modal .highscores table tr:nth-child(odd) {
+.modal .leaderboard table tr:nth-child(odd) {
   background: #785221;
 }
 
-.modal .highscores table td {
+.modal .leaderboard table td {
   padding: 10px;
   margin: 0;
 }
 
-.modal .highscores .buttons {
+.modal .leaderboard .buttons {
   position: absolute;
   inset: auto 0 0;
   margin: 20px;
   height: 50px;
 }
 
-.modal .highscores .buttons button {
+.modal .leaderboard .buttons button {
   height: 100%;
   aspect-ratio: 1;
   border: solid 3px #503716;

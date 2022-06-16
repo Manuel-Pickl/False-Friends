@@ -4,7 +4,7 @@ class ModalManager {
 
     pauseModal;
     resultModal;
-    highscoresModal;
+    leaderboardModal;
     settingsModal;
 
     constructor() {
@@ -16,7 +16,7 @@ class ModalManager {
 
         this.pauseModal = new PauseModal();
         this.resultModal = new ResultModal();
-        this.highscoresModal = new HighscoresModal();
+        this.leaderboardModal = new LeaderboardModal();
         this.settingsModal = new SettingsModal();
     }
     
@@ -41,8 +41,8 @@ class ModalManager {
         this.showModal();
     }
 
-    showHighscores(rows) {
-        this.changeModal(this.highscoresModal);
+    showLeaderboard(rows) {
+        this.changeModal(this.leaderboardModal);
 
         // append highscore rows on table
         rows.forEach(row => this.modalContent.querySelector("table").appendChild(row));

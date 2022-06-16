@@ -1,12 +1,12 @@
-class HighscoresModal extends Modal {
+class LeaderboardModal extends Modal {
     constructor() {
-        super("highscores");
+        super("leaderboard");
     }
 
     getContent() {
         return `
-            <div class="header">Highscores</div>
-            <table id="highscores"></table>
+            <div class="header">Leaderboard</div>
+            <table></table>
             <div class="buttons">
                 <button>
                     <i class="fa fa-home" aria-hidden="true"></i>
