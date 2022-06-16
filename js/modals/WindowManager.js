@@ -2,6 +2,13 @@ class WindowManager {
     previousModal;
     currentModal;
 
+    modal
+    currentModal
+
+    stopWatch
+    pauseButton
+    startMenu
+
     pauseModal;
     resultModal;
     leaderboardModal;
@@ -16,7 +23,7 @@ class WindowManager {
         
         this.stopWatch = document.querySelector("main .stopwatch");
         this.pauseButton = document.querySelector("main .pause-button");
-        this.header = document.querySelector("header");
+        this.startMenu = document.querySelector(".start-menu");
 
         this.pauseModal = new PauseModal();
         this.resultModal = new ResultModal();
@@ -30,7 +37,7 @@ class WindowManager {
 
         this.stopWatch.style.visibility = "hidden";
         this.pauseButton.style.visibility = "hidden";
-        this.header.style.display = "block";
+        this.startMenu.style.display = "block";
 
         return this;
     }
@@ -38,7 +45,7 @@ class WindowManager {
     hideStartMenu() {
         this.stopWatch.style.visibility = "visible";
         this.pauseButton.style.visibility = "visible";
-        this.header.style.display = "none";
+        this.startMenu.style.display = "none";
 
         return this;
     }

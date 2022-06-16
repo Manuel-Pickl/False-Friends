@@ -69,31 +69,52 @@ body .game main .pause-button {
   color: white;
 }
 
-body .game header {
-  z-index: 5;
-  -ms-flex-preferred-size: 80px;
-      flex-basis: 80px;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
-  border-top: solid 3px #503716;
-  background: #d3a15f;
+body .game .start-menu {
+  z-index: 10;
+  position: absolute;
+  inset: 0;
 }
 
-body .game header .buttons button {
-  height: 50px;
-  border: solid 3px #503716;
+body .game .start-menu .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+body .game .start-menu .content > button {
+  margin: 10px;
+  padding: 20px;
+  border: solid 6px #6c350f;
+  border-radius: 20px;
+  background-color: transparent;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  text-shadow: -3px 3px 3px #6c360f, 3px 3px 3px #6c360f, 3px -3px 3px #6c360f, -3px -3px 3px #6c360f;
+}
+
+body .game .start-menu .content > button span {
+  white-space: nowrap;
+}
+
+body .game .start-menu .content .buttons button {
+  width: 46%;
+  padding: 12px;
+  border: solid 3px #6c360f;
   border-radius: 10px;
-  color: #503716;
+  background-color: transparent;
+  color: white;
   font-size: larger;
+  font-weight: bold;
+  text-shadow: -2px 2px 1px #6c360f, 2px 2px 1px #6c360f, 2px -2px 1px #6c360f, -2px -2px 1px #6c360f;
 }
 
-body .game header .buttons button:nth-child(odd) {
-  aspect-ratio: 1;
-}
-
-body .game header .buttons button:nth-child(even) {
-  aspect-ratio: 3;
+body .game .start-menu .content .buttons button i {
+  font-size: xx-large;
+  margin-bottom: 5px;
 }
 
 .particle {

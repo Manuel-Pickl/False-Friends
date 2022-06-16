@@ -76,34 +76,74 @@ body {
         }
 
 
-        header {
-            z-index: 5;
-            
-            flex-basis: 80px;
-
-            display: grid;
-            place-items: center;
+        .start-menu {
+            z-index: 10;
     
-            border-top: solid 3px hsl(34, 57%, 20%);
-            background: hsl(34, 57%, 60%);
+            position: absolute;
+            inset: 0;
 
 
-            .buttons {
-                button {
-                    height: 50px;
-                    
-                    border: solid 3px hsl(34, 57%, 20%);
-                    border-radius: 10px;
-                    color: hsl(34, 57%, 20%);
-                    font-size: larger;
+            .content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                text-align: center;
+
+
+                &>button {
+                    margin: 10px;
+                    padding: 20px;
+    
+                    border: solid 6px hsl(25, 76%, 24%);
+                    border-radius: 20px;
+                    background-color: transparent;
+                    font-size: 40px;
+                    font-weight: bold;
+                    color: white;
+                    $stroke-width: 3px;
+                    $stroke-blur: 3px;
+                    $stroke-color: #6c360f;
+                    text-shadow:
+                        -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
+                        $stroke-width $stroke-width $stroke-blur $stroke-color,
+                        $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
+                        -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
+    
+                    span {
+                        white-space: nowrap;
+                    }
                 }
+    
                 
-                button:nth-child(odd) {
-                    aspect-ratio: 1;
-                }
+                .buttons {
+                    button {
+                        width: 46%;
+                        padding: 12px;
 
-                button:nth-child(even) {
-                    aspect-ratio: 3;
+                        border: solid 3px #6c360f;
+                        border-radius: 10px;
+                        background-color: transparent;
+                        color: white;
+                        font-size: larger;
+                        font-weight: bold;
+
+                        $stroke-width: 2px;
+                        $stroke-blur: 1px;
+                        $stroke-color: #6c360f;
+                        text-shadow:
+                                -1*$stroke-width $stroke-width $stroke-blur $stroke-color,
+                                $stroke-width $stroke-width $stroke-blur $stroke-color,
+                                $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
+                                -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
+
+
+                        i {
+                            font-size: xx-large;
+                            margin-bottom: 5px;
+                        }
+                    }
                 }
             }
         }

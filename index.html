@@ -33,19 +33,28 @@
       </div>
 
       <!-- start menu -->
-      <header>
-        <div class="buttons">
-          <button onclick="showLeaderboard()">
-            <i class="fa fa-trophy" aria-hidden="true"></i>
-          </button>
+      <div class="start-menu">
+        <div class="content">
           <button onclick="startGame()">
-            play
+            <span>
+              play
+            </span><br>
+            <span>
+              false friends
+            </span>
           </button>
-          <button onclick="showSettings()">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-          </button>
+          <div class="buttons">
+            <button onclick="showLeaderboard()">
+              <i class="fa fa-trophy" aria-hidden="true"></i><br>
+              Leaderboard
+            </button>
+            <button onclick="showSettings()">
+              <i class="fa fa-cog" aria-hidden="true"></i><br>
+              Settings
+            </button>
+          </div>
         </div>
-      </header>
+      </div>
     </div>
 
     <!-- scripts -->
