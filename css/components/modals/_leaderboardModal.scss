@@ -1,43 +1,19 @@
 .modal {
     .leaderboard {
-        .header {
-            margin: 20px;
-            
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 35px;
-        }
-        
-        
-        table {
-            margin: 20px auto;
-
-            
-            tr:nth-child(odd) {
-                background:hsl(34, 57%, 30%);
-            }
-            td {
-                padding: 10px;
-                margin: 0;
-            }
-        }
+        .table {
+            max-height: 255px;
+            margin: 10px;
+            overflow: scroll;
 
 
-        .buttons {
-            position: absolute;
-            inset: auto 0 0;
-            margin: 20px;
-            height: 50px;
-
-
-            button {
-                height: 100%;
-                aspect-ratio: 1;
-
-                border: solid 3px hsl(34, 57%, 20%);
-                border-radius: 10px;
-                color: hsl(34, 57%, 20%);
-                font-size: larger;
+            table {
+                tr:nth-child(odd) {
+                    background: $primeColor;
+                }
+                td {
+                    padding: 6px 10px;
+                    margin: 0;
+                }
             }
         }
     }

@@ -20,18 +20,19 @@ const fps = 120;
 var currentTimestamp;
 var lastTimestamp = Date.now();
 
-var simulation;
+var simulation = new Simulation().initialize();
 var modalManager = new ModalManager();
+var leaderboardManager = new LeaderboardManager();
 var rank;
 
-// localStorage.clear();
-var leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
-if (!leaderboard) {
-  leaderboard = [];
-}
 
 
-simulation = new Simulation().initialize();
+// this.leaderboardManager.clear();
+this.leaderboardManager.deserialize();
+this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);
+
+
+
 showStartMenu();
 
 
@@ -95,21 +96,9 @@ setInterval(function() {
   else if (
     simulation.isGameFinished()
     && modalManager.currentModal == null) {
-    // get time
+    // get values
     let time = simulation.stopwatchToString();
-        
-    // calculate rank
-    rank = 1;
-    let rankDetermined = false;
-    while (!rankDetermined && rank <= leaderboard.length) {
-        // if current time is better than highscore on rank x
-      if (simulation.stopwatch < leaderboard[rank - 1].time) {
-          rankDetermined = true;
-        }
-        else {
-            rank++;
-        }
-    }
+    let rank = leaderboardManager.calculateRank(time);
 
     modalManager.showResults(time, rank);
   }
@@ -118,48 +107,18 @@ setInterval(function() {
 }, 1000 / fps);
 
 
-function addToLeaderboard(input) {
-  // save current highscore data
+function addToLeaderboard() {
+  // get current highscore data
   let name = document.querySelector("#name").value;
   let time = simulation.stopwatch;
 
-  // add highscore data at correct rank position
-  leaderboard.splice(rank - 1, 0, {name, time});
+  // update leaderboard data
+  this.leaderboardManager.update(name, time);
 
-  // persistent save of players data
-  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+  // update leaderboard ui
+  this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);  
 
-  // built table rows from data
-  let rows = [];
-  
-  for (let i = 0; i < leaderboard.length; i++) {
-    let rank = i + 1;
-    let name = leaderboard[i].name;
-    let time = leaderboard[i].time;
-    
-    let rankCell = document.createElement("td");
-    rankCell.appendChild(document.createTextNode(`${rank}.`));
-    let nameCell = document.createElement("td");
-    nameCell.appendChild(document.createTextNode(name));
-    let timeCell = document.createElement("td");
-    timeCell.appendChild(document.createTextNode(`${time.toFixed(2)}`));
-    
-    let row = document.createElement("tr");
-    row.appendChild(rankCell);
-    row.appendChild(nameCell);
-    row.appendChild(timeCell);
-
-    rows.push(row);
-  }
-
-  // get leaderboard table
-  let table = document.querySelector(".modal .leaderboard table");
-  table.textContent = "";
-
-  // append highscore rows at leaderboard
-  rows?.forEach(row => table.appendChild(row));
-  
-  // open modal with data
+  // open leaderboard
   this.showLeaderboard();
 }
 

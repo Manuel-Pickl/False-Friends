@@ -17,7 +17,7 @@ class Simulation {
             4: 10
         }
         this.maxLevel = Object.keys(this.craterCountDict).length;
-         this.maxLevel = 1
+        // this.maxLevel = 1
     }
 
     initialize() {

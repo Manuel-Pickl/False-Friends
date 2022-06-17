@@ -68,6 +68,38 @@ class ModalManager {
         this.showModal(this.leaderboardModal);
     }
 
+    updateLeaderboard(leaderboard) {
+        // built table rows from data
+        let rows = [];
+        
+        for (let i = 0; i < leaderboard.length; i++) {
+            let rank = i + 1;
+            let name = leaderboard[i].name;
+            let time = leaderboard[i].time;
+            
+            let rankCell = document.createElement("td");
+            rankCell.appendChild(document.createTextNode(`${rank}.`));
+            let nameCell = document.createElement("td");
+            nameCell.appendChild(document.createTextNode(name));
+            let timeCell = document.createElement("td");
+            timeCell.appendChild(document.createTextNode(`${time.toFixed(2)}`));
+            
+            let row = document.createElement("tr");
+            row.appendChild(rankCell);
+            row.appendChild(nameCell);
+            row.appendChild(timeCell);
+
+            rows.push(row);
+        }
+
+        // get leaderboard table
+        let table = this.leaderboardModal.domElement.querySelector("table");
+        table.textContent = "";
+
+        // append highscore rows at leaderboard
+        rows?.forEach(row => table.appendChild(row));
+    }
+
 
     showSettings() {
         this.showModal(this.settingsModal);

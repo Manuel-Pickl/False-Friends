@@ -203,40 +203,19 @@ body .game main .pause-button {
   color: #6c360f;
 }
 
-.modal .leaderboard .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 35px;
+.modal .leaderboard .table {
+  max-height: 255px;
+  margin: 10px;
+  overflow: scroll;
 }
 
-.modal .leaderboard table {
-  margin: 20px auto;
+.modal .leaderboard .table table tr:nth-child(odd) {
+  background: #6c360f;
 }
 
-.modal .leaderboard table tr:nth-child(odd) {
-  background: #785221;
-}
-
-.modal .leaderboard table td {
-  padding: 10px;
+.modal .leaderboard .table table td {
+  padding: 6px 10px;
   margin: 0;
-}
-
-.modal .leaderboard .buttons {
-  position: absolute;
-  inset: auto 0 0;
-  margin: 20px;
-  height: 50px;
-}
-
-.modal .leaderboard .buttons button {
-  height: 100%;
-  aspect-ratio: 1;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: larger;
 }
 
 .modal .settings {
