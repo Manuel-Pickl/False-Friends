@@ -15,7 +15,7 @@
 
 
 // const debug = false;
-const debug = true;
+const debug = false;
 const fps = 120;
 var currentTimestamp;
 var lastTimestamp = Date.now();
@@ -118,7 +118,7 @@ setInterval(function() {
 }, 1000 / fps);
 
 
-function showResults() {
+function addToLeaderboard(input) {
   // save current highscore data
   let name = document.querySelector("#name").value;
   let time = simulation.stopwatch;
@@ -151,9 +151,20 @@ function showResults() {
 
     rows.push(row);
   }
+
+  // get leaderboard table
+  let table = document.querySelector(".modal .leaderboard table");
+  table.textContent = "";
+
+  // append highscore rows at leaderboard
+  rows?.forEach(row => table.appendChild(row));
   
   // open modal with data
-  modalManager.showLeaderboard(rows);
+  this.showLeaderboard();
+}
+
+function showLeaderboard() {
+  modalManager.showLeaderboard();
 }
 
 function onSensorChanged(event) {

@@ -1,47 +1,29 @@
+@import "../../components/variables";
+
+
+
 .modal {
     .result {
-        .header {
-            margin: 20px;
-
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 50px;
-        }
-
-        
         .time {
-            margin: 20px;
-
-
             .value {
                 font-weight: bold;
-                font-size: xx-large;
-                text-shadow:
-                    -2px 2px 3px hsl(34, 57%, 30%),
-                    2px 2px 3px hsl(34, 57%, 30%),
-                    2px -2px 0 hsl(34, 57%, 30%),
-                    -2px -2px 0 hsl(34, 57%, 30%);
+                font-size: 35px;
+                color: $accentColor;
             }
         }
-
 
         .rank {
             margin: 20px;
 
             
             .value {
-                margin: 0;
-
                 font-weight: bold;
-                font-size: xx-large;
-                color: hsl(34, 57%, 20%);
+                font-size: 45px;
+                color: $accentColor;
             }
         }
 
         .name {
-            margin: 20px;
-
-
             .value {
                 margin-top: 10px;
                 height: 40px;
@@ -53,23 +35,12 @@
                     padding-inline: 8px;
                     
                     outline: none;
-                    border: none;
+                    border: solid 3px $primeColor;
                     border-radius: 10px;
-                    font-size: larger;
-                    color: hsl(34, 57%, 20%);
+                    font-size: 30px;
+                    color: $primeColor;
                 }
 
-
-                button {
-                    height: 100%;
-                    aspect-ratio: 1;
-                    vertical-align: top;
-
-                    border: solid 3px hsl(34, 57%, 20%);
-                    border-radius: 10px;
-                    color: hsl(34, 57%, 20%);
-                    font-size: large;
-                }
             }
         }
     }

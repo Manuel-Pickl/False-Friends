@@ -64,11 +64,8 @@ class ModalManager {
     }
 
 
-    showLeaderboard(rows = null) {
+    showLeaderboard() {
         this.showModal(this.leaderboardModal);
-
-        // append highscore rows on table
-        rows?.forEach(row => this.modalContent.querySelector("table").appendChild(row));
     }
 
 

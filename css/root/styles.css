@@ -60,24 +60,9 @@ body .game main .stopwatch {
 
 body .game main .pause-button {
   z-index: 100;
-  visibility: hidden;
   position: absolute;
   inset: 10px 10px auto auto;
   height: 45px;
-  aspect-ratio: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 50%;
-  font-size: x-large;
-  background-color: #6c360f;
-  color: white;
 }
 
 .particle {
@@ -177,39 +162,19 @@ body .game main .pause-button {
       flex-basis: 100%;
 }
 
-.modal .pause .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 35px;
-}
-
 .modal .pause button {
   display: block;
   margin: 15px auto;
-  width: 150px;
-  padding: 10px;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: large;
-}
-
-.modal .result .header {
-  margin: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 50px;
-}
-
-.modal .result .time {
-  margin: 20px;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: xx-large;
 }
 
 .modal .result .time .value {
   font-weight: bold;
-  font-size: xx-large;
-  text-shadow: -2px 2px 3px #785221, 2px 2px 3px #785221, 2px -2px 0 #785221, -2px -2px 0 #785221;
+  font-size: 35px;
+  color: orange;
 }
 
 .modal .result .rank {
@@ -217,14 +182,9 @@ body .game main .pause-button {
 }
 
 .modal .result .rank .value {
-  margin: 0;
   font-weight: bold;
-  font-size: xx-large;
-  color: #503716;
-}
-
-.modal .result .name {
-  margin: 20px;
+  font-size: 45px;
+  color: orange;
 }
 
 .modal .result .name .value {
@@ -237,20 +197,10 @@ body .game main .pause-button {
   height: 100%;
   padding-inline: 8px;
   outline: none;
-  border: none;
+  border: solid 3px #6c360f;
   border-radius: 10px;
-  font-size: larger;
-  color: #503716;
-}
-
-.modal .result .name .value button {
-  height: 100%;
-  aspect-ratio: 1;
-  vertical-align: top;
-  border: solid 3px #503716;
-  border-radius: 10px;
-  color: #503716;
-  font-size: large;
+  font-size: 30px;
+  color: #6c360f;
 }
 
 .modal .leaderboard .header {
@@ -287,6 +237,10 @@ body .game main .pause-button {
   border-radius: 10px;
   color: #503716;
   font-size: larger;
+}
+
+.modal .settings {
+  text-align: left;
 }
 
 .modal .settings .header {

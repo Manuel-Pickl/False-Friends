@@ -17,7 +17,7 @@ class Simulation {
             4: 10
         }
         this.maxLevel = Object.keys(this.craterCountDict).length;
-        // this.maxLevel = 1
+         this.maxLevel = 1
     }
 
     initialize() {
@@ -108,7 +108,7 @@ class Simulation {
             
             // start new level
             this.startLevel(this.level);
-            this.start();
+            this.resume();
         }.bind(this), finishHoleAnimationDuration);
     }
 

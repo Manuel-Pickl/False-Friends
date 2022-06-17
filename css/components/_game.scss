@@ -60,21 +60,10 @@ body {
     
             .pause-button {
                 z-index: 100;
-                visibility: hidden;
                 
                 position: absolute;
                 inset: 10px 10px auto auto;
                 height: 45px;
-                aspect-ratio: 1;
-            
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            
-                border-radius: 50%;
-                font-size: x-large;
-                background-color: #6c360f;
-                color: white;
             }
         }
     }

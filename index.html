@@ -21,9 +21,9 @@
         <div class="stopwatch"></div>
   
         <!-- pause button -->
-        <div class="pause-button" onclick="pauseGame()">
+        <button class="pause-button" onclick="pauseGame()">
           <i class="fa fa-pause" aria-hidden="true"></i>
-        </div>
+        </button>
       </main>
 
       <!-- menu modal -->
@@ -64,23 +64,20 @@
             Settings
           </div>
         
-          <div>
+          <label for="music">
             <input type="checkbox" id="music" name="music" value="Music"
               onclick="toggleMusic(this)">
-            <label for="music">
-              Music
-            </label>
-          </div>
+            Music
+          </label>
 
-          <div>
+          <label for="remote">
             <input type="checkbox" id="remote" name="remote" value="Remote">
-            <label for="remote">
-              Remote Control
-            </label>
-          </div>
+            Remote Control
+          </label>
+          
 
           <div class="value">
-            <input id="name" type="text" maxlength="20">
+            <input id="ip" type="text" maxlength="20">
             <button onclick="alert('connect')">
               <i class="fa fa-flask" aria-hidden="true"></i>
             </button>
@@ -116,8 +113,8 @@
               Enter your name:
             </div>
             <div class="value">
-              <input id="name" type="text" maxlength="20">
-              <button onclick="showResults()">
+              <input id="name" type="text" maxlength="10">
+              <button onclick="addToLeaderboard()">
                 <i class="fa fa-share" aria-hidden="true"></i>
               </button>
             </div>
@@ -170,7 +167,7 @@
         </div>
       </div>
 
-      <audio src="./assets/cantina.mp3" loop="true">
+      <audio src="./assets/cantina.mp3" loop>
         Your browser does not support the audio element.
       </audio>
 
