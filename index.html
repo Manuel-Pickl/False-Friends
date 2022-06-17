@@ -26,12 +26,156 @@
         </div>
       </main>
 
-      <!-- customizable modal -->
+      <!-- menu modal -->
       <div class="modal">
-        <div class="modal-content">
+          <div class="modal-content menu">
+            <button onclick="startGame()">
+              <span>
+                  play
+              </span><br>
+              <span>
+                  false friends
+              </span>
+          </button>
+          
+          <div class="buttons">
+              <button onclick="showLeaderboard()">
+                  <i class="fa fa-trophy" aria-hidden="true"></i>
+              </button>
+
+              <button onclick="showHelp()">
+                  <i class="fa fa-question" aria-hidden="true"></i>
+              </button>
+
+              <button onclick="showSettings()">
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+              </button>
+          </div>
         </div>
       </div>
+
+      <!-- settings modal -->
+      <div class="modal">
+        <div class="modal-content settings">
+          <div class="header">
+            <button onclick="back()">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            Settings
+          </div>
+        
+          <div>
+            <input type="checkbox" id="music" name="music" value="Music"
+              onclick="toggleMusic(this)">
+            <label for="music">
+              Music
+            </label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="remote" name="remote" value="Remote">
+            <label for="remote">
+              Remote Control
+            </label>
+          </div>
+
+          <div class="value">
+            <input id="name" type="text" maxlength="20">
+            <button onclick="alert('connect')">
+              <i class="fa fa-flask" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- result modal -->
+      <div class="modal">
+        <div class="modal-content result">
+          <div class="header">
+            Finished!
+          </div>
+          
+          <div class="time">
+            <div class="description">
+              Your time was
+            </div>
+            <div class="value">
+              <span></span>
+            </div>
+          </div>
+          
+          <div class="rank">
+            <div class="description">
+              Rank:
+            </div>
+            <div class="value"></div>
+          </div>
+            
+          <div class="name">
+            <div class="description">
+              Enter your name:
+            </div>
+            <div class="value">
+              <input id="name" type="text" maxlength="20">
+              <button onclick="showResults()">
+                <i class="fa fa-share" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- pause modal -->
+      <div class="modal">
+        <div class="modal-content pause">
+          <div class="header">
+            Paused
+          </div>
+          
+          <button onclick="resumeGame()">
+            Resume
+          </button>
+
+          <button onclick="restartGame()">
+            Restart
+          </button>
+          
+          <button onclick="showStartMenu()">
+            Quit
+          </button>
+          
+          <button onclick="showSettings()">
+            Settings
+          </button>
+        </div>
+      </div>
+
+      <!-- leaderboard modal -->
+      <div class="modal">
+        <div class="modal-content leaderboard">
+          <div class="header">
+            Leaderboard
+          </div>
+
+          <table></table>
+
+          <div class="buttons">
+            <button onclick="showStartMenu()">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </button>
+            <button onclick="restartGame()">
+              <i class="fa fa-repeat" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <audio src="./assets/cantina.mp3" loop="true">
+        Your browser does not support the audio element.
+      </audio>
+
     </div>
+    <!-- <embed src="https://music.youtube.com/watch?v=Qo28oMO_TT4&list=RDAMVMQo28oMO_TT4" width="180" height="90" loop="false" autostart="false" hidden="true" /> -->
 
     <!-- scripts -->
     <script>
@@ -50,11 +194,6 @@
     <script src="js/objects/Finish.js"></script>
 
     <script src="js/modals/Modal.js"></script>
-    <script src="js/modals/LeaderboardModal.js"></script>
-    <script src="js/modals/MenuModal.js"></script>
-    <script src="js/modals/PauseModal.js"></script>
-    <script src="js/modals/ResultModal.js"></script>
-    <script src="js/modals/SettingsModal.js"></script>
     <script src="js/modals/ModalManager.js"></script>
 
     <script src="js/Board.js"></script>

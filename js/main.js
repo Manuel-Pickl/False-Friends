@@ -54,7 +54,7 @@ function startGame() {
 
 function restartGame() {
   modalManager.hideModal();
-
+  
   startGame();
 }
 
@@ -162,4 +162,14 @@ function onSensorChanged(event) {
 
   // set board angles
   simulation.board.setAngle(boardAngle);
+}
+
+
+function toggleMusic(checkbox) {
+  if (checkbox.checked) {
+    document.querySelector("audio").play();
+  }
+  else {
+    document.querySelector("audio").pause();
+  }
 }
