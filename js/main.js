@@ -14,7 +14,6 @@
 */
 
 
-// const debug = false;
 const debug = false;
 const fps = 120;
 var currentTimestamp;
@@ -60,6 +59,10 @@ function restartGame() {
 }
 
 function pauseGame() {
+  if (!simulation.running) {
+    return;
+  }
+
   simulation.pause();
   modalManager.showPause();
 }
