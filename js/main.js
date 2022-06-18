@@ -22,17 +22,17 @@ var lastTimestamp = Date.now();
 var simulation = new Simulation().initialize();
 var modalManager = new ModalManager();
 var leaderboardManager = new LeaderboardManager();
-var rank;
+var mqttManager = new MQTTManager();
 
 
 
+// game startup
 // this.leaderboardManager.clear();
 this.leaderboardManager.deserialize();
 this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);
-
-
-
 showStartMenu();
+
+
 
 
 
@@ -145,4 +145,18 @@ function toggleMusic(checkbox) {
   else {
     document.querySelector("audio").pause();
   }
+}
+
+function toggleRemoteControl(checkbox) {
+  if (checkbox.checked) {
+    this.mqttManager.subscribe();
+  }
+  else {
+    this.mqttManager.unsubscribe();
+  }
+}
+
+function connect() {
+  const ipInput = document.querySelector(".modal .settings #ip");
+  this.mqttManager.connect(ipInput.value);
 }

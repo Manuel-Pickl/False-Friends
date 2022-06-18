@@ -237,4 +237,13 @@ body .game main .pause-button {
   place-items: center;
   font-size: 40px;
 }
+
+.modal .settings .broker-log {
+  height: 100px;
+  width: 200px;
+  overflow: scroll;
+  font-size: large;
+  word-wrap: break-word;
+  white-space: normal;
+}
 /*# sourceMappingURL=styles.css.map */

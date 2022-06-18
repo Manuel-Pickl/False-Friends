@@ -14,5 +14,16 @@
                 font-size: 40px;
             }
         }
+
+
+        .broker-log {
+            height: 100px;
+            width: 200px;
+            overflow: scroll;
+
+            font-size: large;
+            word-wrap: break-word;
+            white-space: normal;
+        }
     }
 }
