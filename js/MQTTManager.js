@@ -1,18 +1,21 @@
 class MQTTManager {
     /*
         source: https://www.eclipse.org/paho/index.php?page=clients/js/index.php
+        broker: http://www.hivemq.com/demos/websocket-client/;
     */
     host;
     port;
     topic;
     mqtt;
     brokerLog;
-    // topic == destinationName
-    // connect("broker.mqttdashboard.com:8000");
+    subscribed;
+    message;
     
     constructor() {
         this.brokerLog = document.querySelector(".modal .settings .broker-log");
         this.topic = "FalseFriends";
+        this.subscribed = false;
+        this.message = "0,0,0";
     }
 
     connect(ip) {
@@ -27,7 +30,7 @@ class MQTTManager {
 
         // initialize broker connection
         this.mqtt = new Paho.MQTT.Client(this.host, this.port, "FalseFriends");
-        this.mqtt.onMessageArrived = this.onMessageArrived;
+        this.mqtt.onMessageArrived = this.onMessageArrived.bind(this);
 
         var options = {
             timeout: 3,
@@ -45,14 +48,23 @@ class MQTTManager {
     }
     
     subscribe() {
+        if (this.mqtt == null) {
+            this.brokerLog.textContent = "no broker connected";
+            return 1;
+        }
+
         this.mqtt.subscribe(this.topic);
+        this.subscribed = true;
     }
 
     unsubscribe() {
-        this.mqtt.unsubscribe(this.topic);
+        this.mqtt?.unsubscribe(this.topic);
+        this.subscribed = false;
     }
 
     onMessageArrived(message) {
         console.log(`${message.destinationName}: ${message.payloadString}`);
+
+        this.message = message.payloadString;
     }
 }

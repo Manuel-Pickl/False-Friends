@@ -30,7 +30,11 @@ var mqttManager = new MQTTManager();
 // this.leaderboardManager.clear();
 this.leaderboardManager.deserialize();
 this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);
+
 showStartMenu();
+
+window.addEventListener('deviceorientation', onSensorChanged);
+
 
 
 
@@ -86,6 +90,11 @@ function back() {
 
 // main game looping function
 setInterval(function() {
+  // set board angles from mqtt if subscribed
+  if (this.mqttManager.subscribed) {
+    this.setBoardAnglesFromMQTT();
+  }
+
   currentTimestamp = Date.now();
   let timeDifference = (currentTimestamp - this.lastTimestamp) / 1000;
 
@@ -137,6 +146,18 @@ function onSensorChanged(event) {
   simulation.board.setAngle(boardAngle);
 }
 
+function setBoardAnglesFromMQTT() {
+  // get raspberry pi angle from mqtt borker
+  let angles = this.mqttManager.message.split(",");
+  let gamma = angles[1];
+  let beta = angles[2];
+
+  let boardAngle = new Point(gamma, beta);
+
+  // set board angles
+  simulation.board.setAngle(boardAngle);
+}
+
 
 function toggleMusic(checkbox) {
   if (checkbox.checked) {
@@ -150,8 +171,16 @@ function toggleMusic(checkbox) {
 function toggleRemoteControl(checkbox) {
   if (checkbox.checked) {
     this.mqttManager.subscribe();
+    
+    if (!this.mqttManager.subscribed) {
+      checkbox.checked = false;
+    }
+    else {
+      window.removeEventListener('deviceorientation', onSensorChanged);
+    }
   }
   else {
+    window.addEventListener('deviceorientation', onSensorChanged);
     this.mqttManager.unsubscribe();
   }
 }

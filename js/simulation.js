@@ -39,15 +39,11 @@ class Simulation {
 
     resume() {
         this.running = true;
-        window.addEventListener('deviceorientation', onSensorChanged);
-
         return this;
     }
       
     pause() {
         this.running = false;
-        window.removeEventListener('deviceorientation', onSensorChanged);
-
         return this;
     }
 
