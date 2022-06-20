@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: objects/crater.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,49 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: objects/crater.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Crater obstacle which sucks the ball inside
+ * @extends Hole
+ */
+class Crater extends Hole {
+    slope;
 
+    /**
+     * Create a Crater at the given start position with the given radius and bind an ui element to it.
+     * @param {Point} startPosition Start position of the Crater
+     * @param {number} radius Radius of the Crater
+     */
+    constructor(startPosition, radius) {
+        super(startPosition, radius);
+        
+        this.domElement.classList.add("crater");
+        this.slope = 60; // in degrees
+    }
 
-    <h3> </h3>
+    /**
+     * Get the slope of the crater at an specific point
+     * @param {Point} point Point of the checked angle
+     * @returns {Point} X and Y angles as Point variable
+     */
+    getAngleAtPoint(point) {
+        let angleX = point.x > this.position.x ? -this.slope : this.slope;
+        let angleY = point.y > this.position.y ? -this.slope : this.slope;
+        let angle = new Point(angleX, angleY);
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+        return angle;
+    }
+}</code></pre>
+        </article>
+    </section>
 
 
 

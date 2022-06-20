@@ -1,10 +1,24 @@
+/**
+ * Hole as parent class for canvas objects other than Ball
+ * @extends Particle
+ */
 class Hole extends Particle {
+    /**
+     * Create a Hole at the given start position with the given radius and bind an ui element to it.
+     * @param {Point} startPosition Start position of the Hole
+     * @param {number} radius Radius of the Hole
+     */
     constructor(startPosition, radius) {
         super(startPosition, radius);
         
         this.domElement.classList.add("hole");
     }
 
+    /**
+     * Check if a given points lies inside the hole
+     * @param {Point} point The point which is going to be checked
+     * @returns {boolean} true or false, depending if the point is inside the hole
+     */
     isPointInside(point) {
         /*
             source: https://lakschool.com/de/mathe/kreise-kugeln/lage-kreis-punkt
