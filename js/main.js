@@ -63,29 +63,29 @@ function restartGame() {
 }
 
 function pauseGame() {
-  if (!simulation.running) {
+  if (!this.simulation.running) {
     return;
   }
 
-  simulation.pause();
-  modalManager.showPause();
+  this.simulation.pause();
+  this.modalManager.showPause();
 }
 
 function resumeGame() {
-  modalManager.hideModal();
-  simulation.resume();
+  this.modalManager.hideModal();
+  this.simulation.resume();
 }
 
-function showLeaderboard() {
-  modalManager.showLeaderboard();
+function showLeaderboard(mode) {
+  this.modalManager.showLeaderboard(mode);
 }
 
 function showSettings() {
-  modalManager.showSettings();
+  this.modalManager.showSettings();
 }
 
 function back() {
-  modalManager.back();
+  this.modalManager.back();
 }
 
 // main game looping function
@@ -131,11 +131,11 @@ function addToLeaderboard() {
   this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);  
 
   // open leaderboard
-  this.showLeaderboard();
+  this.showLeaderboard("finish");
 }
 
-function showLeaderboard() {
-  modalManager.showLeaderboard();
+function showLeaderboard(mode) {
+  modalManager.showLeaderboard(mode);
 }
 
 function showHelp() {

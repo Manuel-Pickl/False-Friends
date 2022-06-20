@@ -66,7 +66,29 @@ class ModalManager {
     }
 
 
-    showLeaderboard() {
+    showLeaderboard(mode) {
+        // change appearance of leaderbaord modal depending on mode
+        let backButton = this.leaderboardModal.domElement.querySelector(".header button");
+        let finishButtons = this.leaderboardModal.domElement.querySelector(".buttons");
+
+        switch (mode) {
+            case "back":
+                backButton.style.display = "block";
+                finishButtons.style.display = "none";
+                break;
+            
+            case "finish":
+                backButton.style.display = "none";
+                finishButtons.style.display = "block";
+                break;
+
+            default:
+                throw `ModalManager.showLeaderboard(mode): mode ${mode} does not exists!`;
+        }
+        if (mode != null) {
+
+        }
+
         this.showModal(this.leaderboardModal);
     }
 

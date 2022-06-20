@@ -10,6 +10,14 @@ button {
   text-shadow: -1px 1px 1px #6c360f, 1px 1px 1px #6c360f, 1px -1px 1px #6c360f, -1px -1px 1px #6c360f;
 }
 
+.back-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  font-size: 40px;
+}
+
 @font-face {
   font-family: 'Product Sans';
   font-style: normal;
@@ -117,6 +125,16 @@ body .game main .pause-button {
 .modal .modal-content .header {
   position: relative;
   margin-bottom: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
   font-size: 40px;
 }
 
@@ -187,22 +205,6 @@ body .game main .pause-button {
 
 .modal .settings {
   text-align: left;
-}
-
-.modal .settings .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  gap: 10px;
-}
-
-.modal .settings .header button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  font-size: 40px;
 }
 
 .modal .settings .broker-log {

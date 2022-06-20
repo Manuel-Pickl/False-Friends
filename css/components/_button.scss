@@ -23,3 +23,11 @@ button {
         $stroke-width -1*$stroke-width $stroke-blur $stroke-color,
         -1*$stroke-width -1*$stroke-width $stroke-blur $stroke-color;
 }
+
+
+.back-button {
+    display: flex;
+    place-items: center;
+
+    font-size: 40px;
+}

@@ -3,21 +3,6 @@
         text-align: left;
 
         
-       .header {
-            display: flex;
-            place-items: center;
-            gap: 10px;
-
-
-            button {
-                display: flex;
-                place-items: center;
-
-                font-size: 40px;
-            }
-        }
-
-
         .broker-log {
             height: 100px;
             width: 200px;
