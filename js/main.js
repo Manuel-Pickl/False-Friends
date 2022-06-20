@@ -41,11 +41,11 @@ window.addEventListener('deviceorientation', onSensorChanged);
 
 
 function showStartMenu() {
-  modalManager.showStartMenu();
+  this.modalManager.showStartMenu();
 
-  simulation.initialize();
-  simulation.board.placeBall(new Point(Utility.canvas.clientWidth * 0.5, Utility.canvas.clientHeight * 0.8));
-  simulation.resume();
+  this.simulation.initialize();
+  this.simulation.board.placeBall(new Point(Utility.canvas.clientWidth * 0.5, Utility.canvas.clientHeight * 0.8));
+  this.simulation.resume();
 }
 
 
@@ -136,6 +136,10 @@ function addToLeaderboard() {
 
 function showLeaderboard() {
   modalManager.showLeaderboard();
+}
+
+function showHelp() {
+  modalManager.showHelp();
 }
 
 function onSensorChanged(event) {

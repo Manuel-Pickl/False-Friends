@@ -5,11 +5,12 @@ class ModalManager {
     stopWatch
     pauseButton
 
-    leaderboardModal;
     menuModal;
+    leaderboardModal;
+    helpModal;
+    settingsModal;
     pauseModal;
     resultModal;
-    settingsModal;
 
     constructor() {
         this.previousModal = null;        
@@ -18,11 +19,12 @@ class ModalManager {
         this.stopWatch = document.querySelector("main .stopwatch");
         this.pauseButton = document.querySelector("main .pause-button");
 
-        this.leaderboardModal = new Modal("leaderboard");
         this.menuModal = new Modal("menu");
+        this.leaderboardModal = new Modal("leaderboard");
+        this.helpModal = new Modal("help");
+        this.settingsModal = new Modal("settings");
         this.pauseModal = new Modal("pause");
         this.resultModal = new Modal("result");
-        this.settingsModal = new Modal("settings");
     }
     
 
@@ -66,6 +68,10 @@ class ModalManager {
 
     showLeaderboard() {
         this.showModal(this.leaderboardModal);
+    }
+
+    showHelp() {
+        this.showModal(this.helpModal);
     }
 
     updateLeaderboard(leaderboard) {

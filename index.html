@@ -55,6 +55,44 @@
         </div>
       </div>
 
+      <!-- leaderboard modal -->
+      <div class="modal">
+        <div class="modal-content leaderboard">
+          <div class="header">
+            Leaderboard
+          </div>
+
+          <div class="table">
+            <table></table>
+          </div>
+
+          <div class="buttons">
+            <button onclick="showStartMenu()">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- help modal -->
+      <div class="modal">
+        <div class="modal-content help">
+          <div class="header">
+            <button onclick="back()">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            Help
+          </div>
+
+          <p>
+            The goal of this game is to get the ball in the black hole, while avoiding different obstacles on its path.
+          </p>
+          <p>
+            The ball is controlled via the gyrosensor of your smartphone or a remote controlling device.
+          </p>
+        </div>
+      </div>
+
       <!-- settings modal -->
       <div class="modal">
         <div class="modal-content settings">
@@ -89,6 +127,31 @@
         </div>
       </div>
       
+      <!-- pause modal -->
+      <div class="modal">
+        <div class="modal-content pause">
+          <div class="header">
+            Paused
+          </div>
+          
+          <button onclick="resumeGame()">
+            Resume
+          </button>
+
+          <button onclick="restartGame()">
+            Restart
+          </button>
+          
+          <button onclick="showStartMenu()">
+            Quit
+          </button>
+          
+          <button onclick="showSettings()">
+            Settings
+          </button>
+        </div>
+      </div>
+
       <!-- result modal -->
       <div class="modal">
         <div class="modal-content result">
@@ -125,61 +188,13 @@
           </div>
         </div>
       </div>
-      
-      <!-- pause modal -->
-      <div class="modal">
-        <div class="modal-content pause">
-          <div class="header">
-            Paused
-          </div>
-          
-          <button onclick="resumeGame()">
-            Resume
-          </button>
-
-          <button onclick="restartGame()">
-            Restart
-          </button>
-          
-          <button onclick="showStartMenu()">
-            Quit
-          </button>
-          
-          <button onclick="showSettings()">
-            Settings
-          </button>
-        </div>
-      </div>
-
-      <!-- leaderboard modal -->
-      <div class="modal">
-        <div class="modal-content leaderboard">
-          <div class="header">
-            Leaderboard
-          </div>
-
-          <div class="table">
-            <table></table>
-          </div>
-
-          <div class="buttons">
-            <button onclick="showStartMenu()">
-              <i class="fa fa-home" aria-hidden="true"></i>
-            </button>
-            <button onclick="restartGame()">
-              <i class="fa fa-repeat" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <audio src="./assets/cantina.mp3" loop>
         Your browser does not support the audio element.
       </audio>
 
     </div>
-    <!-- <embed src="https://music.youtube.com/watch?v=Qo28oMO_TT4&list=RDAMVMQo28oMO_TT4" width="180" height="90" loop="false" autostart="false" hidden="true" /> -->
-
+    
     <!-- scripts -->
     <script>
         if ('serviceWorker' in navigator) {

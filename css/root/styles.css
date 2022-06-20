@@ -162,6 +162,58 @@ body .game main .pause-button {
       flex-basis: 100%;
 }
 
+.modal .leaderboard .table {
+  max-height: 255px;
+  margin: 10px;
+  overflow: scroll;
+}
+
+.modal .leaderboard .table table tr:nth-child(odd) {
+  background: #6c360f;
+}
+
+.modal .leaderboard .table table td {
+  padding: 6px 10px;
+  margin: 0;
+}
+
+.modal .help p {
+  width: 250px;
+  overflow: scroll;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.modal .settings {
+  text-align: left;
+}
+
+.modal .settings .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  gap: 10px;
+}
+
+.modal .settings .header button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  font-size: 40px;
+}
+
+.modal .settings .broker-log {
+  height: 100px;
+  width: 200px;
+  overflow: scroll;
+  font-size: large;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
 .modal .pause button {
   display: block;
   margin: 15px auto;
@@ -201,49 +253,5 @@ body .game main .pause-button {
   border-radius: 10px;
   font-size: 30px;
   color: #6c360f;
-}
-
-.modal .leaderboard .table {
-  max-height: 255px;
-  margin: 10px;
-  overflow: scroll;
-}
-
-.modal .leaderboard .table table tr:nth-child(odd) {
-  background: #6c360f;
-}
-
-.modal .leaderboard .table table td {
-  padding: 6px 10px;
-  margin: 0;
-}
-
-.modal .settings {
-  text-align: left;
-}
-
-.modal .settings .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  gap: 10px;
-}
-
-.modal .settings .header button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  font-size: 40px;
-}
-
-.modal .settings .broker-log {
-  height: 100px;
-  width: 200px;
-  overflow: scroll;
-  font-size: large;
-  word-wrap: break-word;
-  white-space: normal;
 }
 /*# sourceMappingURL=styles.css.map */
