@@ -1,8 +1,8 @@
 /**
  * Crater obstacle which sucks the ball inside
- * @extends Hole
+ * @extends Obstacle
  */
-class Crater extends Hole {
+class Crater extends Obstacle {
     slope;
 
     /**

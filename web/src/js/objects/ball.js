@@ -26,7 +26,7 @@ class Ball extends Particle {
      * Compute the physics of the Ball by the angle at its current position and calculate its new position.
      * 
      * @param {Point} boardAngle X and Y angles of the Board at the ball's current position
-     * @param {float} timeDifference Time that past since the last calculation of the balls phyics
+     * @param {float} timeDifference Time that passed since the last calculation of the balls phyics
      */
     computePhysics(boardAngle, timeDifference) {
         // include crater angle at current position
@@ -118,7 +118,7 @@ class Ball extends Particle {
     /**
      * Calculate the balls velicity difference since the last calculation
      * @param {Point} acceleration The balls current acceleration
-     * @param {float} timeDifference Time that past since the last calculation of the balls phyics
+     * @param {float} timeDifference Time that passed since the last calculation of the balls phyics
      * @returns X and Y velocity change
      */
     calculateDeltaVelocity(acceleration, timeDifference) {
@@ -181,7 +181,7 @@ class Ball extends Particle {
     /**
      * Calculate the balls traveled distance from its acceleration since the last calculation
      * @param {Point} acceleration The balls current acceleration
-     * @param {float} timeDifference Time that past since the last calculation of the balls phyics
+     * @param {float} timeDifference Time that passed since the last calculation of the balls phyics
      * @returns {Point} X and Y distance
      */
     calculateDistance(acceleration, timeDifference) {

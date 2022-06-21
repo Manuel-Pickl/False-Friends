@@ -56,6 +56,7 @@
     onConnect() {
         this.brokerLog.textContent = `Connected to broker at: ${this.host}:${this.port} with topic ${this.topic}`;
     }
+    
     /**
      * Triggers a console log on connection failure to the broker
      */

@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["src/js"],
+        "include": ["web/src/js"],
         "includePattern": ".js$"
     },
     "templates": {
@@ -9,6 +9,6 @@
     },
     "opts": {
         "recurse": true,
-        "destination": "../jsdoc"
+        "destination": "jsdoc"
     }
 }

@@ -1,8 +1,8 @@
 /**
  * Finish object, in which the ball needs to be navigated
- * @extends Hole
+ * @extends Obstacle
  */
-class Finish extends Hole {
+class Finish extends Obstacle {
     /**
      * Create a Finish at the given start position with the given radius and bind an ui element to it.
      * @param {Point} startPosition Start position of the Finish

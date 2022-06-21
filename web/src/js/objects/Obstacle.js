@@ -1,12 +1,12 @@
 /**
- * Hole as parent class for canvas objects other than Ball
+ * Parent class for all canvas objects other than Ball
  * @extends Particle
  */
-class Hole extends Particle {
+class Obstacle extends Particle {
     /**
-     * Create a Hole at the given start position with the given radius and bind an ui element to it.
-     * @param {Point} startPosition Start position of the Hole
-     * @param {number} radius Radius of the Hole
+     * Create an Obstacle at the given start position with the given radius and bind an ui element to it.
+     * @param {Point} startPosition Start position of the Obstacle
+     * @param {number} radius Radius of the Obstacle
      */
     constructor(startPosition, radius) {
         super(startPosition, radius);
@@ -15,9 +15,9 @@ class Hole extends Particle {
     }
 
     /**
-     * Check if a given points lies inside the hole
+     * Check if a given points lies inside the Obstacle
      * @param {Point} point The point which is going to be checked
-     * @returns {boolean} true or false, depending if the point is inside the hole
+     * @returns {boolean} true or false, depending if the point is inside the Obstacle
      */
     isPointInside(point) {
         /*
