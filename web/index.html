@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
     <meta name="theme-color" content="#000000"/>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
@@ -22,7 +23,7 @@
         <div class="stopwatch"></div>
   
         <!-- pause button -->
-        <button class="pause-button" onclick="pauseGame()">
+        <button class="pause-button" onclick="game.pauseGame()">
           <i class="fa fa-pause" aria-hidden="true"></i>
         </button>
       </main>
@@ -30,7 +31,7 @@
       <!-- menu modal -->
       <div class="modal">
           <div class="modal-content menu">
-            <button onclick="startGame()">
+            <button onclick="game.startGame()">
               <span>
                   play
               </span><br>
@@ -40,15 +41,15 @@
           </button>
           
           <div class="buttons">
-              <button onclick="showLeaderboard('back')">
+              <button onclick="game.showLeaderboard('back')">
                   <i class="fa fa-trophy" aria-hidden="true"></i>
               </button>
 
-              <button onclick="showHelp()">
+              <button onclick="game.showHelp()">
                   <i class="fa fa-question" aria-hidden="true"></i>
               </button>
 
-              <button onclick="showSettings()">
+              <button onclick="game.showSettings()">
                   <i class="fa fa-cog" aria-hidden="true"></i>
               </button>
           </div>
@@ -59,7 +60,7 @@
       <div class="modal">
         <div class="modal-content leaderboard">
           <div class="header">
-            <button class="back-button" onclick="back()">
+            <button class="back-button" onclick="game.back()">
               <i class="fa fa-angle-left" aria-hidden="true"></i>
             </button>
             Leaderboard
@@ -70,10 +71,10 @@
           </div>
 
           <div class="buttons">
-            <button onclick="showStartMenu()">
+            <button onclick="game.showStartMenu()">
               <i class="fa fa-home" aria-hidden="true"></i>
             </button>
-            <button onclick="restartGame()">
+            <button onclick="game.restartGame()">
               <i class="fa fa-repeat" aria-hidden="true"></i>
             </button>
           </div>
@@ -84,7 +85,7 @@
       <div class="modal">
         <div class="modal-content help">
           <div class="header">
-            <button onclick="back()">
+            <button onclick="game.back()">
               <i class="fa fa-angle-left" aria-hidden="true"></i>
             </button>
             Help
@@ -103,7 +104,7 @@
       <div class="modal">
         <div class="modal-content settings">
           <div class="header">
-            <button class="back-button" onclick="back()">
+            <button class="back-button" onclick="game.back()">
               <i class="fa fa-angle-left" aria-hidden="true"></i>
             </button>
             Settings
@@ -111,20 +112,20 @@
         
           <label for="music">
             <input type="checkbox" id="music" name="music" value="Music"
-              onclick="toggleMusic(this)">
+              onclick="game.toggleMusic(this)">
             Music
           </label>
 
           <label for="remote">
             <input type="checkbox" id="remote" name="remote" value="Remote"
-              onclick="toggleRemoteControl(this)">
+              onclick="game.toggleRemoteControl(this)">
             Remote Control
           </label>
           
 
           <div class="value">
             <input id="ip" type="text">
-            <button onclick="connect()">
+            <button onclick="game.connect()">
               <i class="fa fa-flask" aria-hidden="true"></i>
             </button>
           </div>
@@ -140,19 +141,19 @@
             Paused
           </div>
           
-          <button onclick="resumeGame()">
+          <button onclick="game.resumeGame()">
             Resume
           </button>
 
-          <button onclick="restartGame()">
+          <button onclick="game.restartGame()">
             Restart
           </button>
           
-          <button onclick="showStartMenu()">
+          <button onclick="game.showStartMenu()">
             Quit
           </button>
           
-          <button onclick="showSettings()">
+          <button onclick="game.showSettings()">
             Settings
           </button>
         </div>
@@ -187,7 +188,7 @@
             </div>
             <div class="value">
               <input id="name" type="text" maxlength="10">
-              <button onclick="addToLeaderboard()">
+              <button onclick="game.addToLeaderboard()">
                 <i class="fa fa-share" aria-hidden="true"></i>
               </button>
             </div>
@@ -218,7 +219,7 @@
 
     <script src="src/js/objects/Particle.js"></script>
     <script src="src/js/objects/Ball.js"></script>
-    <script src="src/js/objects/Hole.js"></script>
+    <script src="src/js/objects/Obstacle.js"></script>
     <script src="src/js/objects/Crater.js"></script>
     <script src="src/js/objects/Finish.js"></script>
 
@@ -227,6 +228,8 @@
 
     <script src="src/js/Board.js"></script>
     <script src="src/js/Simulation.js"></script>
-    <script src="src/js/Main.js"></script>
+    <script src="src/js/Game.js"></script>
+
+    <script src="src/js/index.js"></script>
   </body>
 </html>
