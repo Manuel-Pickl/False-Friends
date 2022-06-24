@@ -4,11 +4,12 @@
  class MQTTManager {
     /*
         source: https://www.eclipse.org/paho/index.php?page=clients/js/index.php
-        broker: http://www.hivemq.com/demos/websocket-client/;
+        test broker: http://www.hivemq.com/demos/websocket-client/;
     */
     host;
     port;
-    topic;
+    subTopic;
+    pubTopic;
     mqtt;
     brokerLog;
     subscribed;
@@ -19,9 +20,10 @@
      */
     constructor() {
         this.brokerLog = document.querySelector(".modal .settings .broker-log");
-        this.topic = "FalseFriends";
+        this.subTopic = "sensehat/data";
+        this.pubTopic = "sensehat/message";
         this.subscribed = false;
-        this.message = "0,0,0";
+        this.message = "0,0";
     }
 
     /**
@@ -39,7 +41,7 @@
         this.port = parseInt(ipArray[1]);
 
         // initialize broker connection
-        this.mqtt = new Paho.MQTT.Client(this.host, this.port, "FalseFriends");
+        this.mqtt = new Paho.MQTT.Client(this.host, this.port, "");
         this.mqtt.onMessageArrived = this.onMessageArrived.bind(this);
 
         var options = {
@@ -54,7 +56,7 @@
      * Triggers a console log on connection success to the broker
      */
     onConnect() {
-        this.brokerLog.textContent = `Connected to broker at: ${this.host}:${this.port} with topic ${this.topic}`;
+        this.brokerLog.textContent = `Connected to broker at: ${this.host}:${this.port}`;
     }
     
     /**
@@ -65,7 +67,7 @@
     }
     
     /**
-     * Subscribe to the topic "FalseFriends"
+     * Subscribe to the broker
      */
     subscribe() {
         if (this.mqtt == null) {
@@ -73,15 +75,15 @@
             return;
         }
 
-        this.mqtt.subscribe(this.topic);
+        this.mqtt.subscribe(this.subTopic);
         this.subscribed = true;
     }
 
     /**
-     * Unsubscribe from the topic "FalseFriends"
+     * Unsubscribe from the broker
      */
     unsubscribe() {
-        this.mqtt?.unsubscribe(this.topic);
+        this.mqtt?.unsubscribe(this.subTopic);
         this.subscribed = false;
     }
 
@@ -90,8 +92,25 @@
      * @param {*} message The published message from the broker
      */
     onMessageArrived(message) {
-        console.log(`${message.destinationName}: ${message.payloadString}`);
+        if (debug) {
+            console.log(`recieved on topic "${message.destinationName}": "${message.payloadString}"`);
+        }
 
         this.message = message.payloadString;
+    }
+
+    /**
+     * Publish a message to the broker.
+     * @param {string} message The message that gets published to the broker
+     */
+    publishMessage(message) {
+        if (debug) {
+            console.log(`published on topic "${this.pubTopic}": "${message}"`);
+        }
+
+        let mqttMessage = new Paho.MQTT.Message(message);
+        mqttMessage.destinationName = this.pubTopic;
+
+        this.mqtt.send(mqttMessage);
     }
 }
