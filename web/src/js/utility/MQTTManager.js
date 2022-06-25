@@ -104,6 +104,10 @@
      * @param {string} message The message that gets published to the broker
      */
     publishMessage(message) {
+        if (!this.subscribed) {
+            return;
+        }
+        
         if (debug) {
             console.log(`published on topic "${this.pubTopic}": "${message}"`);
         }

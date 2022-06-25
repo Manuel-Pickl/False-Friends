@@ -5,8 +5,8 @@ class Board {
     maxAngleUsed;
     boardAngle;
 
-    craters;
-    craterRadiusInterval;
+    obstacles;
+    obstacleRadiusInterval;
     ball;
     ballRadius;
     finish;
@@ -30,27 +30,28 @@ class Board {
         this.maxAngleUsed = 35;
         this.boardAngle = new Point();
 
-        this.craters = [];
+        this.obstacles = { craters: [], hills: [], muds: []}
+
         this.ballRadius = 20;
-        this.craterRadiusInterval = [this.ballRadius * 2, this.ballRadius * 5];
+        this.obstacleRadiusInterval = [this.ballRadius * 2, this.ballRadius * 5];
         this.finishRadius = this.ballRadius * 1.5;
 
         return this;
     }
 
     /**
-     * Place a given number of craters randomly on the board without intersecting each other
-     * @param {number} count 
+     * Place a given number of craters randomly on the board without intersecting with other obstacles
+     * @param {number} count Crater count
      */
     placeCraters(count) {
         // clear current craters
-        this.craters.forEach(crater => crater.remove());
-        this.craters.length = 0;
+        this.obstacles.craters.forEach(crater => crater.remove());
+        this.obstacles.craters.length = 0;
 
         // generate random non intersecting craters
         for (let i = 0; i < count; i++) {
             // get random crater radius
-            let craterRadius = Utility.getRandomIntegerInRange(this.craterRadiusInterval[0], this.craterRadiusInterval[1]);
+            let craterRadius = Utility.getRandomIntegerInRange(this.obstacleRadiusInterval[0], this.obstacleRadiusInterval[1]);
 
             let craterPosition;
             let craterIntersects;
@@ -64,7 +65,7 @@ class Board {
                 );
 
                 // check intersection with other craters
-                this.craters.forEach(crater => {
+                this.obstacles.craters.forEach(crater => {
                     let craterDistance = Math.sqrt(Math.pow(craterPosition.x - crater.position.x, 2) + Math.pow(craterPosition.y - crater.position.y, 2));
                     if (craterDistance <= craterRadius + crater.radius) {
                         craterIntersects = true;
@@ -74,7 +75,107 @@ class Board {
             } while (craterIntersects);
 
             // intialize crater with generated data and draw
-            this.craters.push(new Crater(craterPosition, craterRadius).draw());
+            this.obstacles.craters.push(new Crater(craterPosition, craterRadius, 60).draw());
+        }
+    }
+
+    /**
+     * Place a given number of Hills randomly on the board without intersecting with other obstacles
+     * @param {number} count Hill count
+     */
+    placeHills(count) {
+        // clear current hills
+        this.obstacles.hills.forEach(hill => hill.remove());
+        this.obstacles.hills.length = 0;
+
+        // generate random non intersecting hills
+        for (let i = 0; i < count; i++) {
+            // get random hill radius
+            let hillRadius = Utility.getRandomIntegerInRange(this.obstacleRadiusInterval[0], this.obstacleRadiusInterval[1]);
+
+            let hillPosition;
+            let bumpIntersects;
+            do {
+                bumpIntersects = false;
+
+                // get random hill position
+                hillPosition = new Point(
+                    Utility.getRandomIntegerInRange(0, Utility.canvas.clientWidth),
+                    Utility.getRandomIntegerInRange(0, Utility.canvas.clientHeight)
+                );
+
+                // check intersection with other bumps
+                this.obstacles.craters.forEach(crater => {
+                    let craterDistance = Math.sqrt(Math.pow(hillPosition.x - crater.position.x, 2) + Math.pow(hillPosition.y - crater.position.y, 2));
+                    if (craterDistance <= hillRadius + crater.radius) {
+                        bumpIntersects = true;
+                    }
+                });
+                this.obstacles.hills.forEach(hill => {
+                    let hillDistance = Math.sqrt(Math.pow(hillPosition.x - hill.position.x, 2) + Math.pow(hillPosition.y - hill.position.y, 2));
+                    if (hillDistance <= hillRadius + hill.radius) {
+                        bumpIntersects = true;
+                    }
+                });
+
+            // only allow crater position, if no intersection
+            } while (bumpIntersects);
+
+            // intialize crater with generated data and draw
+            this.obstacles.hills.push(new Hill(hillPosition, hillRadius, -60).draw());
+        }
+    }
+
+    /**
+     * Place a given number of Mud puddles randomly on the board without intersecting with other obstacles
+     * @param {number} count Mud count
+     */
+     placeMud(count) {
+        // clear current Mud puddles
+        this.obstacles.muds.forEach(obstacle => obstacle.remove());
+        this.obstacles.muds.length = 0;
+
+        // generate random non intersecting mud puddles
+        for (let i = 0; i < count; i++) {
+            // get random hill radius
+            let mudRadius = Utility.getRandomIntegerInRange(this.obstacleRadiusInterval[0], this.obstacleRadiusInterval[1]);
+
+            let mudPosition;
+            let bumpIntersects;
+            do {
+                bumpIntersects = false;
+
+                // get random hill position
+                mudPosition = new Point(
+                    Utility.getRandomIntegerInRange(0, Utility.canvas.clientWidth),
+                    Utility.getRandomIntegerInRange(0, Utility.canvas.clientHeight)
+                );
+
+                // check intersection with other bumps
+                this.obstacles.craters.forEach(crater => {
+                    let craterDistance = Math.sqrt(Math.pow(mudPosition.x - crater.position.x, 2) + Math.pow(mudPosition.y - crater.position.y, 2));
+                    if (craterDistance <= mudRadius + crater.radius) {
+                        bumpIntersects = true;
+                    }
+                });
+                this.obstacles.hills.forEach(hill => {
+                    let hillDistance = Math.sqrt(Math.pow(mudPosition.x - hill.position.x, 2) + Math.pow(mudPosition.y - hill.position.y, 2));
+                    if (hillDistance <= mudRadius + hill.radius) {
+                        bumpIntersects = true;
+                    }
+                });
+                this.obstacles.muds.forEach(mud => {
+                    let mudDistance = Math.sqrt(Math.pow(mudPosition.x - mud.position.x, 2) + Math.pow(mudPosition.y - mud.position.y, 2));
+                    if (mudDistance <= mudRadius + mud.radius) {
+                        bumpIntersects = true;
+                    }
+                });
+
+            // only allow crater position, if no intersection
+            } while (bumpIntersects);
+
+            // intialize crater with generated data and draw
+            this.obstacles.muds.push(new Mud(mudPosition, mudRadius).draw());
         }
     }
 
@@ -100,7 +201,7 @@ class Board {
             );
 
             // check intersection with craters
-            this.craters.forEach(crater => {
+            this.obstacles.craters.forEach(crater => {
                 let craterDistance = Math.sqrt(Math.pow(finishPosition.x - crater.position.x, 2) + Math.pow(finishPosition.y - crater.position.y, 2));
                 if (craterDistance <= this.finishRadius + crater.radius) {
                     craterIntersects = true;
@@ -151,7 +252,7 @@ class Board {
         this.ball?.remove();
 
         // generate ball on generated  position
-        this.ball = new Ball(ballPosition, 20, this.craters).draw();
+        this.ball = new Ball(ballPosition, 20, this.obstacles).draw();
     }
 
     /**

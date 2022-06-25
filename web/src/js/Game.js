@@ -47,7 +47,7 @@
     run() {
         // set board angles from mqtt if subscribed
         if (this.mqttManager.subscribed) {
-        this.setBoardAnglesFromMQTT();
+          this.setBoardAnglesFromMQTT();
         }
     
         this.currentTimestamp = Date.now();

@@ -4,20 +4,20 @@
  */
 class Ball extends Particle {
     velocity;
-    craters;
+    obstacles;
     originalRadius;
 
     /**
      * Create a Ball at the given start position with the given radius and bind an ui element to it.
      * @param {Point} startPosition Start position of the Ball
      * @param {number} radius Radius of the Ball
-     * @param {Crater[]} craters Array of Craters currently on the board
+     * @param {{Crater[], Hill[], Mud[]}} obstacles Obstacles currently on the board
      */
-    constructor(startPosition, radius, craters) {
+    constructor(startPosition, radius, obstacles) {
         super(startPosition, radius);
         
         this.domElement.classList.add("ball");
-        this.craters = craters;
+        this.obstacles = obstacles;
         this.velocity = new Point();
         this.originalRadius = radius;
     }
@@ -29,8 +29,8 @@ class Ball extends Particle {
      * @param {float} timeDifference Time that passed since the last calculation of the balls phyics
      */
     computePhysics(boardAngle, timeDifference) {
-        // include crater angle at current position
-        let boardAngleModified = this.includeCraterAngles(boardAngle);
+        // include bump angle at current position
+        let boardAngleModified = this.includeBumpAngles(boardAngle);
 
         // acceleration
         let acceleration = this.calculateAcceleration(boardAngleModified);
@@ -45,15 +45,15 @@ class Ball extends Particle {
     }
 
     /**
-     * Calculate the actual angle at the balls positions including craters
+     * Calculate the actual angle at the balls positions including Bumps
      * @param {Point} boardAngle X and Y angles of the Board at the ball's current position
-     * @returns {Point} Actual angle at balls position including craters
+     * @returns {Point} Actual angle at balls position including Bumps
      */
-    includeCraterAngles(boardAngle) {
+    includeBumpAngles(boardAngle) {
         let boardAngleModified = new Point(boardAngle.x, boardAngle.y);
 
         // check for each crater, if ball is inside
-        this.craters.forEach(crater => {
+        this.obstacles.craters.forEach(crater => {
             if (!crater.isPointInside(this.position)) {
                 return;
             }
@@ -63,22 +63,35 @@ class Ball extends Particle {
             // add crater angle to board angle
             boardAngleModified.x += craterAngle.x;
             boardAngleModified.y += craterAngle.y;
-
-            // cap angle at 90°
-            if (boardAngleModified.x > Physics.maxAngle) {
-                boardAngleModified.x = Physics.maxAngle;
-            }
-            else if (boardAngleModified.x < -Physics.maxAngle) {
-                boardAngleModified.x = -Physics.maxAngle;
-            }
-
-            if (boardAngleModified.y > Physics.maxAngle) {
-                boardAngleModified.y = Physics.maxAngle;
-            }
-            else if (boardAngleModified.y < -Physics.maxAngle) {
-                boardAngleModified.y = -Physics.maxAngle;
-            }
         });
+
+        // check for each hill, if ball is inside
+        this.obstacles.hills.forEach(hill => {
+            if (!hill.isPointInside(this.position)) {
+                return;
+            }
+            
+            let hillAngle = hill.getAngleAtPoint(this.position);
+
+            // add crater angle to board angle
+            boardAngleModified.x += hillAngle.x;
+            boardAngleModified.y += hillAngle.y;
+        });
+
+        // cap angle at 90°
+        if (boardAngleModified.x > Physics.maxAngle) {
+            boardAngleModified.x = Physics.maxAngle;
+        }
+        else if (boardAngleModified.x < -Physics.maxAngle) {
+            boardAngleModified.x = -Physics.maxAngle;
+        }
+
+        if (boardAngleModified.y > Physics.maxAngle) {
+            boardAngleModified.y = Physics.maxAngle;
+        }
+        else if (boardAngleModified.y < -Physics.maxAngle) {
+            boardAngleModified.y = -Physics.maxAngle;
+        }
         
         return boardAngleModified;
     }
@@ -147,22 +160,36 @@ class Ball extends Particle {
         this.velocity.x += deltaVelocity.x;
         this.velocity.y += deltaVelocity.y;
         
-        // simulate resistances like friction, drag, etc.
-        if (this.velocity.y >= Physics.resistance) {
-            this.velocity.y -= Physics.resistance;
+        let resistance = Physics.resistance;
+
+        // check for each Mud puddle, if ball is inside
+        if (this.obstacles.muds != null) {
+            this.obstacles.muds?.forEach(mud => {
+                if (!mud.isPointInside(this.position)) {
+                    return;
+                }
+                
+                // add mud resistance to current resistance
+                resistance += 0.045;
+            });
         }
-        else if (this.velocity.y <= -Physics.resistance) {
-            this.velocity.y += Physics.resistance;
+
+        // simulate resistances like friction, drag, etc.
+        if (this.velocity.y >= resistance) {
+            this.velocity.y -= resistance;
+        }
+        else if (this.velocity.y <= -resistance) {
+            this.velocity.y += resistance;
         }
         else {
             this.velocity.y = 0;
         }
         
-        if (this.velocity.x >= Physics.resistance) {
-            this.velocity.x -= Physics.resistance;
+        if (this.velocity.x >= resistance) {
+            this.velocity.x -= resistance;
         }
-        else if (this.velocity.x <= -Physics.resistance) {
-            this.velocity.x += Physics.resistance;
+        else if (this.velocity.x <= -resistance) {
+            this.velocity.x += resistance;
         }
         else {
             this.velocity.x = 0;
@@ -207,10 +234,11 @@ class Ball extends Particle {
      * @param {Point} deltaDistance X and Y distance
      */
     setPos(deltaDistance) {
-        // ###
+        // set field size in meters
         const fieldHeight = 20;
         const fieldWidth = Utility.canvas.clientWidth / Utility.canvas.clientHeight * fieldHeight;
 
+        // map traveled distance to field size
         let ratioX = deltaDistance.x / fieldWidth;
         let deltaX = ratioX * Utility.canvas.clientWidth;
         this.position.x += deltaX;

@@ -1,25 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Class: Board</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Board</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Class: Board</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Board.html">Board</a></li><li><a href="Crater.html">Crater</a></li><li><a href="Finish.html">Finish</a></li><li><a href="Game.html">Game</a></li><li><a href="LeaderboardManager.html">LeaderboardManager</a></li><li><a href="Modal.html">Modal</a></li><li><a href="ModalManager.html">ModalManager</a></li><li><a href="MQTTManager.html">MQTTManager</a></li><li><a href="Obstacle.html">Obstacle</a></li><li><a href="Particle.html">Particle</a></li><li><a href="Physics.html">Physics</a></li><li><a href="Point.html">Point</a></li><li><a href="Simulation.html">Simulation</a></li><li><a href="Utility.html">Utility</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Board</h1>
+                </header>
+                
 
 
 
@@ -39,18 +96,29 @@
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="Board"><span class="type-signature"></span>new Board<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
 
+    
+    <h4 class="name" id="Board">
+        <a class="href-link" href="#Board">#</a>
+        
+        <span class="code-name">
+            
+                new Board<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
 
 
 
@@ -89,18 +157,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line4">line 4</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line4">line 4</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -123,9 +192,15 @@
 
 
 
+
+
+                    </div>
+                </div>
+            </div>
+        
     
     </div>
-
+    
     
 
     
@@ -141,24 +216,31 @@
     
 
     
-        <h3 class="subsection-title">Methods</h3>
-
-        
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
             
+                <div class="member">
 
+
+    
+    <h4 class="name" id="animateBallFalling">
+        <a class="href-link" href="#animateBallFalling">#</a>
+        
+        <span class="code-name">
+            
+                animateBallFalling<span class="signature">(deltaTime)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="animateBallFalling"><span class="type-signature"></span>animateBallFalling<span class="signature">(deltaTime)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        Animate the Ball falling in the Finish
+    </div>
     
-
-
-
-<div class="description">
-    Animate the Ball falling in the Finish
-</div>
 
 
 
@@ -170,51 +252,150 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>deltaTime</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">Time that passed since the last calculation of the balls phyics</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>deltaTime</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Time that passed since the last calculation of the balls phyics</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
 
     
-    </tbody>
-</table>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line199">line 199</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="initialize">
+        <a class="href-link" href="#initialize">#</a>
+        
+        <span class="code-name">
+            
+                initialize<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Initialize the Board with its default values
+    </div>
+    
+
+
+
+
+
+
+
 
 
 
@@ -246,12 +427,6 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line199">line 199</a>
-    </li></ul></dd>
     
 
     
@@ -259,93 +434,12 @@
     
 
     
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="initialize"><span class="type-signature"></span>initialize<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Initialize the Board with its default values
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line29">line 29</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -363,37 +457,52 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns itself for method chaining
-</div>
 
 
 
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>Returns itself for method chaining</div>
     
-    <h4 class="name" id="placeBall"><span class="type-signature"></span>placeBall<span class="signature">(ballPosition)</span><span class="type-signature"></span></h4>
     
-
-    
-
-
-
-<div class="description">
-    Place the ball on the board at the given start position.  If no position is given, it's generated randomly, trying to get far away from the finish.
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="placeBall">
+        <a class="href-link" href="#placeBall">#</a>
+        
+        <span class="code-name">
+            
+                placeBall<span class="signature">(ballPosition)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Place the ball on the board at the given start position.  If no position is given, it's generated randomly, trying to get far away from the finish.
+    </div>
+    
 
 
 
@@ -405,52 +514,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>ballPosition</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The start position of the ball.</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>ballPosition</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The start position of the ball.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -481,18 +592,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line123">line 123</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line123">line 123</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -515,22 +627,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="placeCraters"><span class="type-signature"></span>placeCraters<span class="signature">(count)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Place a given number of craters randomly on the board without intersecting each other
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="placeCraters">
+        <a class="href-link" href="#placeCraters">#</a>
+        
+        <span class="code-name">
+            
+                placeCraters<span class="signature">(count)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Place a given number of craters randomly on the board without intersecting each other
+    </div>
+    
 
 
 
@@ -542,52 +662,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>count</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>count</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -618,12 +740,6 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line45">line 45</a>
-    </li></ul></dd>
     
 
     
@@ -631,93 +747,12 @@
     
 
     
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="placeFinish"><span class="type-signature"></span>placeFinish<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Place the finish randomly on the board without intersecting any craters
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line45">line 45</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -740,22 +775,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="reset"><span class="type-signature"></span>reset<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Reset the canvas by deleting all ui elements
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="placeFinish">
+        <a class="href-link" href="#placeFinish">#</a>
+        
+        <span class="code-name">
+            
+                placeFinish<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Place the finish randomly on the board without intersecting any craters
+    </div>
+    
 
 
 
@@ -794,18 +837,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line19">line 19</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line84">line 84</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -823,37 +867,35 @@
 
 
 
-<h5>Returns:</h5>
 
-        
-<div class="param-desc">
-    Returns itself for method chaining
+
+
+
+
+
 </div>
-
-
-
-    
-
-
-
-
-
-        
             
+                <div class="member">
 
+
+    
+    <h4 class="name" id="reset">
+        <a class="href-link" href="#reset">#</a>
+        
+        <span class="code-name">
+            
+                reset<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="resolveCollisionWithBounds"><span class="type-signature"></span>resolveCollisionWithBounds<span class="signature">()</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        Reset the canvas by deleting all ui elements
+    </div>
     
-
-
-
-<div class="description">
-    Resolve Collision with bounds on the board
-</div>
 
 
 
@@ -892,18 +934,133 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line191">line 191</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>Returns itself for method chaining</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="resolveCollisionWithBounds">
+        <a class="href-link" href="#resolveCollisionWithBounds">#</a>
+        
+        <span class="code-name">
+            
+                resolveCollisionWithBounds<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Resolve Collision with bounds on the board
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line191">line 191</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -926,22 +1083,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="setAngle"><span class="type-signature"></span>setAngle<span class="signature">(boardAngle)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Set the X and Y angle of the Board
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setAngle">
+        <a class="href-link" href="#setAngle">#</a>
+        
+        <span class="code-name">
+            
+                setAngle<span class="signature">(boardAngle)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Set the X and Y angle of the Board
+    </div>
+    
 
 
 
@@ -953,52 +1118,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>boardAngle</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">X and Y Board angle as Point</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>boardAngle</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">X and Y Board angle as Point</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1029,18 +1196,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line161">line 161</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Board.js.html" class="button">View Source</a>
+            <span>
+                <a href="Board.js.html">Board.js</a>, <a href="Board.js.html#line161">line 161</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1063,7 +1231,11 @@
 
 
 
-        
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -1076,19 +1248,26 @@
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Board.html">Board</a></li><li><a href="Crater.html">Crater</a></li><li><a href="Finish.html">Finish</a></li><li><a href="LeaderboardManager.html">LeaderboardManager</a></li><li><a href="Modal.html">Modal</a></li><li><a href="ModalManager.html">ModalManager</a></li><li><a href="MQTTManager.html">MQTTManager</a></li><li><a href="Obstacle.html">Obstacle</a></li><li><a href="Particle.html">Particle</a></li><li><a href="Physics.html">Physics</a></li><li><a href="Point.html">Point</a></li><li><a href="Simulation.html">Simulation</a></li><li><a href="Utility.html">Utility</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jun 21 2022 11:02:37 GMT+0200 (Central European Summer Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+
 </body>
 </html>

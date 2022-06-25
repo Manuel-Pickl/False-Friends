@@ -86,10 +86,22 @@ body .game main .pause-button {
   background-size: contain;
 }
 
-.crater {
+.obstacle {
   z-index: 10;
+}
+
+.crater {
   -webkit-box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
           box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
+}
+
+.hill {
+  -webkit-box-shadow: 10px 10px 20px rgba(120, 82, 33, 0.75), -10px -10px 20px rgba(222, 184, 135, 0.75);
+          box-shadow: 10px 10px 20px rgba(120, 82, 33, 0.75), -10px -10px 20px rgba(222, 184, 135, 0.75);
+}
+
+.mud {
+  background-color: chocolate;
 }
 
 .finish {

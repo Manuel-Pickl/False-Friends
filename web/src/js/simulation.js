@@ -16,13 +16,14 @@ class Simulation {
      */
     constructor() {
         this.stopwatchElement = document.querySelector(".stopwatch");
-        this.craterCountDict = {
-            1: 0,
-            2: 2,
-            3: 5,
-            4: 10
+        this.obstacleCountDict = {
+            1: { crater: 0, hill: 0, mud: 1 },
+            2: { crater: 2, hill: 0, mud: 0 },
+            3: { crater: 2, hill: 3, mud: 0 },
+            4: { crater: 4, hill: 3, mud: 2 },
+            5: { crater: 5, hill: 4, mud: 3 }
         }
-        this.maxLevel = Object.keys(this.craterCountDict).length;
+        this.maxLevel = Object.keys(this.obstacleCountDict).length;
         // this.maxLevel = 1
     }
 
@@ -90,11 +91,15 @@ class Simulation {
      * Start a given level.
      */
     startLevel(level) {
-        // get crater count dependent on current level
-        let craterCount = this.craterCountDict[level];
+        // get obstacle count depending on current level
+        let craterCount = this.obstacleCountDict[level].crater;
+        let hillCount = this.obstacleCountDict[level].hill;
+        let mudCount = this.obstacleCountDict[level].mud;
 
         // set all game objects
         this.board.placeCraters(craterCount);
+        this.board.placeHills(hillCount);
+        this.board.placeMud(mudCount);
         this.board.placeFinish();
         this.board.placeBall();
     }

@@ -15,12 +15,27 @@
 }
 
 
-.crater {
+.obstacle {
     z-index: 10;
+}
 
+
+.crater {
     box-shadow:
         inset 10px 10px 20px hsla(34, 57%, 30%, 0.75),
         inset -10px -10px 20px hsla(34, 57%, 70%, 0.75);
+}
+
+
+.hill {
+    box-shadow:
+        10px 10px 20px hsla(34, 57%, 30%, 0.75),
+        -10px -10px 20px hsla(34, 57%, 70%, 0.75);
+}
+
+
+.mud {
+    background-color: chocolate;
 }
 
 

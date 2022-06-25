@@ -1,25 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Class: Ball</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Ball</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Class: Ball</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Board.html">Board</a></li><li><a href="Crater.html">Crater</a></li><li><a href="Finish.html">Finish</a></li><li><a href="Game.html">Game</a></li><li><a href="LeaderboardManager.html">LeaderboardManager</a></li><li><a href="Modal.html">Modal</a></li><li><a href="ModalManager.html">ModalManager</a></li><li><a href="MQTTManager.html">MQTTManager</a></li><li><a href="Obstacle.html">Obstacle</a></li><li><a href="Particle.html">Particle</a></li><li><a href="Physics.html">Physics</a></li><li><a href="Point.html">Point</a></li><li><a href="Simulation.html">Simulation</a></li><li><a href="Utility.html">Utility</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Ball</h1>
+                </header>
+                
 
 
 
@@ -39,22 +96,33 @@
     <div class="container-overview">
     
         
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
 
     
-    <h2>Constructor</h2>
+    <h4 class="name" id="Ball">
+        <a class="href-link" href="#Ball">#</a>
+        
+        <span class="code-name">
+            
+                new Ball<span class="signature">(startPosition, radius, craters)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="Ball"><span class="type-signature"></span>new Ball<span class="signature">(startPosition, radius, craters)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        Create a Ball at the given start position with the given radius and bind an ui element to it.
+    </div>
     
-
-
-
-<div class="description">
-    Create a Ball at the given start position with the given radius and bind an ui element to it.
-</div>
 
 
 
@@ -66,98 +134,104 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>startPosition</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">Start position of the Ball</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>radius</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>startPosition</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Start position of the Ball</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>radius</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Radius of the Ball</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>craters</code></td>
+  
 
-            <td class="description last">Radius of the Ball</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>craters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="Crater.html">Crater</a>></span>
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;<a href="Crater.html">Crater</a>></code>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">Array of Craters currently on the board</td>
-        </tr>
+  <td class="description last">Array of Craters currently on the board</td>
+</tr>
 
-    
-    </tbody>
-</table>
 
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -188,18 +262,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line5">line 5</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line5">line 5</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -222,9 +297,15 @@
 
 
 
+
+
+                    </div>
+                </div>
+            </div>
+        
     
     </div>
-
+    
     
         <h3 class="subsection-title">Extends</h3>
 
@@ -251,24 +332,31 @@
     
 
     
-        <h3 class="subsection-title">Methods</h3>
-
-        
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
             
+                <div class="member">
 
+
+    
+    <h4 class="name" id="calculateAcceleration">
+        <a class="href-link" href="#calculateAcceleration">#</a>
+        
+        <span class="code-name">
+            
+                calculateAcceleration<span class="signature">(boardAngle)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="calculateAcceleration"><span class="type-signature"></span>calculateAcceleration<span class="signature">(boardAngle)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span></h4>
     
-
+    <div class="description">
+        Calculate the balls acceleration with the angles at its current position
+    </div>
     
-
-
-
-<div class="description">
-    Calculate the balls acceleration with the angles at its current position
-</div>
 
 
 
@@ -280,52 +368,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>boardAngle</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">X and Y angles of the Board at the ball's current position</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>boardAngle</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">X and Y angles of the Board at the ball's current position</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -356,18 +446,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line91">line 91</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line91">line 91</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -385,49 +476,60 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    X and Y acceleration
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>X and Y acceleration</div>
     
-    <h4 class="name" id="calculateDeltaVelocity"><span class="type-signature"></span>calculateDeltaVelocity<span class="signature">(acceleration, timeDifference)</span><span class="type-signature"></span></h4>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Point.html">Point</a></code>
 
+
+    </div>
     
-
-
-
-<div class="description">
-    Calculate the balls velicity difference since the last calculation
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="calculateDeltaVelocity">
+        <a class="href-link" href="#calculateDeltaVelocity">#</a>
+        
+        <span class="code-name">
+            
+                calculateDeltaVelocity<span class="signature">(acceleration, timeDifference)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Calculate the balls velicity difference since the last calculation
+    </div>
+    
 
 
 
@@ -439,75 +541,79 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>acceleration</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The balls current acceleration</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>timeDifference</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>acceleration</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The balls current acceleration</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>timeDifference</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">float</code>
 
-            <td class="description last">Time that passed since the last calculation of the balls phyics</td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last">Time that passed since the last calculation of the balls phyics</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -538,18 +644,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line124">line 124</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line124">line 124</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -567,37 +674,52 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    X and Y velocity change
-</div>
 
 
 
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>X and Y velocity change</div>
     
-    <h4 class="name" id="calculateDistance"><span class="type-signature"></span>calculateDistance<span class="signature">(acceleration, timeDifference)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span></h4>
     
-
-    
-
-
-
-<div class="description">
-    Calculate the balls traveled distance from its acceleration since the last calculation
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="calculateDistance">
+        <a class="href-link" href="#calculateDistance">#</a>
+        
+        <span class="code-name">
+            
+                calculateDistance<span class="signature">(acceleration, timeDifference)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Calculate the balls traveled distance from its acceleration since the last calculation
+    </div>
+    
 
 
 
@@ -609,75 +731,79 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>acceleration</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The balls current acceleration</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>timeDifference</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>acceleration</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The balls current acceleration</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>timeDifference</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">float</code>
 
-            <td class="description last">Time that passed since the last calculation of the balls phyics</td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last">Time that passed since the last calculation of the balls phyics</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -708,18 +834,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line187">line 187</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line187">line 187</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -737,49 +864,60 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    X and Y distance
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>X and Y distance</div>
     
-    <h4 class="name" id="computePhysics"><span class="type-signature"></span>computePhysics<span class="signature">(boardAngle, timeDifference)</span><span class="type-signature"></span></h4>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Point.html">Point</a></code>
 
+
+    </div>
     
-
-
-
-<div class="description">
-    Compute the physics of the Ball by the angle at its current position and calculate its new position.
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="computePhysics">
+        <a class="href-link" href="#computePhysics">#</a>
+        
+        <span class="code-name">
+            
+                computePhysics<span class="signature">(boardAngle, timeDifference)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Compute the physics of the Ball by the angle at its current position and calculate its new position.
+    </div>
+    
 
 
 
@@ -791,75 +929,79 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>boardAngle</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">X and Y angles of the Board at the ball's current position</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>timeDifference</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>boardAngle</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">X and Y angles of the Board at the ball's current position</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>timeDifference</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">float</code>
 
-            <td class="description last">Time that passed since the last calculation of the balls phyics</td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last">Time that passed since the last calculation of the balls phyics</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -890,18 +1032,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line31">line 31</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line31">line 31</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -924,22 +1067,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="draw"><span class="type-signature"></span>draw<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Particle.html">Particle</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Draw the particle on the canvas at its current position
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="draw">
+        <a class="href-link" href="#draw">#</a>
+        
+        <span class="code-name">
+            
+                draw<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Particle.html">Particle</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Draw the particle on the canvas at its current position
+    </div>
+    
 
 
 
@@ -983,18 +1134,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line44">line 44</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Particle.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line44">line 44</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1012,49 +1164,60 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns itself for method chaining
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Particle.html">Particle</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>Returns itself for method chaining</div>
     
-    <h4 class="name" id="includeCraterAngles"><span class="type-signature"></span>includeCraterAngles<span class="signature">(boardAngle)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span></h4>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Particle.html">Particle</a></code>
 
+
+    </div>
     
-
-
-
-<div class="description">
-    Calculate the actual angle at the balls positions including craters
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="includeCraterAngles">
+        <a class="href-link" href="#includeCraterAngles">#</a>
+        
+        <span class="code-name">
+            
+                includeCraterAngles<span class="signature">(boardAngle)</span><span class="type-signature"> &rarr; {<a href="Point.html">Point</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Calculate the actual angle at the balls positions including craters
+    </div>
+    
 
 
 
@@ -1066,52 +1229,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>boardAngle</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">X and Y angles of the Board at the ball's current position</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>boardAngle</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">X and Y angles of the Board at the ball's current position</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1142,18 +1307,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line52">line 52</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line52">line 52</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1171,49 +1337,60 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Actual angle at balls position including craters
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>Actual angle at balls position including craters</div>
     
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Particle.html">Particle</a>}</span></h4>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Point.html">Point</a></code>
 
+
+    </div>
     
-
-
-
-<div class="description">
-    Remove the particle from the canvas
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="remove">
+        <a class="href-link" href="#remove">#</a>
+        
+        <span class="code-name">
+            
+                remove<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Particle.html">Particle</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Remove the particle from the canvas
+    </div>
+    
 
 
 
@@ -1257,18 +1434,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line55">line 55</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Particle.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line55">line 55</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1286,49 +1464,60 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Returns itself for method chaining
-</div>
 
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Particle.html">Particle</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
+                    
 
+<div class="columns">
     
-
+    <div class='param-desc column is-7'>Returns itself for method chaining</div>
     
-    <h4 class="name" id="resolveCollisionWithBounds"><span class="type-signature"></span>resolveCollisionWithBounds<span class="signature">()</span><span class="type-signature"></span></h4>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Particle.html">Particle</a></code>
 
+
+    </div>
     
-
-
-
-<div class="description">
-    Resolve collisions with bounds like walls
 </div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="resolveCollisionWithBounds">
+        <a class="href-link" href="#resolveCollisionWithBounds">#</a>
+        
+        <span class="code-name">
+            
+                resolveCollisionWithBounds<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Resolve collisions with bounds like walls
+    </div>
+    
 
 
 
@@ -1367,18 +1556,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line226">line 226</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line226">line 226</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1401,22 +1591,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="setPos"><span class="type-signature"></span>setPos<span class="signature">(deltaDistance)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Set the balls new position based on its traveled distance
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPos">
+        <a class="href-link" href="#setPos">#</a>
+        
+        <span class="code-name">
+            
+                setPos<span class="signature">(deltaDistance)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Set the balls new position based on its traveled distance
+    </div>
+    
 
 
 
@@ -1428,52 +1626,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>deltaDistance</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">X and Y distance</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>deltaDistance</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">X and Y distance</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1504,18 +1704,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line209">line 209</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line209">line 209</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1538,22 +1739,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="setRadius"><span class="type-signature"></span>setRadius<span class="signature">(radius)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Set the radius of the particle.
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setRadius">
+        <a class="href-link" href="#setRadius">#</a>
+        
+        <span class="code-name">
+            
+                setRadius<span class="signature">(radius)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Set the radius of the particle.
+    </div>
+    
 
 
 
@@ -1565,52 +1774,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>radius</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The radius of the particle</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>radius</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The radius of the particle</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1646,18 +1857,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line32">line 32</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Particle.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Particle.js.html">objects/Particle.js</a>, <a href="objects_Particle.js.html#line32">line 32</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1680,22 +1892,30 @@
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="setVelocity"><span class="type-signature"></span>setVelocity<span class="signature">(deltaVelocity)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Set the balls velocity by adding the velocity change and taking a maximum into account
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setVelocity">
+        <a class="href-link" href="#setVelocity">#</a>
+        
+        <span class="code-name">
+            
+                setVelocity<span class="signature">(deltaVelocity)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Set the balls velocity by adding the velocity change and taking a maximum into account
+    </div>
+    
 
 
 
@@ -1707,52 +1927,54 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>deltaVelocity</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>deltaVelocity</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Point.html">Point</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -1783,18 +2005,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line146">line 146</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="objects_Ball.js.html" class="button">View Source</a>
+            <span>
+                <a href="objects_Ball.js.html">objects/Ball.js</a>, <a href="objects_Ball.js.html#line146">line 146</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1817,7 +2040,11 @@
 
 
 
-        
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -1830,19 +2057,26 @@
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Board.html">Board</a></li><li><a href="Crater.html">Crater</a></li><li><a href="Finish.html">Finish</a></li><li><a href="LeaderboardManager.html">LeaderboardManager</a></li><li><a href="Modal.html">Modal</a></li><li><a href="ModalManager.html">ModalManager</a></li><li><a href="MQTTManager.html">MQTTManager</a></li><li><a href="Obstacle.html">Obstacle</a></li><li><a href="Particle.html">Particle</a></li><li><a href="Physics.html">Physics</a></li><li><a href="Point.html">Point</a></li><li><a href="Simulation.html">Simulation</a></li><li><a href="Utility.html">Utility</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jun 21 2022 11:02:37 GMT+0200 (Central European Summer Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+
 </body>
 </html>
