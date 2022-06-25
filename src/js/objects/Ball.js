@@ -168,9 +168,10 @@ class Ball extends Particle {
                 if (!mud.isPointInside(this.position)) {
                     return;
                 }
-                
-                // add mud resistance to current resistance
-                resistance += 0.045;
+                                
+                // reduce velocity
+                this.velocity.x *= 0.96;
+                this.velocity.y *= 0.96;
             });
         }
 
