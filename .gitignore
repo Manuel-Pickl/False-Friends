@@ -1,6 +1,6 @@
-.vscode/launch.json
-jsdoc.json
-jsdoc
+.vscode
 node_modules
+jsdoc
+jsdoc.json
 package-lock.json
 package.json
