@@ -96,19 +96,23 @@ body .game main .pause-button {
 }
 
 .hill {
-  -webkit-box-shadow: 10px 10px 20px rgba(120, 82, 33, 0.75), -10px -10px 20px rgba(222, 184, 135, 0.75);
-          box-shadow: 10px 10px 20px rgba(120, 82, 33, 0.75), -10px -10px 20px rgba(222, 184, 135, 0.75);
+  background-color: rgba(222, 184, 135, 0.75);
+  -webkit-box-shadow: inset -10px -10px 20px rgba(120, 82, 33, 0.75), inset 10px 10px 20px rgba(222, 184, 135, 0.75);
+          box-shadow: inset -10px -10px 20px rgba(120, 82, 33, 0.75), inset 10px 10px 20px rgba(222, 184, 135, 0.75);
 }
 
-.mud {
-  background-color: chocolate;
+.sand {
+  background-image: url("https://i.pinimg.com/originals/4b/c7/7b/4bc77bad05c5cc4d022f49de222e8151.jpg");
+  background-size: contain;
+  -webkit-box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
+          box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
 }
 
 .finish {
   z-index: 15;
   background-color: black;
-  -webkit-box-shadow: inset -5px -5px 10px grey;
-          box-shadow: inset -5px -5px 10px grey;
+  -webkit-box-shadow: inset 5px 5px 10px grey;
+          box-shadow: inset 5px 5px 10px grey;
 }
 
 .modal {

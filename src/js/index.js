@@ -7,10 +7,6 @@
   - w3schools: inheritance
   - tutorialspoint
   - fontawesome.com
-
-  
-    more specific:
-    - https://www.geeksforgeeks.org/javascript-math-sin-method/
 */
 
 

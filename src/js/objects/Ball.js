@@ -11,7 +11,7 @@ class Ball extends Particle {
      * Create a Ball at the given start position with the given radius and bind an ui element to it.
      * @param {Point} startPosition Start position of the Ball
      * @param {number} radius Radius of the Ball
-     * @param {{Crater[], Hill[], Mud[]}} obstacles Obstacles currently on the board
+     * @param {{Crater[], Hill[], Sand[]}} obstacles Obstacles currently on the board
      */
     constructor(startPosition, radius, obstacles) {
         super(startPosition, radius);
@@ -162,10 +162,10 @@ class Ball extends Particle {
         
         let resistance = Physics.resistance;
 
-        // check for each Mud puddle, if ball is inside
-        if (this.obstacles.muds != null) {
-            this.obstacles.muds?.forEach(mud => {
-                if (!mud.isPointInside(this.position)) {
+        // check for each Sand puddle, if ball is inside
+        if (this.obstacles.sands != null) {
+            this.obstacles.sands?.forEach(sand => {
+                if (!sand.isPointInside(this.position)) {
                     return;
                 }
                                 

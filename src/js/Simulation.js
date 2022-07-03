@@ -17,11 +17,11 @@ class Simulation {
     constructor() {
         this.stopwatchElement = document.querySelector(".stopwatch");
         this.obstacleCountDict = {
-            1: { crater: 0, hill: 0, mud: 1 },
-            2: { crater: 2, hill: 0, mud: 0 },
-            3: { crater: 2, hill: 3, mud: 0 },
-            4: { crater: 4, hill: 3, mud: 2 },
-            5: { crater: 5, hill: 4, mud: 3 }
+            1: { crater: 1, hill: 1, sand: 0 },
+            2: { crater: 2, hill: 0, sand: 0 },
+            3: { crater: 2, hill: 3, sand: 0 },
+            4: { crater: 4, hill: 3, sand: 2 },
+            5: { crater: 5, hill: 4, sand: 3 }
         }
         this.maxLevel = Object.keys(this.obstacleCountDict).length;
         // this.maxLevel = 2
@@ -94,12 +94,12 @@ class Simulation {
         // get obstacle count depending on current level
         let craterCount = this.obstacleCountDict[level].crater;
         let hillCount = this.obstacleCountDict[level].hill;
-        let mudCount = this.obstacleCountDict[level].mud;
+        let sandCount = this.obstacleCountDict[level].sand;
 
         // set all game objects
         this.board.placeCraters(craterCount);
         this.board.placeHills(hillCount);
-        this.board.placeMud(mudCount);
+        this.board.placeSand(sandCount);
         this.board.placeFinish();
         this.board.placeBall();
     }

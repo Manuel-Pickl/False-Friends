@@ -28,14 +28,20 @@
 
 
 .hill {
+    background-color: hsla(34, 57%, 70%, 0.75);
     box-shadow:
-        10px 10px 20px hsla(34, 57%, 30%, 0.75),
-        -10px -10px 20px hsla(34, 57%, 70%, 0.75);
+    inset -10px -10px 20px hsla(34, 57%, 30%, 0.75),
+    inset 10px 10px 20px hsla(34, 57%, 70%, 0.75);
+    // background: radial-gradient(circle at 70px 70px, #5cabff, #000);
 }
 
 
-.mud {
-    background-color: chocolate;
+.sand {
+    background-image: url("https://i.pinimg.com/originals/4b/c7/7b/4bc77bad05c5cc4d022f49de222e8151.jpg");
+    background-size: contain;
+    box-shadow:
+        inset 10px 10px 20px hsla(34, 57%, 30%, 0.75),
+        inset -10px -10px 20px hsla(34, 57%, 70%, 0.75);
 }
 
 
@@ -44,5 +50,5 @@
 
     background-color: black;
     box-shadow:
-        inset -5px -5px 10px grey;
+        inset 5px 5px 10px grey;
 }

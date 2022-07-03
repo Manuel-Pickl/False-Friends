@@ -30,7 +30,7 @@ class Board {
         this.maxAngleUsed = 35;
         this.boardAngle = new Point();
 
-        this.obstacles = { craters: [], hills: [], muds: []}
+        this.obstacles = { craters: [], hills: [], sands: []}
 
         this.ballRadius = 20;
         this.obstacleRadiusInterval = [this.ballRadius * 2, this.ballRadius * 5];
@@ -127,46 +127,46 @@ class Board {
     }
 
     /**
-     * Place a given number of Mud puddles randomly on the board without intersecting with other obstacles
-     * @param {number} count Mud count
+     * Place a given number of Sand puddles randomly on the board without intersecting with other obstacles
+     * @param {number} count Sand count
      */
-     placeMud(count) {
-        // clear current Mud puddles
-        this.obstacles.muds.forEach(obstacle => obstacle.remove());
-        this.obstacles.muds.length = 0;
+     placeSand(count) {
+        // clear current Sand puddles
+        this.obstacles.sands.forEach(obstacle => obstacle.remove());
+        this.obstacles.sands.length = 0;
 
-        // generate random non intersecting mud puddles
+        // generate random non intersecting sand puddles
         for (let i = 0; i < count; i++) {
             // get random hill radius
-            let mudRadius = Utility.getRandomIntegerInRange(this.obstacleRadiusInterval[0], this.obstacleRadiusInterval[1]);
+            let sandRadius = Utility.getRandomIntegerInRange(this.obstacleRadiusInterval[0], this.obstacleRadiusInterval[1]);
 
-            let mudPosition;
+            let sandPosition;
             let bumpIntersects;
             do {
                 bumpIntersects = false;
 
                 // get random hill position
-                mudPosition = new Point(
+                sandPosition = new Point(
                     Utility.getRandomIntegerInRange(0, Utility.canvas.clientWidth),
                     Utility.getRandomIntegerInRange(0, Utility.canvas.clientHeight)
                 );
 
                 // check intersection with other bumps
                 this.obstacles.craters.forEach(crater => {
-                    let craterDistance = Math.sqrt(Math.pow(mudPosition.x - crater.position.x, 2) + Math.pow(mudPosition.y - crater.position.y, 2));
-                    if (craterDistance <= mudRadius + crater.radius) {
+                    let craterDistance = Math.sqrt(Math.pow(sandPosition.x - crater.position.x, 2) + Math.pow(sandPosition.y - crater.position.y, 2));
+                    if (craterDistance <= sandRadius + crater.radius) {
                         bumpIntersects = true;
                     }
                 });
                 this.obstacles.hills.forEach(hill => {
-                    let hillDistance = Math.sqrt(Math.pow(mudPosition.x - hill.position.x, 2) + Math.pow(mudPosition.y - hill.position.y, 2));
-                    if (hillDistance <= mudRadius + hill.radius) {
+                    let hillDistance = Math.sqrt(Math.pow(sandPosition.x - hill.position.x, 2) + Math.pow(sandPosition.y - hill.position.y, 2));
+                    if (hillDistance <= sandRadius + hill.radius) {
                         bumpIntersects = true;
                     }
                 });
-                this.obstacles.muds.forEach(mud => {
-                    let mudDistance = Math.sqrt(Math.pow(mudPosition.x - mud.position.x, 2) + Math.pow(mudPosition.y - mud.position.y, 2));
-                    if (mudDistance <= mudRadius + mud.radius) {
+                this.obstacles.sands.forEach(sand => {
+                    let sandDistance = Math.sqrt(Math.pow(sandPosition.x - sand.position.x, 2) + Math.pow(sandPosition.y - sand.position.y, 2));
+                    if (sandDistance <= sandRadius + sand.radius) {
                         bumpIntersects = true;
                     }
                 });
@@ -175,7 +175,7 @@ class Board {
             } while (bumpIntersects);
 
             // intialize crater with generated data and draw
-            this.obstacles.muds.push(new Mud(mudPosition, mudRadius).draw());
+            this.obstacles.sands.push(new Sand(sandPosition, sandRadius).draw());
         }
     }
 
