@@ -110,27 +110,51 @@
             Settings
           </div>
         
-          <label for="music">
-            <input type="checkbox" id="music" name="music" value="Music"
-              onclick="game.toggleMusic(this)">
-            Music
-          </label>
+          <button class="big-button" 
+            onclick="game.clearLeaderboard()">
+            Clear Leaderboard
+          </button>
 
-          <label for="remote">
-            <input type="checkbox" id="remote" name="remote" value="Remote"
-              onclick="game.toggleRemoteControl(this)">
-            Remote Control
-          </label>
-          
+          <div class="audio">
+            Audio
 
-          <div class="value">
-            <input id="ip" type="text">
-            <button onclick="game.connect()">
-              <i class="fa fa-flask" aria-hidden="true"></i>
-            </button>
+            <label for="music">
+              <input type="checkbox" id="music" name="music" value="Music"
+                onclick="game.toggleMusic(this)">
+              Music
+            </label>
+
+            <label for="sound">
+              <input type="checkbox" id="sound" name="sound" value="Sound" checked
+                onclick="game.toggleSound(this)">
+              Sound
+            </label>
           </div>
 
-          <div class="broker-log"></div>
+          <div class="remote-control">
+            Remote Control
+          
+            <label class="value" for="ip">
+              <input id="ip" type="text" placeholder="ip address">
+              <button onclick="game.connect()">
+                <i class="fa fa-flask" aria-hidden="true"></i>
+              </button>
+            </label>
+
+            <label for="remote">
+              <input type="checkbox" id="remote" name="remote" value="Remote"
+                onclick="game.toggleRemoteControlIn(event, this)">
+              In
+            </label>
+
+            <label for="remote-out">
+              <input type="checkbox" id="remote-out" name="remote" value="Remote"
+                onclick="game.toggleRemoteControlOut(event, this)">
+              Out
+            </label>
+
+            <div class="broker-log"></div>
+          </div>
         </div>
       </div>
       

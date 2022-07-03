@@ -1,6 +1,27 @@
 .modal {
     .settings {
         text-align: left;
+        
+        
+        .audio, .remote-control {
+            margin-top: 30px;
+            
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .remote-control {
+            label {
+                font-size: 25px;
+            }
+            
+
+            input[type=text] {
+                max-width: 250px;
+                font-size: 25px;
+            }
+        }
 
         
         .broker-log {
@@ -11,6 +32,17 @@
             font-size: large;
             word-wrap: break-word;
             white-space: normal;
+        }
+
+
+        .big-button {
+            display: block;
+            margin: 15px auto;
+            height: 50px;
+
+            
+            border-radius: 12px;
+            font-size: 22px;
         }
     }
 }

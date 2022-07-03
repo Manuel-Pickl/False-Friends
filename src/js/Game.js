@@ -8,6 +8,7 @@
 
     audioDict;
     soundsLoaded;
+    soundOn;
 
     modalManager;
     leaderboardManager;
@@ -23,6 +24,7 @@
       this.mqttManager = new MQTTManager();
   
       this.soundsLoaded = false;
+      this.soundOn = true;
       this.audioDict = {
         "start": new Audio("./src/assets/audio/start.mp3"),
         "fall": new Audio("./src/assets/audio/fall.mp3"),
@@ -32,7 +34,6 @@
 
       // game startup
       // load highscore data
-      // this.leaderboardManager.clear();
       this.leaderboardManager.deserialize();
       this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);
   
@@ -68,7 +69,9 @@
             // on level finish
             if (this.simulation.isLevelFinished()) {
               // play level finished audio
-              this.audioDict["fall"].play();
+              if (this.soundOn) {
+                this.audioDict["fall"].play();
+              }
 
               this.mqttManager.publishMessage(String(this.simulation.level));
               this.simulation.finishLevel();
@@ -85,11 +88,17 @@
 
           // play win or lose audio
           if (rank == 1) {
-            this.audioDict["win"].play();
+            if (this.soundOn) {
+              this.audioDict["win"].play();
+            }
+
             this.mqttManager.publishMessage("green");
           }
           else {
-            this.audioDict["lose"].play();
+            if (this.soundOn) {
+              this.audioDict["lose"].play();
+            }
+
             this.mqttManager.publishMessage("yellow");
           }
 
@@ -122,7 +131,9 @@
       }
 
       // game start sound
-      this.audioDict["start"].play();
+      if (this.soundOn) {
+        this.audioDict["start"].play();
+      }
 
       // hide start menu and start simulation
       this.modalManager.hideStartMenu();
@@ -217,6 +228,20 @@
     
       // set board angles
       this.simulation.board.setAngle(boardAngle);
+
+      if (this.remoteOut && this.mqttManager != null && this.mqttManager.mqtt != null) {
+        // calculate normalized angles
+        let normalizedAnglesX = this.simulation.board.boardAngle.x / -90;
+        let normalizedAnglesY = this.simulation.board.boardAngle.y / 90;
+
+        // build mqtt publish message with angles
+        let message = `${normalizedAnglesY},${normalizedAnglesX}`;
+        let mqttMessage = new Paho.MQTT.Message(message);
+        mqttMessage.destinationName = this.mqttManager.subTopic;
+
+        console.log(message);
+        this.mqttManager.mqtt.send(mqttMessage);
+      }
     }
     
     /**
@@ -251,28 +276,52 @@
     }
     
     /**
-     * Toggle the remote control from the broker
-     * @param {input} checkbox The checkbox, whose value decides if remote control is turned on
+     * Toggle the sound effects of the Game.
+     * @param {input} checkbox The checkbox, whose value decides if sound effects are played
      */
-    toggleRemoteControl(checkbox) {
+    toggleSound(checkbox) {
+      this.soundOn = checkbox.checked;
+    }
+
+    /**
+     * Toggle the remote control from the broker
+     * @param {PointerEvent} event Events that gets fired on click on checkbox
+     * @param {input} event Checkbox responsible for toggling
+     */
+    toggleRemoteControlIn(event, checkbox) {
+      // do nothing when not connected to broker
+      if (!this.mqttManager.connected) {
+        document.querySelector(".modal .settings .broker-log").textContent = "no broker connected";
+        event.preventDefault();
+        return;
+      }
+
       if (checkbox.checked) {
-        // subscribe to broker
+        // disable sensor event and subscribe to broker
+        window.removeEventListener('deviceorientation', this.onSensorChanged);
         this.mqttManager.subscribe();
-        
-        // forbid remote control if no broker subscription exists
-        if (!this.mqttManager.subscribed) {
-          checkbox.checked = false;
-        }
-        // otherwise disable the sensor event of the device itself
-        else {
-          window.removeEventListener('deviceorientation', this.onSensorChanged);
-        }
       }
       else {
-        // activate sensor events and unsubscibe from broker
+        // activate sensor event and unsubscibe from broker
         window.addEventListener('deviceorientation', this.onSensorChanged);
         this.mqttManager.unsubscribe();
       }
+    }
+
+    /**
+     * Toggle the remote control to the broker
+     * @param {PointerEvent} event Events that gets fired on click on checkbox
+     * @param {input} event Checkbox responsible for toggling
+     */
+     toggleRemoteControlOut(event, checkbox) {
+      // do nothing when not connected to broker
+      if (!this.mqttManager.connected) {
+        document.querySelector(".modal .settings .broker-log").textContent = "no broker connected";
+        event.preventDefault();
+        return;
+      }
+
+      this.remoteOut = checkbox.checked;
     }
     
     /**
@@ -297,4 +346,13 @@
         audio.pause();
       }
     }
+
+    /**
+     * Clear leaderboard
+     */
+    clearLeaderboard() {
+      this.leaderboardManager.clear();
+      this.modalManager.updateLeaderboard(this.leaderboardManager.leaderboard);
+      alert("leaderboard cleared");
+    } 
   }

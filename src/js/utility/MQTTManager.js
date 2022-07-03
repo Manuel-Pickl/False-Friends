@@ -14,6 +14,7 @@
     brokerLog;
     subscribed;
     message;
+    connected;
     
     /**
      * Creates and initializes an MQTTManager.
@@ -23,6 +24,7 @@
         this.subTopic = "sensehat/data";
         this.pubTopic = "sensehat/message";
         this.subscribed = false;
+        this.connected = false;
         this.message = "0,0";
     }
 
@@ -50,6 +52,7 @@
             onFailure: this.onFailure.bind(this)
         };
         this.mqtt.connect(options);
+        this.connected = true;
     }
     
     /**
@@ -70,11 +73,6 @@
      * Subscribe to the broker
      */
     subscribe() {
-        if (this.mqtt == null) {
-            this.brokerLog.textContent = "no broker connected";
-            return;
-        }
-
         this.mqtt.subscribe(this.subTopic);
         this.subscribed = true;
     }
@@ -83,7 +81,7 @@
      * Unsubscribe from the broker
      */
     unsubscribe() {
-        this.mqtt?.unsubscribe(this.subTopic);
+        this.mqtt.unsubscribe(this.subTopic);
         this.subscribed = false;
     }
 
@@ -108,10 +106,8 @@
             return;
         }
         
-        if (debug) {
-            console.log(`published on topic "${this.pubTopic}": "${message}"`);
-        }
-
+        console.log(`published on topic "${this.pubTopic}": "${message}"`);
+        
         let mqttMessage = new Paho.MQTT.Message(message);
         mqttMessage.destinationName = this.pubTopic;
 

@@ -40,6 +40,7 @@ class LeaderboardManager {
      */
     clear() {
         localStorage.clear();
+        this.deserialize();
     }
 
     /**

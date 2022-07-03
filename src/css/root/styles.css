@@ -219,6 +219,26 @@ body .game main .pause-button {
   text-align: left;
 }
 
+.modal .settings .audio, .modal .settings .remote-control {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal .settings .remote-control label {
+  font-size: 25px;
+}
+
+.modal .settings .remote-control input[type=text] {
+  max-width: 250px;
+  font-size: 25px;
+}
+
 .modal .settings .broker-log {
   height: 100px;
   width: 200px;
@@ -226,6 +246,14 @@ body .game main .pause-button {
   font-size: large;
   word-wrap: break-word;
   white-space: normal;
+}
+
+.modal .settings .big-button {
+  display: block;
+  margin: 15px auto;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 22px;
 }
 
 .modal .pause button {
