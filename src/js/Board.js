@@ -212,7 +212,7 @@ class Board {
         this.finish?.remove();
 
         // generate finish hole on generated position
-        finishPosition = !debug ? finishPosition : new Point(this.finishRadius, this.finishRadius);
+        finishPosition = !debug ? finishPosition : new Point(this.finishRadius, Utility.canvas.clientHeight - this.finishRadius);
         this.finish = new Finish(finishPosition, this.finishRadius).draw();
     }
 
@@ -301,7 +301,7 @@ class Board {
         // decrease radius
         if (this.ball.radius > 0) {
             // calculate radius decrease
-            let radiusDecrease = deltaTime * 30;
+            let radiusDecrease = deltaTime * 20;
             let newRadius = this.ball.radius - radiusDecrease;
 
             // set new radius

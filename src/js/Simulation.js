@@ -24,7 +24,7 @@ class Simulation {
             5: { crater: 5, hill: 4, mud: 3 }
         }
         this.maxLevel = Object.keys(this.obstacleCountDict).length;
-        // this.maxLevel = 1
+        // this.maxLevel = 2
     }
 
     /**
@@ -40,7 +40,7 @@ class Simulation {
     }
 
     /**
-     * Start a new the simulation.
+     * Start a new simulation.
      * @returns Returns itself for method chaining
      */
     start() {
@@ -115,7 +115,7 @@ class Simulation {
         this.board.ball.velocity.y = 0;
         
         // end animation
-        let finishHoleAnimationDuration = 1500;
+        let finishHoleAnimationDuration = 2000;
         let lastTimestamp = Date.now();
         let interval = setInterval(function() {
             let currentTimestamp = Date.now();

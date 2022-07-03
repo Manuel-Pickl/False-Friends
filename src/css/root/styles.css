@@ -45,7 +45,7 @@ body .game main {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   overflow: hidden;
-  background-image: url("../../assets/lightwood.png");
+  background-image: url("../../assets/img/lightwood.png");
 }
 
 body .game main .canvas {
@@ -82,7 +82,7 @@ body .game main .pause-button {
 
 .ball {
   z-index: 20;
-  background-image: url("../../assets/ball.png");
+  background-image: url("../../assets/img/ball.png");
   background-size: contain;
 }
 

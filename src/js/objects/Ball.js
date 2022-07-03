@@ -170,8 +170,8 @@ class Ball extends Particle {
                 }
                                 
                 // reduce velocity
-                this.velocity.x *= 0.96;
-                this.velocity.y *= 0.96;
+                this.velocity.x *= 0.97;
+                this.velocity.y *= 0.97;
             });
         }
 

@@ -149,12 +149,12 @@
             Restart
           </button>
           
-          <button onclick="game.showStartMenu()">
-            Quit
-          </button>
-          
           <button onclick="game.showSettings()">
             Settings
+          </button>
+
+          <button onclick="game.showStartMenu()">
+            Quit
           </button>
         </div>
       </div>
@@ -196,7 +196,11 @@
         </div>
       </div>
 
-      <audio src="./src/assets/cantina.mp3" loop>
+      <!-- audio -->
+      <audio src="./src/assets/audio/intro.mp3" autoplay>
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="backgroundAudio" src="./src/assets/audio/cantina.mp3" loop>
         Your browser does not support the audio element.
       </audio>
 

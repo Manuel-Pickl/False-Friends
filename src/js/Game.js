@@ -2,18 +2,18 @@
  * Main Game interacting with the index.html and distribute work to Simulation, Board & ModalManager 
  */
  class Game {
-    debug;
     currentTimestamp;
     lastTimestamp;
-  
     simulation;
-    
+
+    audioDict;
+    soundsLoaded;
+
     modalManager;
     leaderboardManager;
     mqttManager
   
     constructor() {
-      this.debug = false;
       this.currentTimestamp;
       this.lastTimestamp = Date.now();
   
@@ -22,6 +22,14 @@
       this.leaderboardManager = new LeaderboardManager();
       this.mqttManager = new MQTTManager();
   
+      this.soundsLoaded = false;
+      this.audioDict = {
+        "start": new Audio("./src/assets/audio/start.mp3"),
+        "fall": new Audio("./src/assets/audio/fall.mp3"),
+        "win": new Audio("./src/assets/audio/win.mp3"),
+        "lose": new Audio("./src/assets/audio/lose.mp3"),
+      };
+
       // game startup
       // load highscore data
       // this.leaderboardManager.clear();
@@ -59,6 +67,9 @@
     
             // on level finish
             if (this.simulation.isLevelFinished()) {
+              // play level finished audio
+              this.audioDict["fall"].play();
+
               this.mqttManager.publishMessage(String(this.simulation.level));
               this.simulation.finishLevel();
             }
@@ -68,12 +79,20 @@
           this.simulation.isGameFinished()
           && this.modalManager.currentModal == null) {
             
-          this.mqttManager.publishMessage("green");
-          
           // get highscore data
           let time = this.simulation.stopwatchToString();
           let rank = this.leaderboardManager.calculateRank(time);
-      
+
+          // play win or lose audio
+          if (rank == 1) {
+            this.audioDict["win"].play();
+            this.mqttManager.publishMessage("green");
+          }
+          else {
+            this.audioDict["lose"].play();
+            this.mqttManager.publishMessage("yellow");
+          }
+
           this.modalManager.showResults(time, rank);
         }
     
@@ -97,9 +116,17 @@
      * Start the Game
      */
     startGame() {
-        // hide start menu and start simulation
-        this.modalManager.hideStartMenu();
-        this.simulation.initialize().start();
+      if (!this.soundsLoaded) {
+        // load sounds
+        this.loadSounds();
+      }
+
+      // game start sound
+      this.audioDict["start"].play();
+
+      // hide start menu and start simulation
+      this.modalManager.hideStartMenu();
+      this.simulation.initialize().start();
     }
     
     /**
@@ -213,11 +240,13 @@
      */
     toggleMusic(checkbox) {
         // get audio element and play/pause depending on checkbox
+        let backgroundAudio = document.querySelector("#backgroundAudio")
+        
         if (checkbox.checked) {
-            document.querySelector("audio").play();
+          backgroundAudio.play();
         }
         else {
-            document.querySelector("audio").pause();
+          backgroundAudio.pause();
         }
     }
     
@@ -252,5 +281,20 @@
     connect() {
       const ipInput = document.querySelector(".modal .settings #ip");
       this.mqttManager.connect(ipInput.value);
+    }
+
+    /**
+     * Load sounds on start up so they can be used later without user interaction
+     */
+    loadSounds() {
+      this.soundsLoaded = true;
+
+      // play and pause all sounds to make them available
+      for (const [action, audio] of Object.entries(this.audioDict)) {
+        audio.loop = false;
+        // audio.volumne = 0.5;
+        audio.play();
+        audio.pause();
+      }
     }
   }

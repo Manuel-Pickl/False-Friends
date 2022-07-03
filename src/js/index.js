@@ -14,8 +14,9 @@
 */
 
 
+
 // game variables
-var debug = true;
+var debug = false;
 var fps = 200;
 
 // start game
