@@ -21,7 +21,7 @@
      */
     constructor() {
         this.brokerLog = document.querySelector(".modal .settings .broker-log");
-        this.subTopic = "sensehat/data";
+        this.subTopic = "sensor/data_MP";
         this.pubTopic = "sensehat/message";
         this.subscribed = false;
         this.connected = false;

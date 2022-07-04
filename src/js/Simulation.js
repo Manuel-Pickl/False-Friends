@@ -17,7 +17,7 @@ class Simulation {
     constructor() {
         this.stopwatchElement = document.querySelector(".stopwatch");
         this.obstacleCountDict = {
-            1: { crater: 1, hill: 1, sand: 0 },
+            1: { crater: 0, hill: 0, sand: 0 },
             2: { crater: 2, hill: 0, sand: 0 },
             3: { crater: 2, hill: 3, sand: 0 },
             4: { crater: 4, hill: 3, sand: 2 },

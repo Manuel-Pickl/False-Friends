@@ -12,8 +12,11 @@
 
     modalManager;
     leaderboardManager;
-    mqttManager
-  
+    
+    mqttManager;
+    remoteOut;
+    remoteIn;
+      
     constructor() {
       this.currentTimestamp;
       this.lastTimestamp = Date.now();
@@ -21,8 +24,11 @@
       this.simulation = new Simulation();
       this.modalManager = new ModalManager();
       this.leaderboardManager = new LeaderboardManager();
+
       this.mqttManager = new MQTTManager();
-  
+      this.remoteOut = false;
+      this.remoteIn = false;
+        
       this.soundsLoaded = false;
       this.soundOn = true;
       this.audioDict = {
@@ -92,14 +98,14 @@
               this.audioDict["win"].play();
             }
 
-            this.mqttManager.publishMessage("green");
+            this.mqttManager.publishMessage("gruen");
           }
           else {
             if (this.soundOn) {
               this.audioDict["lose"].play();
             }
 
-            this.mqttManager.publishMessage("yellow");
+            this.mqttManager.publishMessage("gelb");
           }
 
           this.modalManager.showResults(time, rank);
@@ -226,21 +232,27 @@
       // get board angle from "device orientation" event
       let boardAngle = new Point(event.gamma, event.beta);
     
-      // set board angles
-      this.simulation.board.setAngle(boardAngle);
-
-      if (this.remoteOut && this.mqttManager != null && this.mqttManager.mqtt != null) {
+      // send to broker
+      if (this.remoteOut && this.mqttManager?.mqtt != null) {
         // calculate normalized angles
-        let normalizedAnglesX = this.simulation.board.boardAngle.x / -90;
-        let normalizedAnglesY = this.simulation.board.boardAngle.y / 90;
+        let normalizedAnglesX = boardAngle.x / -90;
+        let normalizedAnglesY = boardAngle.y / 90;
 
         // build mqtt publish message with angles
-        let message = `${normalizedAnglesY},${normalizedAnglesX}`;
+        let message = `${normalizedAnglesY}, ${normalizedAnglesX}, 0`;
         let mqttMessage = new Paho.MQTT.Message(message);
         mqttMessage.destinationName = this.mqttManager.subTopic;
-
-        console.log(message);
+        
         this.mqttManager.mqtt.send(mqttMessage);
+
+        if (debug) {
+          console.log(message);
+        }
+      }
+
+      // set board angles
+      if (!this.remoteIn) {
+        this.simulation.board.setAngle(boardAngle);
       }
     }
     
@@ -298,12 +310,13 @@
 
       if (checkbox.checked) {
         // disable sensor event and subscribe to broker
-        window.removeEventListener('deviceorientation', this.onSensorChanged);
+        this.remoteIn = true;
         this.mqttManager.subscribe();
       }
       else {
-        // activate sensor event and unsubscibe from broker
-        window.addEventListener('deviceorientation', this.onSensorChanged);
+        // activate sensor event and unsubscribe from broker
+        this.remoteIn = false;
+        this.simulation.board.setAngle(new Point(0, 0));
         this.mqttManager.unsubscribe();
       }
     }
