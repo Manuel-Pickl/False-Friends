@@ -141,6 +141,9 @@ class Simulation {
             // start new level
             this.startLevel(this.level);
             this.resume();
+
+            // update levelcounter on ui
+            document.querySelector("main .level span").textContent = this.level;
         }.bind(this), finishHoleAnimationDuration);
     }
 

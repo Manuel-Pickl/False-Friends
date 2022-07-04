@@ -32,6 +32,12 @@
             font-size: large;
             word-wrap: break-word;
             white-space: normal;
+            scrollbar-width: none;
+
+
+            &::-webkit-scrollbar { 
+                display: none;
+            }
         }
 
 

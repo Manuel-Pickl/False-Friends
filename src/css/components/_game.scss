@@ -57,6 +57,39 @@ body {
                     -2px -2px 0 #6c360f;
             }
     
+
+            .level {
+                z-index: 100;
+                visibility: hidden;
+
+                position: absolute;
+                inset: 10px 70px auto auto;
+                height: 40px;
+
+                text-align: center;
+                font-size: 35px;
+                font-weight: bold;
+                color: white;
+                background-color: transparent;
+                text-shadow:
+                    -2px 2px 3px #6c360f,
+                    2px 2px 3px #6c360f,
+                    2px -2px 0 #6c360f,
+                    -2px -2px 0 #6c360f;
+
+                
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: auto auto -7px 50%;
+                    width: 140%;
+                    height: 4px;
+                    transform: translateX(-50%);
+    
+                    background-color: #6c360f;
+                }
+            }
+
     
             .pause-button {
                 z-index: 100;

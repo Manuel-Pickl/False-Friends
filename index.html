@@ -22,6 +22,9 @@
         <!-- stopwatch -->
         <div class="stopwatch"></div>
   
+        <!-- level -->
+        <div class="level">L<span>1</span></div>
+
         <!-- pause button -->
         <button class="pause-button" onclick="game.pauseGame()">
           <i class="fa fa-pause" aria-hidden="true"></i>
@@ -142,13 +145,13 @@
             </label>
 
             <label for="remote">
-              <input type="checkbox" id="remote" name="remote" value="Remote"
+              <input type="checkbox" id="remote-in" name="remote-in" value="Remote-In"
                 onclick="game.toggleRemoteControlIn(event, this)">
               In
             </label>
 
             <label for="remote-out">
-              <input type="checkbox" id="remote-out" name="remote" value="Remote"
+              <input type="checkbox" id="remote-out" name="remote" value="Remote-Out"
                 onclick="game.toggleRemoteControlOut(event, this)">
               Out
             </label>

@@ -48,6 +48,13 @@
       // add event listener on device orientation change
       window.addEventListener('deviceorientation', this.onSensorChanged.bind(this));
 
+      // reset settings
+      document.querySelector(".modal .settings #music").checked = false;
+      document.querySelector(".modal .settings #sound").checked = true;
+      document.querySelector(".modal .settings #remote-in").checked = false;
+      document.querySelector(".modal .settings #remote-out").checked = false;
+      document.querySelector(".modal .settings #ip").value = JSON.parse(localStorage.getItem("ip")) ?? "";
+
       // set the main game running loop with set fps
       setInterval(
         this.run.bind(this),
@@ -80,6 +87,7 @@
               }
 
               this.mqttManager.publishMessage(String(this.simulation.level));
+
               this.simulation.finishLevel();
             }
         }
@@ -341,8 +349,14 @@
      * Connect to broker at given ip address
      */
     connect() {
-      const ipInput = document.querySelector(".modal .settings #ip");
-      this.mqttManager.connect(ipInput.value);
+      // get ip
+      let ip = document.querySelector(".modal .settings #ip").value;
+
+      // save ip
+      localStorage.setItem("ip", JSON.stringify(ip));
+
+      // connect to broker at given ip
+      this.mqttManager.connect(ip);
     }
 
     /**

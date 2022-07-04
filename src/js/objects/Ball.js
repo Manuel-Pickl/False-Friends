@@ -164,7 +164,7 @@ class Ball extends Particle {
 
         // check for each Sand puddle, if ball is inside
         if (this.obstacles.sands != null) {
-            this.obstacles.sands?.forEach(sand => {
+            this.obstacles.sands.forEach(sand => {
                 if (!sand.isPointInside(this.position)) {
                     return;
                 }
@@ -172,6 +172,19 @@ class Ball extends Particle {
                 // reduce velocity
                 this.velocity.x *= 0.97;
                 this.velocity.y *= 0.97;
+            });
+        }
+
+        // check for each crater, if ball is inside
+        if (this.obstacles.craters != null) {
+            this.obstacles.craters.forEach(crater => {
+                if (!crater.isPointInside(this.position)) {
+                    return;
+                }
+                                
+                // reduce velocity
+                this.velocity.x *= 0.995;
+                this.velocity.y *= 0.995;
             });
         }
 

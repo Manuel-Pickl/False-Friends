@@ -66,6 +66,31 @@ body .game main .stopwatch {
   text-shadow: -2px 2px 3px #6c360f, 2px 2px 3px #6c360f, 2px -2px 0 #6c360f, -2px -2px 0 #6c360f;
 }
 
+body .game main .level {
+  z-index: 100;
+  visibility: hidden;
+  position: absolute;
+  inset: 10px 70px auto auto;
+  height: 40px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  text-shadow: -2px 2px 3px #6c360f, 2px 2px 3px #6c360f, 2px -2px 0 #6c360f, -2px -2px 0 #6c360f;
+}
+
+body .game main .level::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -7px 50%;
+  width: 140%;
+  height: 4px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #6c360f;
+}
+
 body .game main .pause-button {
   z-index: 100;
   position: absolute;
@@ -96,13 +121,13 @@ body .game main .pause-button {
 }
 
 .hill {
-  background-color: rgba(222, 184, 135, 0.75);
+  background-color: burlywood;
   -webkit-box-shadow: inset -10px -10px 20px rgba(120, 82, 33, 0.75), inset 10px 10px 20px rgba(222, 184, 135, 0.75);
           box-shadow: inset -10px -10px 20px rgba(120, 82, 33, 0.75), inset 10px 10px 20px rgba(222, 184, 135, 0.75);
 }
 
 .sand {
-  background-image: url("https://i.pinimg.com/originals/4b/c7/7b/4bc77bad05c5cc4d022f49de222e8151.jpg");
+  background-image: url("../../assets/img/sand.png");
   background-size: contain;
   -webkit-box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
           box-shadow: inset 10px 10px 20px rgba(120, 82, 33, 0.75), inset -10px -10px 20px rgba(222, 184, 135, 0.75);
@@ -111,8 +136,8 @@ body .game main .pause-button {
 .finish {
   z-index: 15;
   background-color: black;
-  -webkit-box-shadow: inset 5px 5px 10px grey;
-          box-shadow: inset 5px 5px 10px grey;
+  -webkit-box-shadow: inset -5px -5px 10px grey;
+          box-shadow: inset -5px -5px 10px grey;
 }
 
 .modal {
@@ -200,6 +225,11 @@ body .game main .pause-button {
   max-height: 255px;
   margin: 10px;
   overflow: scroll;
+  scrollbar-width: none;
+}
+
+.modal .leaderboard .table::-webkit-scrollbar {
+  display: none;
 }
 
 .modal .leaderboard .table table tr:nth-child(odd) {
@@ -250,6 +280,11 @@ body .game main .pause-button {
   font-size: large;
   word-wrap: break-word;
   white-space: normal;
+  scrollbar-width: none;
+}
+
+.modal .settings .broker-log::-webkit-scrollbar {
+  display: none;
 }
 
 .modal .settings .big-button {

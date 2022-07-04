@@ -24,6 +24,7 @@ class ModalManager {
 
         this.stopWatch = document.querySelector("main .stopwatch");
         this.pauseButton = document.querySelector("main .pause-button");
+        this.level = document.querySelector("main .level");
 
         this.menuModal = new Modal("menu");
         this.leaderboardModal = new Modal("leaderboard");
@@ -42,6 +43,7 @@ class ModalManager {
         
         this.stopWatch.style.visibility = "hidden";
         this.pauseButton.style.visibility = "hidden";
+        this.level.style.visibility = "hidden";
 
         return this;
     }
@@ -55,6 +57,7 @@ class ModalManager {
 
         this.stopWatch.style.visibility = "visible";
         this.pauseButton.style.visibility = "visible";
+        this.level.style.visibility = "visible";
 
         return this;
     }

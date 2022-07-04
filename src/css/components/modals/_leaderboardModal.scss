@@ -5,6 +5,13 @@
             margin: 10px;
             overflow: scroll;
 
+            scrollbar-width: none;
+
+
+            &::-webkit-scrollbar { 
+                display: none;
+            }
+            
 
             table {
                 tr:nth-child(odd) {

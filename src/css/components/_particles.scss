@@ -28,7 +28,7 @@
 
 
 .hill {
-    background-color: hsla(34, 57%, 70%, 0.75);
+    background-color: hsl(34, 57%, 70%);
     box-shadow:
     inset -10px -10px 20px hsla(34, 57%, 30%, 0.75),
     inset 10px 10px 20px hsla(34, 57%, 70%, 0.75);
@@ -37,7 +37,7 @@
 
 
 .sand {
-    background-image: url("https://i.pinimg.com/originals/4b/c7/7b/4bc77bad05c5cc4d022f49de222e8151.jpg");
+    background-image: url("../../assets/img/sand.png");
     background-size: contain;
     box-shadow:
         inset 10px 10px 20px hsla(34, 57%, 30%, 0.75),
@@ -50,5 +50,5 @@
 
     background-color: black;
     box-shadow:
-        inset 5px 5px 10px grey;
+        inset -5px -5px 10px grey;
 }
