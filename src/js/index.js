@@ -1,11 +1,11 @@
 /*
   sources:
-  - youtube
-  - geeksforgeeks.org: sensor data
-  - stackoverflow: small programming specific things
-  - developer.mozilla.org: sensor data
-  - w3schools: inheritance
-  - tutorialspoint
+  - youtube.com
+  - geeksforgeeks.org
+  - stackoverflow.com
+  - developer.mozilla.org
+  - w3schools.com
+  - tutorialspoint.com
   - fontawesome.com
 */
 

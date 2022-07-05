@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png"/>
     <title>Pickl Manuel | Balls Game | PWA</title>
-    <link rel="stylesheet" href="src/css/root/styles.css"/>
+    <link rel="stylesheet" href="src/css/root/index.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
   </head>
@@ -147,13 +147,13 @@
             <label for="remote">
               <input type="checkbox" id="remote-in" name="remote-in" value="Remote-In"
                 onclick="game.toggleRemoteControlIn(event, this)">
-              In
+              Subscribe
             </label>
 
             <label for="remote-out">
               <input type="checkbox" id="remote-out" name="remote" value="Remote-Out"
                 onclick="game.toggleRemoteControlOut(event, this)">
-              Out
+              Publish
             </label>
 
             <div class="broker-log"></div>

@@ -24,7 +24,6 @@ class Simulation {
             5: { crater: 5, hill: 4, sand: 3 }
         }
         this.maxLevel = Object.keys(this.obstacleCountDict).length;
-        // this.maxLevel = 2
     }
 
     /**
