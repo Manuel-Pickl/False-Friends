@@ -49,7 +49,7 @@ class Board {
      * @param {boolean} allowClipping When set false, the circle has to be completely inside the bounds. Default is true
      * @returns The found position as a Point 
      */
-    getNonIntersectingPosition(radius, allowClipping = true) {
+    getNonIntersectingPosition(radius, allowClipping = true, yBoundMin = null, yBoundMax = null) {
         let position;
         let intersects;
         let tries = 0;
@@ -60,7 +60,7 @@ class Board {
             // get random hill position
             position = new Point(
                 Utility.getRandomIntegerInRange(0 + (allowClipping ? 0 : radius), Utility.canvas.clientWidth - (allowClipping ? 0 : radius)),
-                Utility.getRandomIntegerInRange(0 + (allowClipping ? 0 : radius), Utility.canvas.clientHeight - (allowClipping ? 0 : radius))
+                Utility.getRandomIntegerInRange(yBoundMin ?? (0 + (allowClipping ? 0 : radius)), yBoundMax ?? (Utility.canvas.clientHeight - (allowClipping ? 0 : radius)))
             );
 
             // check intersection with obstacles
@@ -144,7 +144,7 @@ class Board {
      */
     placeFinish() {
         // generate random non intersecting finish position
-        let finishPosition = this.getNonIntersectingPosition(this.finishRadius, false);
+        let finishPosition = this.getNonIntersectingPosition(this.finishRadius, false, Utility.headerHeight + this.finishRadius);
         finishPosition = !debug ? finishPosition : new Point(this.finishRadius, Utility.canvas.clientHeight - this.finishRadius);
 
         this.finish?.remove();

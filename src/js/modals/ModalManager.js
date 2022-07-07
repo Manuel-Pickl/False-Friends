@@ -135,14 +135,14 @@ class ModalManager {
         for (let i = 0; i < leaderboard.length; i++) {
             let rank = i + 1;
             let name = leaderboard[i].name;
-            let time = leaderboard[i].time;
+            let time = Utility.formatTime(leaderboard[i].time)
             
             let rankCell = document.createElement("td");
             rankCell.appendChild(document.createTextNode(`${rank}.`));
             let nameCell = document.createElement("td");
             nameCell.appendChild(document.createTextNode(name));
             let timeCell = document.createElement("td");
-            timeCell.appendChild(document.createTextNode(`${time.toFixed(2)}`));
+            timeCell.appendChild(document.createTextNode(time));
             
             let row = document.createElement("tr");
             row.appendChild(rankCell);

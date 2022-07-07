@@ -24,6 +24,7 @@ class Simulation {
             5: { crater: 5, hill: 4, sand: 3 }
         }
         this.maxLevel = Object.keys(this.obstacleCountDict).length;
+        // this.maxLevel = 1;
     }
 
     /**
@@ -178,24 +179,6 @@ class Simulation {
         this.stopwatch += timeDifference;
 
         // update ui
-        this.stopwatchElement.textContent = this.stopwatchToString();
-    }
-
-    /**
-     * Get the formatted stopwatch time.
-     * @returns {string} Stopwatch time as formatted string in the format mm:ss
-     */
-    stopwatchToString() {
-        // get correct format of minutes
-        let minutes = Math.floor(this.stopwatch / 60);
-        let minutesString = minutes > 0 ? `${minutes}:` : "";
-        
-        // get correct format of seconds
-        let seconds = this.stopwatch % 60;
-        let secondsString = minutes > 0 && seconds < 10 
-        ? `0${seconds.toFixed(2)}` 
-        : seconds.toFixed(2);
-
-        return `${minutesString}${secondsString}`;
+        this.stopwatchElement.textContent = Utility.formatTime(this.stopwatch);
     }
 }

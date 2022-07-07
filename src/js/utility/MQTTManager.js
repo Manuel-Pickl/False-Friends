@@ -21,8 +21,8 @@
      */
     constructor() {
         this.brokerLog = document.querySelector(".modal .settings .broker-log");
-        this.subTopic = "sensor/data";
-        this.pubTopic = "sensehat/message";
+        this.subTopic = "sensor/data_MP";
+        this.pubTopic = "sensehat/message_MP";
         this.subscribed = false;
         this.connected = false;
         this.message = "0,0";
@@ -34,13 +34,13 @@
      */
     connect(ip) {
         let ipArray = ip.split(":");
-        if (ipArray.length != 2) {
+        if (ipArray.length > 3) {
             this.brokerLog.textContent = "invalid ip";
             return;
         }
 
-        this.host = ipArray[0];
-        this.port = parseInt(ipArray[1]);
+        this.host = ipArray.length == 2 ? ipArray[0] : `${ipArray[0]}:${ipArray[1]}`;
+        this.port = ipArray.length == 2 ? parseInt(ipArray[1]) : parseInt(ipArray[2]);
 
         // initialize broker connection
         this.mqtt = new Paho.MQTT.Client(this.host, this.port, "");
@@ -49,7 +49,8 @@
         var options = {
             timeout: 3,
             onSuccess: this.onConnect.bind(this),
-            onFailure: this.onFailure.bind(this)
+            onFailure: this.onFailure.bind(this),
+            useSSL: false
         };
         this.mqtt.connect(options);
         this.connected = true;

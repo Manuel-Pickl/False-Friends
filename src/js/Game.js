@@ -97,7 +97,7 @@
           && this.modalManager.currentModal == null) {
             
           // get highscore data
-          let time = this.simulation.stopwatchToString();
+          let time = Utility.formatTime(this.simulation.stopwatch);
           let rank = this.leaderboardManager.calculateRank(time);
 
           // play win or lose audio
